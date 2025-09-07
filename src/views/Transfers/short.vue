@@ -1,5 +1,5 @@
 <template>
-  <div class="packages">
+  <div class="details-page">
     <!-- Banner Section -->
     <div class="banner-container">
       <img src="@/assets/images/banner7.jpg" alt="Transfers Banner" class="banner" />
@@ -10,29 +10,36 @@
         <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
       </div>
     </div>
+    <h1>Airport Transfers %20|%20 Half-Day With Driver</h1>
 
-    <!-- Title and Intro -->
-    <div class="intro">
-      <h1>Tour Package</h1>
-      <p>
-        Experience Dubai's tour
-      </p>
-    </div>
+    <section>
+      <h2>Airport Transfers</h2>
+      <ul>
+        <li><strong>DXB – Dubai Hotel</strong></li>
+        <li>SUV (4–6 pax): from 190 AED</li>
+        <li>Van (7–10 pax): from 230 AED</li>
+        <li><strong>AUH – Dubai Hotel</strong></li>
+        <li>SUV: ~330 AED | Van: ~380 AED</li>
+        <li>60-min free wait; peak hour surcharge applies</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Half-Day Car with Driver</h2>
+      <ul>
+        <li>Service Duration: 5 Hours</li>
+        <li>SUV: from 300 AED | Van: from 330 AED</li>
+        <li>Includes 100km; extra: 80–150 AED/hr</li>
+      </ul>
+    </section>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Packages'
-}
-</script>
-
 <style scoped>
-.packages {
+.details-page {
   text-align: center;
   font-family: 'Poppins', sans-serif;
 }
-
 /* Banner 容器统一设置 */
 .banner-container {
   position: relative;
@@ -67,16 +74,14 @@ export default {
   margin-top: -70px;
 }
 
-.intro {
-  max-width: 1000px;
-  margin: 30px auto;
-  text-align: left;
-  padding: 0 20px;
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.intro h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+h2 {
+  margin-top: 30px;
+  color: #333;
 }
 </style>

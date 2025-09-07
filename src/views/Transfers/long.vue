@@ -1,6 +1,6 @@
 <template>
-  <div class="packages">
-    <!-- Banner Section -->
+  <div class="details-page">
+     <!-- Banner Section -->
     <div class="banner-container">
       <img src="@/assets/images/banner7.jpg" alt="Transfers Banner" class="banner" />
 
@@ -10,25 +10,32 @@
         <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
       </div>
     </div>
+    <h1>Full Day | Dubai to Abu Dhabi</h1>
 
-    <!-- Title and Intro -->
-    <div class="intro">
-      <h1>Tour Package</h1>
-      <p>
-        Experience Dubai's tour
-      </p>
-    </div>
+    <section>
+      <h2>Full-Day Car with Driver</h2>
+      <ul>
+        <li>Service Duration: 10 Hours</li>
+        <li>SUV: from 510 AED | Van: from 550 AED</li>
+        <li>Outside Dubai: +100–200 AED</li>
+        <li>Overtime: 100–200 AED/hr</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Dubai to Abu Dhabi with Sightseeing</h2>
+      <ul>
+        <li>10-hour sightseeing transfer</li>
+        <li>SUV: from 610 AED | Van: from 650 AED</li>
+        <li>Prices exclude entry tickets or meals</li>
+        <li>Fixed per group; not per person</li>
+      </ul>
+    </section>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Packages'
-}
-</script>
-
 <style scoped>
-.packages {
+.details-page {
   text-align: center;
   font-family: 'Poppins', sans-serif;
 }
@@ -67,16 +74,14 @@ export default {
   margin-top: -70px;
 }
 
-.intro {
-  max-width: 1000px;
-  margin: 30px auto;
-  text-align: left;
-  padding: 0 20px;
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.intro h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+h2 {
+  margin-top: 30px;
+  color: #333;
 }
 </style>

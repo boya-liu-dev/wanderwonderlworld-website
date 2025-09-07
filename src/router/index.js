@@ -17,7 +17,10 @@ const routes = [
   { path: '/city', name: 'City', component: City },
   { path: '/cruise', name: 'Cruise', component: Cruise },
   { path: '/contact', name: 'Contact', component: Contact },
-  { path: '/admin', name: 'Admin', component: Admin }
+  { path: '/admin', name: 'Admin', component: Admin },
+  {path: '/transfers/short',name: 'TransferShort',component: () => import('@/views/transfers/short.vue')},
+{path: '/transfers/long',name: 'TransferLong',component: () => import('@/views/transfers/long.vue')
+}
 ]
 
 const router = createRouter({
