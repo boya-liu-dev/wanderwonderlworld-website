@@ -63,6 +63,75 @@
 
 
     </div>
+        <!-- 产品列表 Text Card -->
+    <div class="text-card">
+      <h2>Dubai Car with Driver Price List</h2>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Chauffeur Service</th>
+            <th>Car Type</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Airport Transfers (DXB – Dubai City Hotel)</td>
+            <td>SUV (4–6 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 190</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Van (7–10 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 230</strong></td>
+          </tr>
+          <tr>
+            <td>Airport Transfers (AUH – Dubai City Hotel)</td>
+            <td>SUV (4–6 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 330</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Van (7–10 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 380</strong></td>
+          </tr>
+
+          <tr>
+            <td>Half-Day Car with Driver (5 Hours)</td>
+            <td>SUV (4–6 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 300</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Van (7–10 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 330</strong></td>
+          </tr>
+
+          <tr>
+            <td>Full-Day Car with Driver (10 Hours)</td>
+            <td>SUV (4–6 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 510</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Van (7–10 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 550</strong></td>
+          </tr>
+
+          <tr>
+            <td>Dubai → Abu Dhabi with Sightseeing (10 Hours)</td>
+            <td>SUV (4–6 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 610</strong></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Van (7–10 pax)</td>
+            <td><strong style="color:#b01b1b;">AED 650</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
 
     <!-- Full-width textual cards (no image, no buttons) -->
     <div class="text-card">
@@ -105,7 +174,7 @@ import logoGold from '@/assets/images/logo-www-gold.png'
 import logoText from '@/assets/images/logo-text.png'
 import car1 from '@/assets/images/cars/carcard1.jpg'
 import car2 from '@/assets/images/cars/carcard2.jpg'
-import car3 from '@/assets/images/cars/carcard3.jpg'
+import car3 from '@/assets/images/cars/carcard5.jpg'
 import car4 from '@/assets/images/cars/carcard4.jpg'
 
 export default {
@@ -218,40 +287,32 @@ export default {
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+/* WhatsApp 悬浮按钮（保持原样） */
 .whatsapp-wrapper {
   position: fixed;
-  left: 20px;
-  top: 50%;
+  left: 7px;
+  top: 75%;
   transform: translateY(-50%);
   z-index: 9999;
 }
-
 .whatsapp-button {
   display: flex;
   align-items: center;
   background-color: white;
-  padding: 10px 15px;
-  border-radius: 30px;
+  padding: 1px 15px;
+  border-radius: 100px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
-
-.whatsapp-button:hover {
-  transform: scale(1.05);
-}
-
-.whatsapp-button img {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
+.whatsapp-button:hover { transform: scale(1.05); }
+.whatsapp-button img { width: 58px; height: 58px; margin-right: 3px; }
 .hover-reveal .whatsapp-text {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
+  max-width: 0; opacity: 0; overflow: hidden;
   transition: all 0.3s ease-in-out;
+}
+.hover-reveal:hover .whatsapp-text {
+  max-width: 200px; opacity: 2; margin-left: 5px;
 }
 
 .hover-reveal:hover .whatsapp-text {
@@ -259,5 +320,27 @@ export default {
   opacity: 1;
   margin-left: 10px;
 }
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.price-table th,
+.price-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.price-table th {
+  background-color: #f8f8f8;
+  font-weight: 600;
+}
+
+.price-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
 
 </style>
