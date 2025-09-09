@@ -23,6 +23,8 @@
         match your dreams. Let us guide you through the vibrant heart of the UAE with expert local
         insight and personalized care.
       </p>
+      <NewsBoard />
+
 
       <!-- WhatsApp 悬浮按钮 -->
       <div class="whatsapp-wrapper">
@@ -75,6 +77,7 @@
 </template>
 
 <script>
+import NewsBoard from '@/components/NewsBoard.vue'
 import CarCard from '@/components/CarCard.vue'
 import car1 from '@/assets/images/cars/carcard1.jpg'
 import car2 from '@/assets/images/cars/carcard2.jpg'
@@ -82,8 +85,9 @@ import car3 from '@/assets/images/cars/carcard5.jpg'
 import car4 from '@/assets/images/cars/carcard4.jpg'
 
 export default {
+  
   name: 'Home',
-  components: { CarCard },
+  components: {NewsBoard, CarCard },
   data() {
     return {
       currentIndex: 0,

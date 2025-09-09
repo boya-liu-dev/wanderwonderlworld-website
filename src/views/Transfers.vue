@@ -28,6 +28,7 @@
       <CarCard
   :image="car1"
   title="Airport Transfers"
+  subtitle="Car-with-Driver"
   tour="Dubai City"
   duration="Varies"
   price="from AED 190"
@@ -132,8 +133,70 @@
       </table>
     </div>
 
+    <!-- 4 CTA buttons -->
+<div class="cta-row-wrapper">
+  <div class="cta-row">
+    <!-- 1. Email us（灰色） -->
+    <button class="cta-btn cta-gray" @click="copyEmail">
+      Email us
+    </button>
+
+    <!-- 2. WhatsApp us（浅绿色，弹窗显示二维码） -->
+    <button class="cta-btn cta-green" @click="openWhatsappModal">
+      WhatsApp us
+    </button>
+
+    <!-- 3. 微信扫一扫（浅绿色，弹窗显示二维码） -->
+    <button class="cta-btn cta-green" @click="openWechatModal">
+      Wechat us
+    </button>
+
+    <!-- 4. Book now（浅红色，跳转 contact） -->
+    <button class="cta-btn cta-red" @click="bookNow">
+      Book now
+    </button>
+  </div>
+</div>
+
+<!-- Email 复制成功的居中提示（3秒自动消失） -->
+<div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
+  <div class="center-toast-box">
+    <p><strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard</p>
+  </div>
+</div>
+
+<!-- WhatsApp 二维码弹窗（右上角X关闭） -->
+<div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+  <div class="qr-modal-box">
+    <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
+    <img :src="whatsappQR" alt="WhatsApp QR" />
+  </div>
+</div>
+
+<!-- 微信 二维码弹窗（右上角X关闭） -->
+<div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+  <div class="qr-modal-box">
+    <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
+    <img :src="wechatQR" alt="WeChat QR" />
+  </div>
+</div>
+
 
     <!-- Full-width textual cards (no image, no buttons) -->
+     <!-- FAQs Section -->
+<div class="faq-card">
+  <h2>FAQs</h2>
+  <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
+    <div class="faq-question" @click="toggleFaq(index)">
+      <span>{{ faq.question }}</span>
+      <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
+    </div>
+    <div v-if="faq.open" class="faq-answer">
+      <p>{{ faq.answer }}</p>
+    </div>
+  </div>
+</div>
+
     <div class="text-card">
       <h2>Seamless Journeys: Our Dubai Chauffeur Services</h2>
       <p>At WanderWonderWorld, we provide professional and reliable chauffeur services designed for your comfort and peace of mind. Our fleet consists of well-maintained, clean vehicles, operated by licensed and experienced drivers. We cater to all private transport needs, from efficient airport transfers to tailored day tours, ensuring a secure and hassle-free travel experience. We are committed to punctuality, vehicle safety, and superior customer service.</p>
@@ -176,6 +239,8 @@ import car1 from '@/assets/images/cars/carcard1.jpg'
 import car2 from '@/assets/images/cars/carcard2.jpg'
 import car3 from '@/assets/images/cars/carcard5.jpg'
 import car4 from '@/assets/images/cars/carcard4.jpg'
+import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
+import wechatQR from '@/assets/images/Wechat-code1.jpg'
 
 export default {
   name: 'Transfers',
@@ -188,8 +253,87 @@ export default {
       car1,
       car2,
       car3,
-      car4
+      car4,
+      faqs: [
+        {
+          question: "Do I need to book my transfer in advance?",
+          answer: "Yes, we recommend booking ahead to secure availability and guarantee your preferred vehicle.",
+          open: false
+        },
+        {
+          question: "Are airport pick-ups included with waiting time?",
+          answer: "Yes, we provide up to 60 minutes of free waiting at airports. Extra waiting time may incur a small fee.",
+          open: false
+        },
+        {
+          question: "Can I extend my booking during the trip?",
+          answer: "Yes, extensions are possible based on vehicle availability. Extra charges per hour will apply.",
+          open: false
+        },
+        {
+          question: "Are entrance tickets or meals included in the price?",
+          answer: "No, prices cover the vehicle and driver only. Attraction tickets, meals, or personal expenses are not included.",
+          open: false
+        }
+      ],
+     showEmailToast: false,
+     showWhatsappModal: false,
+     showWechatModal: false,
+     whatsappQR,
+     wechatQR,
+     emailToCopy: 'info@wanderwonderworlddubai.com',
+     toastTimer: null
     }
+  },
+  methods: {
+    toggleFaq(index) {
+      this.faqs[index].open = !this.faqs[index].open
+    },
+    async copyEmail() {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(this.emailToCopy);
+      } else {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = this.emailToCopy;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      this.showToast();
+    } catch (e) {
+      this.showToast(); // 即使失败也给提示
+    }
+  },
+
+  showToast() {
+    this.showEmailToast = true;
+    clearTimeout(this.toastTimer);
+    this.toastTimer = setTimeout(() => {
+      this.showEmailToast = false;
+    }, 3000); // 3秒关闭
+  },
+
+  openWhatsappModal() {
+    this.showWhatsappModal = true;
+  },
+  openWechatModal() {
+    this.showWechatModal = true;
+  },
+  closeModals() {
+    this.showWhatsappModal = false;
+    this.showWechatModal = false;
+  },
+
+  bookNow() {
+    this.$router.push('/contact');
+  }
+
   }
 }
 </script>
@@ -341,6 +485,139 @@ export default {
 .price-table tr:nth-child(even) {
   background-color: #fafafa;
 }
+/* FAQs 样式 */
+.faq-card {
+  background: #f8f8f8;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 8px;
+  max-width: 1000px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
+.faq-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #333;
+}
+
+.faq-icon {
+  font-size: 1rem;
+  color: #b01b1b;
+}
+
+.faq-answer {
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.6;
+}
+/* —— 四个按钮容器 —— */
+.cta-row-wrapper {
+  max-width: 1000px;
+  margin: 30px auto 10px;
+}
+.cta-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .cta-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .cta-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— 按钮通用形状（大小一致） —— */
+.cta-btn {
+  height: 56px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .18s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.cta-btn:active {
+  transform: translateY(1px);
+}
+
+/* 颜色款式 */
+.cta-gray  { background:#e9ecef; color:#333; }
+.cta-green { background:#dff6e5; color:#0b7a36; }
+.cta-red   { background:#ffe3e3; color:#a63a3a; }
+.cta-btn:hover { box-shadow: 0 8px 16px rgba(0,0,0,.12); }
+
+/* —— 居中提示（复制成功） —— */
+.center-toast {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2000;
+}
+.center-toast-box {
+  background:#fff;
+  padding:16px 22px;
+  border-radius:12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  max-width: 90vw;
+  text-align: center;
+}
+
+/* —— 二维码弹窗 —— */
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: grid;
+  place-items: center;
+  z-index: 2000;
+}
+.qr-modal-box {
+  position: relative;
+  background:#fff;
+  border-radius:16px;
+  padding: 16px;
+  width: min(90vw, 520px);
+  box-shadow: 0 16px 32px rgba(0,0,0,.25);
+}
+.qr-modal-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius:12px;
+}
+.qr-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background:#f2f2f2;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.qr-close:hover { background:#e9e9e9; }
 
 </style>

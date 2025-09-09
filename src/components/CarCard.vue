@@ -2,7 +2,7 @@
   <div class="car-card">
     <img :src="image" :alt="title" class="card-image" />
     <h2 class="text-xl font-semibold mt-2">{{ title }}</h2>
-    <p class="subtitle">Car-With-Driver</p>
+    <p class="subtitle" v-if="subtitle">{{ subtitle }}</p>
     <p><strong>Tour:</strong> {{ tour }}</p>
     <p><strong>Duration:</strong> {{ duration }}</p>
     <p class="price"><strong>Price:</strong> <span>{{ price }}</span></p>
@@ -21,7 +21,11 @@ export default {
     tour: String,
     duration: String,
     price: String,
-    link: String
+    link: String,
+    subtitle: {
+      type: String,
+      default: 'Car-With-Driver'
+    }
   }
 }
 </script>

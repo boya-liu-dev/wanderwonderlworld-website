@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2025-09-aed50-safari",
+    "title": "Autumn Deal: AED 50 OFF on Desert Safari",
+    "body": "Book by Dec 30 to save AED 80 per person on evening safari.",
+    "ctaText": "Book Safari",
+    "ctaLink": "/safari",
+    "startAt": "2025-09-01",
+    "endAt":   "2025-09-30",
+    "pin": true,
+    "variant": "success",
+    "priority": 10
+  },
+  {
+    "id": "2025-09-transfer-drop",
+    "title": "Airport Transfer price drop",
+    "body": "DXB → Dubai City from AED 190 (SUV). Limited time.",
+    "ctaText": "See Transfers",
+    "ctaLink": "/transfers",
+    "startAt": "2025-09-05",
+    "endAt":   "2025-09-20",
+    "variant": "info",
+    "priority": 5
+  },
+  {
+    "id": "ops-2025-09-note",
+    "title": "Service notice",
+    "body": "Some routes may have peak-season surcharges during public holidays.",
+    "startAt": "2025-09-01",
+    "variant": "warning"
+  }
+]
