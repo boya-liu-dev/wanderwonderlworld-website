@@ -19,8 +19,9 @@ const routes = [
   { path: '/contact', name: 'Contact', component: Contact },
   { path: '/admin', name: 'Admin', component: Admin },
   {path: '/transfers/short',name: 'TransferShort',component: () => import('@/views/transfers/short.vue')},
-{path: '/transfers/long',name: 'TransferLong',component: () => import('@/views/transfers/long.vue')
-}
+  {path: '/transfers/long',name: 'TransferLong',component: () => import('@/views/transfers/long.vue')},
+  {path: '/safari/regsafari',name: 'SafariReg',component: () => import('@/views/safari/regsafari.vue')},
+  {path: '/safari/upsafari',name: 'SafariUp',component: () => import('@/views/safari/upsafari.vue')}
 ]
 
 const router = createRouter({

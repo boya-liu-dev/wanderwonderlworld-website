@@ -32,7 +32,7 @@
   tour="Morning Private Tour"
   duration="4.5 Hours"
   price="from AED 500"
-  link="/transfers/short"
+  link="/safari/regsafari"
 />
 
 <CarCard
@@ -42,7 +42,7 @@
   tour="Sunset Private Tour"
   duration="6 Hours"
   price="from AED 700"
-  link="/transfers/short"
+  link="/safari/regsafari"
 />
 
 <CarCard
@@ -52,7 +52,7 @@
   tour="Extended Private Tour"
   duration="7 Hours"
   price="from AED 1100"
-  link="/transfers/long"
+  link="/safari/upsafari"
 />
 
 <CarCard
@@ -62,9 +62,51 @@
   tour="Luxury Overnight"
   duration="16 Hours"
   price="from AED 2000"
-  link="/transfers/long"
+  link="/safari/upsafari"
 
 />
+    <!-- Add-ons cards (same size / aligned with above) -->
+    <div class="cards-container">
+      <CarCard
+        :image="addon1"
+        title="ATV Ride (150cc)"
+        subtitle="Add-on"
+        tour="Desert Safari"
+        duration="30 Minutes"
+        price="AED 140 / person"
+        link="/contact"
+      />
+
+      <CarCard
+        :image="addon2"
+        title="Buggy Ride (2-Seater)"
+        subtitle="Add-on"
+        tour="Desert Safari"
+        duration="30 Minutes"
+        price="AED 420 / vehicle"
+        link="/contact"
+      />
+
+      <CarCard
+        :image="addon3"
+        title="Photography Package"
+        subtitle="Add-on"
+        tour="10 Edited + All Originals"
+        duration="—"
+        price="AED 150 / package"
+        link="/contact"
+      />
+
+      <CarCard
+        :image="addon4"
+        title="Shisha / Drinks"
+        subtitle="Add-on"
+        tour="Available at Licensed Camps"
+        duration="—"
+        price="contact for details"
+        link="/contact"
+      />
+    </div>
 
 
     </div>
@@ -136,17 +178,17 @@
       Email us
     </button>
 
-    <!-- 2. WhatsApp us（浅绿色，弹窗显示二维码） -->
+    <!-- 2. WhatsApp us（弹窗显示二维码） -->
     <button class="cta-btn cta-green" @click="openWhatsappModal">
       WhatsApp us
     </button>
 
-    <!-- 3. 微信扫一扫（浅绿色，弹窗显示二维码） -->
+    <!-- 3. 微信扫一扫（弹窗显示二维码） -->
     <button class="cta-btn cta-green" @click="openWechatModal">
       Wechat us
     </button>
 
-    <!-- 4. Book now（浅红色，跳转 contact） -->
+    <!-- 4. Book now（跳转 contact） -->
     <button class="cta-btn cta-red" @click="bookNow">
       Book now
     </button>
@@ -238,6 +280,11 @@ import car3 from '@/assets/images/cars/safaricar3.jpg'
 import car4 from '@/assets/images/cars/safaricar4.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
+import addon1 from '@/assets/images/cars/addon1.jpg'
+import addon2 from '@/assets/images/cars/addon2.jpg'
+import addon3 from '@/assets/images/cars/addon3.jpg'
+import addon4 from '@/assets/images/cars/addon4.jpg'
+
 
 export default {
   name: 'Safari',
@@ -251,6 +298,10 @@ export default {
       car2,
       car3,
       car4,
+      addon1,
+      addon2,
+      addon3,
+      addon4,
       faqs: [
         {
           question: "What is included in a Dubai desert safari tour?",
@@ -557,9 +608,9 @@ export default {
 }
 
 /* 颜色款式 */
-.cta-gray  { background:#e9ecef; color:#333; }
-.cta-green { background:#dff6e5; color:#0b7a36; }
-.cta-red   { background:#ffe3e3; color:#a63a3a; }
+.cta-gray  { background:hsl(65, 5%, 53%); color:hsl(0, 0%, 100%); }
+.cta-green { background:hsl(136, 90%, 27%); color:hsl(0, 0%, 100%); }
+.cta-red   { background:hsl(0, 93%, 32%); color:hsl(0, 0%, 100%); }
 .cta-btn:hover { box-shadow: 0 8px 16px rgba(0,0,0,.12); }
 
 /* —— 居中提示（复制成功） —— */

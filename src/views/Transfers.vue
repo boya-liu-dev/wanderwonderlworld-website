@@ -560,9 +560,9 @@ export default {
 }
 
 /* 颜色款式 */
-.cta-gray  { background:#e9ecef; color:#333; }
-.cta-green { background:#dff6e5; color:#0b7a36; }
-.cta-red   { background:#ffe3e3; color:#a63a3a; }
+.cta-gray  { background:hsl(65, 5%, 53%); color:hsl(0, 0%, 100%); }
+.cta-green { background:hsl(136, 90%, 27%); color:hsl(0, 0%, 100%); }
+.cta-red   { background:hsl(0, 93%, 32%); color:hsl(0, 0%, 100%); }
 .cta-btn:hover { box-shadow: 0 8px 16px rgba(0,0,0,.12); }
 
 /* —— 居中提示（复制成功） —— */

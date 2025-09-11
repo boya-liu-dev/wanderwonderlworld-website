@@ -2,7 +2,7 @@
   <div class="details-page">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="Transfers Banner" class="banner" />
+      <img src="@/assets/images/banner7.jpg" alt="Desert Safari Banner" class="banner" />
       <div class="floating-logos">
         <img src="@/assets/images/logo-www-gold.png" alt="Gold Logo" class="logo" />
         <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
@@ -11,18 +11,19 @@
 
     <!-- Title -->
     <div class="intro">
-      <h1>Full-Day with Driver & Dubai → Abu Dhabi Day Trip</h1>
+      <h1>Extended Dunes Thrill & Royal Dunes Safari</h1>
       <p>
-        Full-day private car with driver for deeper exploration, or a curated Dubai → Abu Dhabi
-        sightseeing day trip. Commercially insured vehicles, professional chauffeurs, and flexible
-        timing tailored to your plan.
+        Premium private desert safaris operated by licensed desert drivers and commercially-insured
+        vehicles. Choose our deeper-dunes prestige experience or the ultimate overnight royal line.
+        Optional add-ons (ATV 150cc / Buggy 2-Seater) are available at licensed centers. For
+        Shisha/Drinks please contact us. Royal line includes a complimentary Photography Package.
       </p>
     </div>
 
-    <!-- 左侧悬浮 WhatsApp（与 Private Transfers 保持一致） -->
+    <!-- 左侧悬浮 WhatsApp（与其他页面一致） -->
     <div class="whatsapp-wrapper">
       <a
-        href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
+        href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20the%20premium%20desert%20safari."
         class="whatsapp-button hover-reveal"
       >
         <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
@@ -61,42 +62,27 @@
       </div>
     </div>
 
-    <!-- Products: two panels (data-driven) -->
+    <!-- Products: one merged card per product -->
     <section v-for="p in products" :key="p.id" class="product">
       <h2>{{ p.title }}</h2>
       <p class="blurb">{{ p.blurb }}</p>
 
       <div class="product-grid">
-        <!-- SUV -->
         <div class="product-card">
-          <img :src="p.suv.image" :alt="p.title + ' SUV'" />
+          <img :src="p.variantA.image" :alt="p.title + ' 4x4'" />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">SUV (4–6 pax)</span>
-              <span class="price">from AED {{ p.suv.price }}</span>
+              <span class="badge">{{ p.variantA.badge }}</span>
+              <span class="price">from AED {{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.suv.points" :key="i">{{ b }}</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- VAN -->
-        <div class="product-card">
-          <img :src="p.van.image" :alt="p.title + ' Van'" />
-          <div class="pc-body">
-            <div class="price-line">
-              <span class="badge">Van (7–10 pax)</span>
-              <span class="price">from AED {{ p.van.price }}</span>
-            </div>
-            <ul class="bullets">
-              <li v-for="(b,i) in p.van.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Itinerary（你已决定放在 includes 之前） -->
+      <!-- Itinerary -->
       <div class="itinerary-card">
         <h3>Itinerary</h3>
         <ul>
@@ -104,10 +90,10 @@
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">Timing and route are flexible and can be tailored to your plan.</p>
+        <p class="it-note">Timing and route may adjust due to traffic, weather or camp regulations.</p>
       </div>
 
-      <!-- Key rules per product -->
+      <!-- What’s included / Good to know / Add-ons 引导 -->
       <div class="rules">
         <h3>What’s included</h3>
         <ul>
@@ -117,22 +103,26 @@
         <ul>
           <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
         </ul>
+        <div class="addons-cta">
+          <router-link to="/safari" class="btn">
+            See Add-ons (ATV 150cc, Buggy 2-Seater, Photography, Shisha/Drinks)
+          </router-link>
+        </div>
       </div>
     </section>
 
-    <!-- Policy / Terms block -->
+    <!-- Policy / Terms block（与 regsafari 一致） -->
     <div class="text-card">
       <h2>Service Policy & Insurance Summary</h2>
       <ul class="policy">
-        <li>All vehicles and drivers are licensed as per RTA/UAE regulations and are covered by commercial motor insurance (third-party liability at a minimum). Personal travel insurance is recommended for all guests.</li>
-        <li>Waiting time: Airport pick-ups include <strong>60 minutes</strong> free from actual flight landing; hotels/private addresses include <strong>15 minutes</strong> free. Overtime is billed in 30- or 60-minute blocks as applicable.</li>
-        <li>Distance/route: services are point-to-point unless otherwise stated. Extra stops, detours or additional pick-ups may incur a fee.</li>
-        <li>Salik/tolls & parking: billed at cost unless stated as included in your quote (common in inter-emirate trips).</li>
-        <li>Night/peak surcharges: may apply between <strong>22:00–06:00</strong> or during public holidays/events.</li>
-        <li>Child seats available on request (pre-book). Please advise luggage count; oversize items must be declared to ensure the correct vehicle class.</li>
-        <li>Cancellation & no-show: free cancellation window will be stated on your confirmation. No-show or late cancellation may be charged up to 100% depending on the case.</li>
-        <li>Driver is not a licensed tour guide. A licensed guide can be arranged on request at extra cost.</li>
-        <li>Damage & cleanliness: repair/cleaning caused by passenger negligence may be chargeable.</li>
+        <li>Private 4×4 with licensed desert driver; vehicles are covered by commercial motor insurance (at least third-party liability). Personal travel insurance is recommended.</li>
+        <li>Pick-up window: please allow ±15 minutes from the advised time for routing/traffic. Drivers may adjust order of stops to avoid congestion.</li>
+        <li>Health & safety: dune bashing is not recommended for pregnant guests, guests with serious heart/neck/back conditions, or infants. Child seats are mandatory for under-4s (pre-book).</li>
+        <li>Ramadan & religious holidays: live shows and alcohol service are restricted or not available per UAE regulations.</li>
+        <li>Alcohol & Shisha: only at licensed camps; age restrictions apply. For Shisha/Drinks pricing, please contact us.</li>
+        <li>ATV/Buggy add-ons operate at licensed third-party centers with their own safety rules and insurance; helmets are mandatory and age/height limits apply.</li>
+        <li>Free cancellation policy: as per confirmation. Late cancellation/no-show may incur up to 100% charge depending on the case.</li>
+        <li>Weather & force majeure: in sandstorm/heavy rain, itinerary may shift to lighter activities, reschedule priority applies; partial refund if services cannot be rendered.</li>
       </ul>
     </div>
 
@@ -153,110 +143,106 @@
 </template>
 
 <script>
-// images for LONG products
-import imgFulldaySUV from '@/assets/images/cars/carcard3.jpg'
-import imgFulldayVan from '@/assets/images/cars/carcard5.jpg'
-import imgADTripSUV from '@/assets/images/cars/carcard9.jpg'
-import imgADTripVan from '@/assets/images/cars/carcard10.jpg'
-
+// images
+import imgExtended from '@/assets/images/cars/safaricar3.jpg'
+import imgRoyal from '@/assets/images/cars/safaricar4.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
 
 export default {
-  name: 'TransferLong',
+  name: 'SafariUp',
   data() {
     return {
+      // ====== 高端双产品 ======
       products: [
         {
-          id: 'fullday',
-          title: 'Full-Day Car with Driver (10 Hours)',
+          id: 'extended',
+          title: 'Extended Dunes Thrill (Prestige Line)',
           blurb:
-            'All-day private charter for citywide exploring, meetings or custom touring at your own pace.',
-          suv: {
-            image: imgFulldaySUV,
-            price: 510,
+            '14:00–21:00 (~7h). Extended dune bashing in deeper red dunes, sunset photos and premium camp dinner with VIP seating.',
+          variantA: {
+            image: imgExtended,
+            badge: 'Private 4×4 (up to 5 pax)',
+            price: 1100,
             points: [
-              'Up to 10 hours of private service',
-              'Typical city coverage with flexible routing',
-              'Extendable by the hour as needed'
-            ]
-          },
-          van: {
-            image: imgFulldayVan,
-            price: 550,
-            points: [
-              'Up to 10 hours of private service',
-              'Comfortable for families and small groups',
-              'Extendable by the hour as needed'
+              'Hotel pick-up & drop-off in Dubai',
+              '80–90 min extended dune bashing in deeper red dunes',
+              'Sunset photo stop; driver assists with best angles',
+              'Premium/VIP camp access with reserved seating',
+              'Upgraded dinner + exclusive shows (as per camp)',
+              'Bottled water on board; soft drinks at camp',
+              'Optional add-ons: ATV 150cc / Buggy 2-Seater (before/after dune segment)'
             ]
           },
           itinerary: [
-            'Pick-up at your preferred time from hotel/residence in Dubai.',
-            'Custom routing for meetings, shopping and city highlights (Old Dubai, Creek/Abra, Jumeirah, Palm, Marina, Downtown, etc.).',
-            'Optional photo and coffee breaks on request.',
-            'Flexible lunch stop (own expense) and continued sightseeing or errands.',
-            'Drop-off at your preferred location in Dubai; extension possible by the hour.'
+            'Pick-up from your hotel/residence (14:00–14:30 window).',
+            'Transfer to desert (Lahbab/Al Badayer). Safety briefing; tires deflated for soft sand.',
+            '80–90 minutes extended dune bashing with multiple scenic photo stops.',
+            'Sunset at a high ridge; photo assistance for phones/cameras.',
+            'Enter premium camp: welcome refreshments; optional short camel ride & sandboarding.',
+            'VIP seating with upgraded dinner and exclusive shows; return to Dubai around 21:00.'
           ],
           includes: [
-            'Private SUV/Van and professional driver for 10 hours',
-            'Fuel within the typical city usage',
-            'Basic coordination for a custom itinerary'
+            'Private 4×4 with senior desert driver',
+            'Extended dune bashing (80–90 min) & sunset photo stop',
+            'Premium camp access with upgraded dinner & shows',
+            'Drinking water + soft drinks at camp (as per camp policy)'
           ],
           notes: [
-            'Overtime: usually AED 100–200 per hour depending on vehicle class.',
-            'Inter-emirate supplement may apply (e.g., Abu Dhabi/Sharjah trips) typically AED 100–200.',
-            'Salik/tolls and parking are billed at cost unless included in your quote.',
-            'Attraction tickets, meals and personal expenses are not included.',
-            'Driver is not a licensed tour guide; a licensed guide can be arranged on request.'
+            'Deeper dunes require experienced drivers; on some days a two-car convoy may be used for safety.',
+            'ATV/Buggy are licensed third-party add-ons with their own safety rules/insurance.',
+            'Health limits apply (pregnancy/heart/neck/back issues not advised). Child seats available on request.',
+            'Ramadan & certain religious dates: shows/alcohol restricted or unavailable.'
           ]
         },
         {
-          id: 'auhday',
-          title: 'Dubai → Abu Dhabi with Sightseeing (10 Hours)',
+          id: 'royal',
+          title: 'Royal Dunes Safari (Royal Line)',
           blurb:
-            'A curated day trip from Dubai to Abu Dhabi with key landmarks and photo stops — round-trip on the same day by default.',
-          suv: {
-            image: imgADTripSUV,
-            price: 610,
+            '15:00–09:00 next day (~16h). Luxury SUV, smooth scenic dune drive, private sunset stop, royal camp with fine dining & overnight glamping.',
+          variantA: {
+            image: imgRoyal,
+            badge: 'Luxury SUV (up to 4 pax)',
+            price: 2000,
             points: [
-              'Approx. 10 hours day trip (round-trip same day)',
-              'Highlights such as Grand Mosque, Corniche & city photo stops',
-              'Flexible routing; extendable by the hour'
-            ]
-          },
-          van: {
-            image: imgADTripVan,
-            price: 650,
-            points: [
-              'Approx. 10 hours day trip (round-trip same day)',
-              'Ideal for 5–8 guests and families',
-              'Flexible routing; extendable by the hour'
+              'Uniformed chauffeur in luxury SUV (Range Rover/Lexus LX or similar)',
+              'Cool towels & soft drinks on board',
+              '65–75 min smooth dune drive focusing on comfort & views',
+              'Private sunset viewpoint; curated photo moments',
+              'Royal/private camp zone with table service & fine-dining dinner',
+              'Overnight in luxury tent (en-suite/private bathroom as per camp), bonfire & stargazing',
+              'Sunrise experience & freshly cooked breakfast',
+              'Complimentary Photography Package (10 edited + all originals)',
+              'Optional add-ons: ATV 150cc / Buggy 2-Seater; Shisha/Drinks — contact for details'
             ]
           },
           itinerary: [
-            'Pick-up in Dubai and drive to Abu Dhabi (~90–120 minutes depending on traffic).',
-            'Visit Sheikh Zayed Grand Mosque (subject to dress code and security screening).',
-            'Drive along the Corniche with photo opportunities; stop by Emirates Palace/Etihad Towers area (exterior).',
-            'Optional visits or exterior photo stops: Qasr Al Watan grounds, Louvre Abu Dhabi, Heritage Village, Yas Island/Ferrari World area.',
-            'Lunch break at your choice (own expense).',
-            'Return drive to Dubai and drop-off at your hotel/residence.'
+            'Pick-up by luxury SUV and chauffeur (15:00 window); chilled towels & beverages.',
+            'Drive to desert; tires deflated; smooth scenic dune drive (65–75 min) with photo stops.',
+            'Private sunset stop for curated photo moments.',
+            'Enter royal/private camp zone: welcome champagne/mocktail (subject to camp license) and table service.',
+            'Fine-dining dinner with premium shows (subject to schedule and regulations).',
+            'Overnight in luxury tent; bonfire & stargazing; private/en-suite facilities where available.',
+            'Dawn wake-up for sunrise and light walk; freshly prepared breakfast.',
+            'Return to Dubai around 09:00.'
           ],
           includes: [
-            'Private SUV/Van with professional driver for ~10 hours',
-            'Pick-up and same-day drop-off within Dubai urban area',
-            'Fuel within the typical day-trip distance'
+            'Luxury SUV with professional chauffeur',
+            'Scenic dune drive & private sunset photo stop',
+            'Royal/private camp access with fine-dining dinner & breakfast',
+            'Complimentary Photography Package',
+            'Bottled water & soft drinks; alcohol service where the camp is licensed and permitted by law'
           ],
           notes: [
-            'Default is round-trip same day to/from Dubai. One-way or different end points can be arranged on request (different pricing may apply).',
-            'Overtime after 10 hours is chargeable (typically AED 100–200 per hour).',
-            'Dress code at Grand Mosque: modest attire covering arms and legs; women need a headscarf. Entry/security rules may change without prior notice.',
-            'Attraction tickets, guided tours, meals, Salik/tolls and parking are not included unless specified in your quote.',
-            'Schedules and opening times can vary due to prayers, events or holidays; your driver will help adjust the route accordingly.'
+            'Alcohol availability depends on the camp license/date; during Ramadan alcohol and shows are restricted or not available.',
+            'Limited inventory — advance booking highly recommended.',
+            'Inform us about family/child setup for tent bedding; luggage space limited (one overnight bag per guest recommended).',
+            'Add-ons (ATV/buggy) are optional third-party operations; safety rules and age limits apply.'
           ]
         }
       ],
 
-      // CTA state
+      // ====== CTA state ======
       emailToCopy: 'info@wanderwonderworlddubai.com',
       showEmailToast: false,
       toastTimer: null,
@@ -265,38 +251,42 @@ export default {
       whatsappQR,
       wechatQR,
 
-      // FAQs
+      // ====== FAQs ======
       faqs: [
         {
-          question: 'Is the Abu Dhabi day trip priced per vehicle or per person?',
+          question: 'Is alcohol included in the Royal line?',
           answer:
-            'Per vehicle. Prices cover private use of the vehicle and driver for the service hours. Attraction tickets and meals are extra.',
+            'Alcohol service depends on the camp’s license and date. Some royal camps include selected beverages, but during Ramadan and certain dates alcohol is unavailable. We will confirm at booking.',
           open: false
         },
         {
-          question: 'Can we finish the Abu Dhabi trip in Abu Dhabi (no return to Dubai)?',
+          question: 'Is the Photography Package included?',
           answer:
-            'Yes, that is possible as a custom arrangement. Pricing may differ to account for route, hours and empty return of the vehicle.',
+            'Yes, the Royal Dunes Safari includes a complimentary Photography Package (10 edited images + all originals). For other lines it is an add-on.',
           open: false
         },
         {
-          question: 'How are excess distance and overtime handled?',
+          question: 'Can I add ATV or buggy to these premium tours?',
           answer:
-            'Beyond the typical usage/distance, excess km and extra hours are chargeable. Your confirmation will state the applicable rates.',
+            'Yes. ATV (150cc) and 2-seater buggy can be added at licensed third-party centers. Safety briefing, helmets and age/height rules apply.',
           open: false
         },
         {
-          question: 'Do you provide licensed tour guides?',
+          question: 'Is the extended dune bashing safe?',
           answer:
-            'Your chauffeur is not a licensed guide. A licensed English-speaking guide can be arranged at extra cost if you prefer in-depth commentary.',
+            'It’s operated by senior desert drivers and routes are planned for safety. However, due to the nature of deeper dunes, it is not suitable for pregnant guests or those with heart/neck/back issues.',
           open: false
         }
       ]
     }
   },
   methods: {
-    toggleFaq(index) { this.faqs[index].open = !this.faqs[index].open },
+    // FAQs
+    toggleFaq(index) {
+      this.faqs[index].open = !this.faqs[index].open
+    },
 
+    // CTA actions
     async copyEmail() {
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -312,7 +302,9 @@ export default {
           document.execCommand('copy')
           document.body.removeChild(ta)
         }
-      } finally { this.showToast() }
+      } finally {
+        this.showToast()
+      }
     },
     showToast() {
       this.showEmailToast = true
@@ -396,8 +388,12 @@ export default {
 .product{ max-width:1000px; margin:34px auto; padding:0 20px; }
 .product h2{ font-size:1.6rem; margin:0 0 6px; }
 .blurb{ color:#555; margin:0 0 14px; }
-.product-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; }
-@media (max-width: 820px){ .product-grid{ grid-template-columns:1fr; } }
+/* 单列、左对齐 */
+.product-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
 
 .product-card{ background:#fff; border:1px solid #e6e6e6; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); }
 .product-card img{ width:100%; height:240px; object-fit:cover; display:block; }
@@ -413,7 +409,12 @@ export default {
 .rules{ background:#f8f8f8; border-radius:12px; padding:16px; margin-top:18px; }
 .rules h3{ margin:8px 0; }
 .rules ul{ margin:0; padding-left:18px; line-height:1.6; }
+.addons-cta{ margin-top:10px; }
+.addons-cta .btn{
+  display:inline-block; background:#c3aa0c; color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600;
+}
 
+/* Text card */
 .text-card{ background:#f8f8f8; margin:40px auto; padding:25px; border-radius:8px; max-width:1000px; line-height:1.6; box-shadow:0 2px 8px rgba(0,0,0,.08); }
 .text-card h2{ margin-top:0; }
 .policy{ margin:0; padding-left:18px; }
@@ -435,18 +436,7 @@ export default {
   margin-top:14px;
   box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
-.itinerary-card h3{
-  margin:6px 0 10px;
-}
-.itinerary-card ul{
-  margin:0;
-  padding-left:18px;
-  line-height:1.6;
-  color:#444;
-}
-.it-note{
-  margin-top:8px;
-  font-size:.95rem;
-  color:#666;
-}
+.itinerary-card h3{ margin:6px 0 10px; }
+.itinerary-card ul{ margin:0; padding-left:18px; line-height:1.6; color:#444; }
+.it-note{ margin-top:8px; font-size:.95rem; color:#666; }
 </style>
