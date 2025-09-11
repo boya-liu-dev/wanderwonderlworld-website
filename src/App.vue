@@ -11,25 +11,30 @@
               info@wanderwonderworlddubai.com
             </a>
           </div>
+
+          
+      
           <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">☰</button>
+          <!-- 固定语言切换按钮 -->
+          <button class="lang-toggle" @click="toggleLang">EN / 中</button>
         </div>
       </div>
 
-      <!-- Main nav (unchanged) -->
+      <!-- Main nav (unchanged structure; 文字与链接改为动态) -->
       <div class="navbar">
         <div class="bar-inner">
           <nav :class="{ open: isMenuOpen }" @click="closeMenu">
-            <router-link to="/">Home</router-link>
-            <router-link to="/transfers">Private Transfers</router-link>
-            <router-link to="/packages">Tour Package</router-link>
-            <router-link to="/safari">Desert Safari</router-link>
-            <router-link to="/city">City Tour</router-link>
-            <router-link to="/cruise">Dhow Cruise</router-link>
+            <router-link :to="navPaths.home">{{ navText.home }}</router-link>
+            <router-link :to="navPaths.transfers">{{ navText.transfers }}</router-link>
+            <router-link :to="navPaths.packages">{{ navText.packages }}</router-link>
+            <router-link :to="navPaths.safari">{{ navText.safari }}</router-link>
+            <router-link :to="navPaths.city">{{ navText.city }}</router-link>
+            <router-link :to="navPaths.cruise">{{ navText.cruise }}</router-link>
 
             <!-- WonderCart stays a button; opens modal via Pinia store -->
             <button class="nav-cart" type="button" @click.stop="cart.open()">
               <img :src="cartIcon" alt="WonderCart" />
-              <span>WonderCart</span>
+              <span>{{ navText.cart }}</span>
               <sup v-if="cart.items.length">{{ cart.items.length }}</sup>
             </button>
           </nav>
@@ -38,7 +43,8 @@
     </header>
 
     <!-- Cart modal at root -->
-    <WonderCartModal />
+    <WonderCartModal v-if="!zhMode" />
+    <WonderCartModal1 v-else />
 
     <!-- Global toast -->
     <div v-if="cart.showToast" class="global-toast">{{ cart.toastMsg }}</div>
@@ -77,20 +83,64 @@ import mailIcon from '@/assets/images/mailicon.png'
 import cartIcon from '@/assets/images/wondercart.jpg'
 import { useWonderCart } from '@/stores/wonderCart'
 import WonderCartModal from '@/components/WonderCartModal.vue'
+import WonderCartModal1 from '@/components/WonderCartModal1.vue'
 
 export default {
   name: 'App',
-  components: { WonderCartModal },
+  components: { WonderCartModal, WonderCartModal1 },
   data() {
     return {
       isMenuOpen: false,
       mailIcon,
-      cartIcon
+      cartIcon,
+
+      // 当前语言：false=英文（默认），true=中文
+      zhMode: localStorage.getItem('zhMode') === '1',
+
+      // 导航文字（两套）
+      navTextEn: {
+        home: 'Home',
+        transfers: 'Private Transfers',
+        packages: 'Tour Package',
+        safari: 'Desert Safari',
+        city: 'City Tour',
+        cruise: 'Dhow Cruise',
+        cart: 'WonderCart'
+      },
+      navTextZh: {
+        home: '首页',
+        transfers: '专车接送',
+        packages: '旅游套餐',
+        safari: '沙漠冲沙',
+        city: '城市一日游',
+        cruise: '游船晚餐',
+        cart: '万德购物车'
+      },
+
+      // 名称配对：主页面在切换语言时互跳
+      routeNamePair: {
+        Home: 'HomeZh', HomeZh: 'Home',
+        Transfers: 'TransfersZh', TransfersZh: 'Transfers',
+        Packages: 'PackagesZh', PackagesZh: 'Packages',
+        Safari: 'SafariZh', SafariZh: 'Safari',
+        City: 'CityZh', CityZh: 'City',
+        Cruise: 'CruiseZh', CruiseZh: 'Cruise'
+      }
     }
   },
   computed: {
     cart() {
       return useWonderCart()
+    },
+    // 当前导航文字
+    navText() {
+      return this.zhMode ? this.navTextZh : this.navTextEn
+    },
+    // 当前导航链接
+    navPaths() {
+      return this.zhMode
+        ? { home: '/cn', transfers: '/cn/transfers', packages: '/cn/packages', safari: '/cn/safari', city: '/cn/city', cruise: '/cn/cruise' }
+        : { home: '/',   transfers: '/transfers',     packages: '/packages',     safari: '/safari',     city: '/city',     cruise: '/cruise' }
     }
   },
   mounted() {
@@ -102,6 +152,20 @@ export default {
     },
     closeMenu() {
       this.isMenuOpen = false
+    },
+    toggleLang() {
+      // 1) 反转并持久化
+      this.zhMode = !this.zhMode
+      localStorage.setItem('zhMode', this.zhMode ? '1' : '0')
+
+      // 2) 如果现在在六大主页面之一，则跳到“影子页面”；否则回到对应语言首页
+      const curName = this.$route.name
+      const targetName = this.routeNamePair[curName]
+      if (targetName) {
+        this.$router.replace({ name: targetName })
+      } else {
+        this.$router.replace({ path: this.zhMode ? '/cn' : '/' })
+      }
     }
   }
 }
@@ -124,6 +188,7 @@ export default {
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* 让三块（邮箱 / 切换 / 菜单）自然分布 */
 }
 
 /* Upper nav (email) */
@@ -134,7 +199,6 @@ export default {
   border: 0;
 }
 .topbar .bar-inner {
-  justify-content: space-between;
   padding: 8px 20px;
 }
 .email-info {
@@ -147,6 +211,17 @@ export default {
   white-space: nowrap;
 }
 .email-info img { width: 20px; height: 20px; }
+
+/* 语言切换按钮（固定文案 EN / 中） */
+.lang-toggle{
+  background: transparent;
+  border: 0;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  padding: 7px 、1px;
+  color: #000;
+}
 
 /* Main nav (unchanged look) */
 .navbar {
@@ -295,11 +370,8 @@ a.router-link-exact-active {
 @media (max-width: 680px) {
   .ss-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 768px) {
   .menu-toggle { display: block; } /* show burger on mobile */
-
-  /* nav collapses into a vertical drawer under the navbar row */
   nav {
     display: none;
     flex-direction: column;
@@ -310,9 +382,11 @@ a.router-link-exact-active {
     flex-wrap: wrap;
   }
   nav.open { display: flex; }
-
   .nav-cart { padding: 8px 0; }
 }
+
+
+
 
 /* (existing) email animation refinements */
 .email-info {

@@ -1,5 +1,5 @@
 <template>
-  <div class="safari">
+  <div class="cruise">
     <!-- Banner -->
     <div class="banner-container">
       <img :src="banner" alt="Packages Banner" class="banner" />
