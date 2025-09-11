@@ -19,7 +19,7 @@
       </p>
     </div>
 
-    <!-- 左侧悬浮 WhatsApp（与 Private Transfers 保持一致） -->
+    <!-- 左侧悬浮 WhatsApp -->
     <div class="whatsapp-wrapper">
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
@@ -33,14 +33,16 @@
     <!-- 4 CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
+        <!-- 直接唤起邮箱 -->
+        <a class="cta-btn cta-gray" :href="`mailto:${emailToCopy}`">Email us</a>
         <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
         <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">Book now</button>
+        <!-- 直接打开 WonderCart -->
+        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
       </div>
     </div>
 
-    <!-- Toast: email copied -->
+    <!-- Toast（仍保留，当前不再触发） -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
         <p><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
@@ -61,7 +63,7 @@
       </div>
     </div>
 
-    <!-- Products: two panels (data-driven) -->
+    <!-- Products -->
     <section v-for="p in products" :key="p.id" class="product">
       <h2>{{ p.title }}</h2>
       <p class="blurb">{{ p.blurb }}</p>
@@ -78,6 +80,13 @@
             <ul class="bullets">
               <li v-for="(b,i) in p.suv.points" :key="i">{{ b }}</li>
             </ul>
+            <!-- Add to Cart（红底白字） -->
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.id === 'fullday' ? 'Full-day - SUV' : 'Dubai-to-Abu Dhabi - SUV')"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
 
@@ -92,11 +101,18 @@
             <ul class="bullets">
               <li v-for="(b,i) in p.van.points" :key="i">{{ b }}</li>
             </ul>
+            <!-- Add to Cart（红底白字） -->
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.id === 'fullday' ? 'Full-day - Van' : 'Dubai-to-Abu Dhabi - Van')"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Itinerary（你已决定放在 includes 之前） -->
+      <!-- Itinerary -->
       <div class="itinerary-card">
         <h3>Itinerary</h3>
         <ul>
@@ -107,7 +123,7 @@
         <p class="it-note">Timing and route are flexible and can be tailored to your plan.</p>
       </div>
 
-      <!-- Key rules per product -->
+      <!-- Rules -->
       <div class="rules">
         <h3>What’s included</h3>
         <ul>
@@ -161,6 +177,9 @@ import imgADTripVan from '@/assets/images/cars/carcard10.jpg'
 
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
+
+// cart store
+import { useWonderCart } from '@/stores/wonderCart'
 
 export default {
   name: 'TransferLong',
@@ -294,9 +313,25 @@ export default {
       ]
     }
   },
+  computed: {
+    cart() {
+      return useWonderCart()
+    }
+  },
   methods: {
     toggleFaq(index) { this.faqs[index].open = !this.faqs[index].open },
 
+    openWhatsappModal() { this.showWhatsappModal = true },
+    openWechatModal() { this.showWechatModal = true },
+    closeModals() { this.showWhatsappModal = false; this.showWechatModal = false },
+
+    // 打开 WonderCart
+    bookNow() { this.cart.open() },
+
+    // 加入购物车（只传名字）
+    addToCart(name) { this.cart.add(name) },
+
+    // 保留但不再使用复制逻辑
     async copyEmail() {
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -318,11 +353,7 @@ export default {
       this.showEmailToast = true
       clearTimeout(this.toastTimer)
       this.toastTimer = setTimeout(() => (this.showEmailToast = false), 3000)
-    },
-    openWhatsappModal() { this.showWhatsappModal = true },
-    openWechatModal() { this.showWechatModal = true },
-    closeModals() { this.showWhatsappModal = false; this.showWechatModal = false },
-    bookNow() { this.$router.push('/contact') }
+    }
   }
 }
 </script>
@@ -376,7 +407,7 @@ export default {
 @media (max-width: 520px){ .cta-row{ grid-template-columns: 1fr;} }
 
 .cta-btn{ height:56px; border:none; border-radius:12px; font-weight:700; cursor:pointer;
-  transition: transform .08s ease, box-shadow .18s ease; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+  transition: transform .08s ease, box-shadow .18s ease; box-shadow:0 4px 12px rgba(0,0,0,.08); display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
 .cta-btn:active{ transform: translateY(1px); }
 .cta-gray  { background:hsl(65, 5%, 53%); color:hsl(0, 0%, 100%); }
 .cta-green { background:hsl(136, 90%, 27%); color:hsl(0, 0%, 100%); }
@@ -409,6 +440,22 @@ export default {
 .bullets{ margin:0; padding-left:18px; color:#444; line-height:1.6; }
 .bullets li{ margin-bottom:6px; }
 
+/* Add to Cart button（白字红底） */
+.btn-addcart{
+  width:100%;
+  height:44px;
+  margin-top:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  background:hsl(0, 93%, 32%);
+  color:#fff;
+  transition: box-shadow .18s ease, transform .08s ease;
+}
+.btn-addcart:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
+.btn-addcart:active{ transform: translateY(1px); }
+
 /* Rules & Policy blocks */
 .rules{ background:#f8f8f8; border-radius:12px; padding:16px; margin-top:18px; }
 .rules h3{ margin:8px 0; }
@@ -426,7 +473,7 @@ export default {
 .faq-answer{ margin-top:8px; color:#555; }
 .faq-icon{ color:#b01b1b; }
 
-/* ===== Itinerary card ===== */
+/* Itinerary */
 .itinerary-card{
   background:#fff;
   border:1px solid #e6e6e6;
@@ -435,18 +482,7 @@ export default {
   margin-top:14px;
   box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
-.itinerary-card h3{
-  margin:6px 0 10px;
-}
-.itinerary-card ul{
-  margin:0;
-  padding-left:18px;
-  line-height:1.6;
-  color:#444;
-}
-.it-note{
-  margin-top:8px;
-  font-size:.95rem;
-  color:#666;
-}
+.itinerary-card h3{ margin:6px 0 10px; }
+.itinerary-card ul{ margin:0; padding-left:18px; line-height:1.6; color:#444; }
+.it-note{ margin-top:8px; font-size:.95rem; color:#666; }
 </style>

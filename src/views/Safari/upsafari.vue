@@ -13,10 +13,10 @@
     <div class="intro">
       <h1>Extended Dunes Thrill & Royal Dunes Safari</h1>
       <p>
-        Premium private desert safaris operated by licensed desert drivers and commercially-insured
-        vehicles. Choose our deeper-dunes prestige experience or the ultimate overnight royal line.
-        Optional add-ons (ATV 150cc / Buggy 2-Seater) are available at licensed centers. For
-        Shisha/Drinks please contact us. Royal line includes a complimentary Photography Package.
+        Premium private desert safaris operated by licensed desert drivers and commercially-insured vehicles.
+        Choose our deeper-dunes prestige experience or the ultimate overnight royal line. Optional add-ons
+        (ATV 150cc / Buggy 2-Seater) are available at licensed centers. For Shisha/Drinks please contact us.
+        Royal line includes a complimentary Photography Package.
       </p>
     </div>
 
@@ -37,7 +37,8 @@
         <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
         <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
         <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">Book now</button>
+        <!-- 改：直接打开购物车 -->
+        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
       </div>
     </div>
 
@@ -78,6 +79,9 @@
             <ul class="bullets">
               <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
             </ul>
+
+            <!-- 新增：Add to Cart（白字红底） -->
+            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -104,7 +108,7 @@
           <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
         </ul>
         <div class="addons-cta">
-          <router-link to="/safari" class="btn">
+          <router-link to="/safari/addon" class="btn">
             See Add-ons (ATV 150cc, Buggy 2-Seater, Photography, Shisha/Drinks)
           </router-link>
         </div>
@@ -149,6 +153,9 @@ import imgRoyal from '@/assets/images/cars/safaricar4.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
 
+// 仅为购物车新增
+import { useWonderCart } from '@/stores/wonderCart'
+
 export default {
   name: 'SafariUp',
   data() {
@@ -160,6 +167,7 @@ export default {
           title: 'Extended Dunes Thrill (Prestige Line)',
           blurb:
             '14:00–21:00 (~7h). Extended dune bashing in deeper red dunes, sunset photos and premium camp dinner with VIP seating.',
+          cartName: 'Extended Dunes Thrill',
           variantA: {
             image: imgExtended,
             badge: 'Private 4×4 (up to 5 pax)',
@@ -200,6 +208,7 @@ export default {
           title: 'Royal Dunes Safari (Royal Line)',
           blurb:
             '15:00–09:00 next day (~16h). Luxury SUV, smooth scenic dune drive, private sunset stop, royal camp with fine dining & overnight glamping.',
+          cartName: 'Royal Dunes Safari',
           variantA: {
             image: imgRoyal,
             badge: 'Luxury SUV (up to 4 pax)',
@@ -280,13 +289,19 @@ export default {
       ]
     }
   },
+  computed: {
+    // 仅新增：获取购物车实例
+    cart() {
+      return useWonderCart()
+    }
+  },
   methods: {
     // FAQs
     toggleFaq(index) {
       this.faqs[index].open = !this.faqs[index].open
     },
 
-    // CTA actions
+    // CTA actions（Email 按钮保持原逻辑）
     async copyEmail() {
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -314,7 +329,12 @@ export default {
     openWhatsappModal() { this.showWhatsappModal = true },
     openWechatModal() { this.showWechatModal = true },
     closeModals() { this.showWhatsappModal = false; this.showWechatModal = false },
-    bookNow() { this.$router.push('/contact') }
+
+    // 改：直接打开购物车
+    bookNow() { this.cart.open() },
+
+    // 新增：加入购物车（只传产品名）
+    addToCart(name) { this.cart.add(name) }
   }
 }
 </script>
@@ -388,13 +408,13 @@ export default {
 .product{ max-width:1000px; margin:34px auto; padding:0 20px; }
 .product h2{ font-size:1.6rem; margin:0 0 6px; }
 .blurb{ color:#555; margin:0 0 14px; }
+
 /* 单列、左对齐 */
 .product-grid{
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
 }
-
 .product-card{ background:#fff; border:1px solid #e6e6e6; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); }
 .product-card img{ width:100%; height:240px; object-fit:cover; display:block; }
 .pc-body{ padding:20px; }
@@ -404,6 +424,22 @@ export default {
 
 .bullets{ margin:0; padding-left:18px; color:#444; line-height:1.6; }
 .bullets li{ margin-bottom:6px; }
+
+/* 新增：Add to Cart 按钮（白字红底） */
+.btn-addcart{
+  width:100%;
+  height:44px;
+  margin-top:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  background:hsl(0, 93%, 32%);
+  color:#fff;
+  transition: box-shadow .18s ease, transform .08s ease;
+}
+.btn-addcart:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
+.btn-addcart:active{ transform: translateY(1px); }
 
 /* Rules & Policy blocks */
 .rules{ background:#f8f8f8; border-radius:12px; padding:16px; margin-top:18px; }

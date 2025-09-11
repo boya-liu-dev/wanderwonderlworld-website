@@ -36,7 +36,8 @@
         <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
         <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
         <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">Book now</button>
+        <!-- 改为直接打开购物车 -->
+        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
       </div>
     </div>
 
@@ -62,54 +63,57 @@
     </div>
 
     <!-- Products: one panel (merged) -->
-<section v-for="p in products" :key="p.id" class="product">
-  <h2>{{ p.title }}</h2>
-  <p class="blurb">{{ p.blurb }}</p>
+    <section v-for="p in products" :key="p.id" class="product">
+      <h2>{{ p.title }}</h2>
+      <p class="blurb">{{ p.blurb }}</p>
 
-  <div class="product-grid">
-    <!-- Single merged card -->
-    <div class="product-card">
-      <img :src="p.variantA.image" :alt="p.title + ' 4x4'" />
-      <div class="pc-body">
-        <div class="price-line">
-          <span class="badge">{{ p.variantA.badge }}</span>
-          <span class="price">from AED {{ p.variantA.price }}</span>
+      <div class="product-grid">
+        <!-- Single merged card -->
+        <div class="product-card">
+          <img :src="p.variantA.image" :alt="p.title + ' 4x4'" />
+          <div class="pc-body">
+            <div class="price-line">
+              <span class="badge">{{ p.variantA.badge }}</span>
+              <span class="price">from AED {{ p.variantA.price }}</span>
+            </div>
+            <ul class="bullets">
+              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+            </ul>
+
+            <!-- 新增：Add to Cart（白字红底） -->
+            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
+          </div>
         </div>
-        <ul class="bullets">
-          <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
-        </ul>
       </div>
-    </div>
-  </div>
 
-  <!-- Itinerary -->
-  <div class="itinerary-card">
-    <h3>Itinerary</h3>
-    <ul>
-      <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
-        {{ step }}
-      </li>
-    </ul>
-    <p class="it-note">Timing and route may adjust due to traffic, weather or park regulations.</p>
-  </div>
+      <!-- Itinerary -->
+      <div class="itinerary-card">
+        <h3>Itinerary</h3>
+        <ul>
+          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+            {{ step }}
+          </li>
+        </ul>
+        <p class="it-note">Timing and route may adjust due to traffic, weather or park regulations.</p>
+      </div>
 
-  <!-- What’s included / Good to know / Add-ons 引导 -->
-  <div class="rules">
-    <h3>What’s included</h3>
-    <ul>
-      <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
-    </ul>
-    <h3>Good to know</h3>
-    <ul>
-      <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
-    </ul>
-    <div class="addons-cta">
-      <router-link to="/safari" class="btn">
-        See Add-ons (ATV 150cc, Buggy 2-Seater, Photography, Shisha/Drinks)
-      </router-link>
-    </div>
-  </div>
-</section>
+      <!-- What’s included / Good to know / Add-ons 引导 -->
+      <div class="rules">
+        <h3>What’s included</h3>
+        <ul>
+          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+        </ul>
+        <h3>Good to know</h3>
+        <ul>
+          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+        </ul>
+        <div class="addons-cta">
+          <router-link to="/safari/addon" class="btn">
+            See Add-ons (ATV 150cc, Buggy 2-Seater, Photography, Shisha/Drinks)
+          </router-link>
+        </div>
+      </div>
+    </section>
 
     <!-- Policy / Terms block -->
     <div class="text-card">
@@ -149,90 +153,93 @@ import imgSunset from '@/assets/images/cars/safaricar2.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
 
+// 引入购物车
+import { useWonderCart } from '@/stores/wonderCart'
+
 export default {
   name: 'SafariReg',
   data() {
-  return {
-    products: [
-      {
-        id: 'morning',
-        title: 'Morning Dunes Drive (Classic Line)',
-        blurb:
-          '08:00–12:30 (~4.5h). Cooler temperatures, softer light and fewer crowds—family and senior friendly.',
-        variantA: {
-          image: imgMorning,
-          badge: 'Private 4×4 (up to 5 pax)',
-          price: 500,
-          // 已合并右侧要点
-          points: [
-            'Hotel pick-up & drop-off in Dubai',
-            '50–60 min dune bashing at Lahbab or similar',
-            'Sandboarding & short camel photo stop (when camp operations permit)',
-            'Bottled water onboard',
-            'Ideal for small families',
-            'Optional add-ons: ATV 150cc / Buggy 2-Seater (see Add-ons)'
+    return {
+      products: [
+        {
+          id: 'morning',
+          title: 'Morning Dunes Drive (Classic Line)',
+          blurb:
+            '08:00–12:30 (~4.5h). Cooler temperatures, softer light and fewer crowds—family and senior friendly.',
+          cartName: 'Morning Dunes Drive',
+          variantA: {
+            image: imgMorning,
+            badge: 'Private 4×4 (up to 5 pax)',
+            price: 500,
+            points: [
+              'Hotel pick-up & drop-off in Dubai',
+              '50–60 min dune bashing at Lahbab or similar',
+              'Sandboarding & short camel photo stop (when camp operations permit)',
+              'Bottled water onboard',
+              'Ideal for small families',
+              'Optional add-ons: ATV 150cc / Buggy 2-Seater (see Add-ons)'
+            ]
+          },
+          itinerary: [
+            'Pick-up from your hotel/residence in Dubai (08:00 window).',
+            'Drive to red-dune area; deflate tires for soft-sand driving.',
+            '50–60 minutes dune bashing with scenic photo stops.',
+            'Sandboarding; short camel photo stop if camp is operating.',
+            'Return drive to Dubai and drop-off at your location.'
+          ],
+          includes: [
+            'Private 4×4 with professional desert driver',
+            'Dune bashing (~50–60 minutes)',
+            'Photo stops on high dunes',
+            'Drinking water'
+          ],
+          notes: [
+            'Best for families with kids or seniors; gentler temperatures in the morning.',
+            'Add-ons (ATV/Buggy/Photography) are optional at licensed centers; bookable via Desert Safari page.',
+            'Health limits apply (pregnancy/heart/neck/back issues not advised). Child seats available on request.'
           ]
         },
-        itinerary: [
-          'Pick-up from your hotel/residence in Dubai (08:00 window).',
-          'Drive to red-dune area; deflate tires for soft-sand driving.',
-          '50–60 minutes dune bashing with scenic photo stops.',
-          'Sandboarding; short camel photo stop if camp is operating.',
-          'Return drive to Dubai and drop-off at your location.'
-        ],
-        includes: [
-          'Private 4×4 with professional desert driver',
-          'Dune bashing (~50–60 minutes)',
-          'Photo stops on high dunes',
-          'Drinking water'
-        ],
-        notes: [
-          'Best for families with kids or seniors; gentler temperatures in the morning.',
-          'Add-ons (ATV/Buggy/Photography) are optional at licensed centers; bookable via Desert Safari page.',
-          'Health limits apply (pregnancy/heart/neck/back issues not advised). Child seats available on request.'
-        ]
-      },
-      {
-        id: 'sunset',
-        title: 'Sunset Dunes Select (Signature Line)',
-        blurb:
-          '15:00–21:00 (~6h). Our most popular safari: dune bashing + sunset photos + camp dinner with live shows.',
-        variantA: {
-          image: imgSunset,
-          badge: 'Private 4×4 (up to 5 pax)',
-          price: 700,
-          // 已合并右侧要点
-          points: [
-            'Hotel pick-up & drop-off in Dubai',
-            '50–60 min dune bashing + sunset photo stop',
-            'Camp access: BBQ buffet dinner (veg & non-veg), live shows*',
-            'Short camel ride & sandboarding (camp-operated)',
-            'Soft drinks included at standard camps',
-            'Optional add-ons: ATV 150cc / Buggy 2-Seater / Photography'
+        {
+          id: 'sunset',
+          title: 'Sunset Dunes Select (Signature Line)',
+          blurb:
+            '15:00–21:00 (~6h). Our most popular safari: dune bashing + sunset photos + camp dinner with live shows.',
+          cartName: 'Sunset Dunes Select',
+          variantA: {
+            image: imgSunset,
+            badge: 'Private 4×4 (up to 5 pax)',
+            price: 700,
+            points: [
+              'Hotel pick-up & drop-off in Dubai',
+              '50–60 min dune bashing + sunset photo stop',
+              'Camp access: BBQ buffet dinner (veg & non-veg), live shows*',
+              'Short camel ride & sandboarding (camp-operated)',
+              'Soft drinks included at standard camps',
+              'Optional add-ons: ATV 150cc / Buggy 2-Seater / Photography'
+            ]
+          },
+          itinerary: [
+            'Pick-up from your hotel/residence (15:00 window).',
+            'Drive to desert; deflate tires; start dune bashing (50–60 minutes).',
+            'Sunset photo stop on the high dunes.',
+            'Enter licensed camp: welcome refreshments; short camel ride; sandboarding.',
+            'BBQ buffet dinner (veg & non-veg) and live shows*; tea/coffee/soft drinks (as per camp).',
+            'Return drive and drop-off at your location around 21:00.'
+          ],
+          includes: [
+            'Private 4×4 with licensed driver',
+            'Dune bashing, sunset photo stop',
+            'Camp access with dinner and live entertainment',
+            'Drinking water + soft drinks (as per camp policy)'
+          ],
+          notes: [
+            '*Ramadan & certain religious dates: live shows and alcohol service may be restricted or unavailable.',
+            'Alcohol/Shisha available only at licensed camps (extra). For pricing please contact us.',
+            'ATV/Buggy are third-party add-ons with their own safety rules/insurance; helmets mandatory; age limits apply.',
+            'Photography Package is an add-on for regular lines and included free only in Royal Dunes Safari.'
           ]
-        },
-        itinerary: [
-          'Pick-up from your hotel/residence (15:00 window).',
-          'Drive to desert; deflate tires; start dune bashing (50–60 minutes).',
-          'Sunset photo stop on the high dunes.',
-          'Enter licensed camp: welcome refreshments; short camel ride; sandboarding.',
-          'BBQ buffet dinner (veg & non-veg) and live shows*; tea/coffee/soft drinks (as per camp).',
-          'Return drive and drop-off at your location around 21:00.'
-        ],
-        includes: [
-          'Private 4×4 with licensed driver',
-          'Dune bashing, sunset photo stop',
-          'Camp access with dinner and live entertainment',
-          'Drinking water + soft drinks (as per camp policy)'
-        ],
-        notes: [
-          '*Ramadan & certain religious dates: live shows and alcohol service may be restricted or unavailable.',
-          'Alcohol/Shisha available only at licensed camps (extra). For pricing please contact us.',
-          'ATV/Buggy are third-party add-ons with their own safety rules/insurance; helmets mandatory; age limits apply.',
-          'Photography Package is an add-on for regular lines and included free only in Royal Dunes Safari.'
-        ]
-      }
-    ],
+        }
+      ],
 
       // ====== CTA state ======
       emailToCopy: 'info@wanderwonderworlddubai.com',
@@ -272,13 +279,19 @@ export default {
       ]
     }
   },
+  computed: {
+    // 获取购物车实例
+    cart() {
+      return useWonderCart()
+    }
+  },
   methods: {
     // FAQs
     toggleFaq(index) {
       this.faqs[index].open = !this.faqs[index].open
     },
 
-    // CTA actions
+    // CTA actions（Email 逻辑保持不变）
     async copyEmail() {
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -306,7 +319,12 @@ export default {
     openWhatsappModal() { this.showWhatsappModal = true },
     openWechatModal() { this.showWechatModal = true },
     closeModals() { this.showWhatsappModal = false; this.showWechatModal = false },
-    bookNow() { this.$router.push('/contact') }
+
+    // 改：直接打开购物车
+    bookNow() { this.cart.open() },
+
+    // 新增：加入购物车（仅传产品名）
+    addToCart(name) { this.cart.add(name) }
   }
 }
 </script>
@@ -381,7 +399,6 @@ export default {
 .product h2 { font-size:1.6rem; margin:0 0 6px; }
 .blurb { color:#555; margin:0 0 14px; }
 
-/* 单列、左对齐 */
 .product-grid{
   display: grid;
   grid-template-columns: 1fr;
@@ -398,6 +415,22 @@ export default {
 
 .bullets{ margin:0; padding-left:18px; color:#444; line-height:1.6; }
 .bullets li{ margin-bottom:6px; }
+
+/* 新增：Add to Cart 按钮（白字红底） */
+.btn-addcart{
+  width:100%;
+  height:44px;
+  margin-top:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  background:hsl(0, 93%, 32%);
+  color:#fff;
+  transition: box-shadow .18s ease, transform .08s ease;
+}
+.btn-addcart:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
+.btn-addcart:active{ transform: translateY(1px); }
 
 /* Rules & Policy blocks */
 .rules{ background:#f8f8f8; border-radius:12px; padding:16px; margin-top:18px; }

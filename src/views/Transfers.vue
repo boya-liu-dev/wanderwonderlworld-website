@@ -11,7 +11,7 @@
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Private Transfers in Dubai</h1>
+      <h1>Private Transfers in Dubai — Arrive with Ease</h1>
       <p>Experience Dubai’s allure in comfort and convenience with our top-rated private transfers and car with driver services. At WanderWonderWorld, we offer a fleet of immaculate and well-maintained chauffeur cars with experienced drivers who know the roads of the UAE. We cater to all your needs, from stress-free airport transfers to personalized city tours and business trips. Let us provide a seamless and professional journey that perfectly matches your travel dreams.</p>
     </div>
     <div class="whatsapp-wrapper">
@@ -153,7 +153,7 @@
 
     <!-- 4. Book now（浅红色，跳转 contact） -->
     <button class="cta-btn cta-red" @click="bookNow">
-      Book now
+      My WonderCart
     </button>
   </div>
 </div>
@@ -241,6 +241,7 @@ import car3 from '@/assets/images/cars/carcard5.jpg'
 import car4 from '@/assets/images/cars/carcard4.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
+import { useWonderCart } from '@/stores/wonderCart'
 
 export default {
   name: 'Transfers',
@@ -331,7 +332,7 @@ export default {
   },
 
   bookNow() {
-    this.$router.push('/contact');
+     useWonderCart().open();
   }
 
   }

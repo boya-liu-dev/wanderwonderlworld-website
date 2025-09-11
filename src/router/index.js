@@ -21,7 +21,14 @@ const routes = [
   {path: '/transfers/short',name: 'TransferShort',component: () => import('@/views/transfers/short.vue')},
   {path: '/transfers/long',name: 'TransferLong',component: () => import('@/views/transfers/long.vue')},
   {path: '/safari/regsafari',name: 'SafariReg',component: () => import('@/views/safari/regsafari.vue')},
-  {path: '/safari/upsafari',name: 'SafariUp',component: () => import('@/views/safari/upsafari.vue')}
+  {path: '/safari/upsafari',name: 'SafariUp',component: () => import('@/views/safari/upsafari.vue')},
+  {path: '/safari/addon',name: 'Addon',component: () => import('@/views/safari/addon.vue')},
+  {path: '/package/34nights',name: '34Nights',component: () => import('@/views/package/34nights.vue')},
+  {path: '/package/56nights',name: '56Nights',component: () => import('@/views/package/56nights.vue')},
+  {path: '/city/city12',name: 'City12',component: () => import('@/views/city/city12.vue')},
+  {path: '/city/city34',name: 'City34',component: () => import('@/views/city/city34.vue')},
+  {path: '/city/sndcruise',name: 'Sndcruise',component: () => import('@/views/city/sndcruise.vue')}
+
 ]
 
 const router = createRouter({

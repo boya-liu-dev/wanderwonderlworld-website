@@ -39,7 +39,7 @@
         tour="Dubai City"
         duration="4 Days"
         price="Adult from AED 849"
-        link="/transfers/short"
+        link="/package/34nights"
       />
 
       <CarCard
@@ -49,7 +49,7 @@
         tour="Dubai City"
         duration="5 Days"
         price="Adult from AED 1099"
-        link="/transfers/short"
+        link="/package/34nights"
       />
 
       <CarCard
@@ -59,7 +59,7 @@
         tour="Dubai + Abu Dhabi"
         duration="6 Days"
         price="Adult from AED 1349"
-        link="/transfers/long"
+        link="/package/56nights"
       />
 
       <CarCard
@@ -69,7 +69,7 @@
         tour="Dubai + Abu Dhabi"
         duration="7 Days"
         price="Adult from AED 1599"
-        link="/transfers/long"
+        link="/package/56nights"
       />
     </div>
 
@@ -119,7 +119,7 @@
         <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
         <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
         <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">Book now</button>
+        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
       </div>
     </div>
 
@@ -212,6 +212,7 @@ import car3 from '@/assets/images/cars/tour3.jpg'
 import car4 from '@/assets/images/cars/tour4.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
+import { useWonderCart } from '@/stores/wonderCart'
 
 export default {
   name: 'Packages',
@@ -303,7 +304,7 @@ export default {
       this.showWechatModal = false;
     },
     bookNow() {
-      this.$router.push('/contact');
+       useWonderCart().open();
     }
   }
 }

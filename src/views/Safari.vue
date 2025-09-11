@@ -74,7 +74,7 @@
         tour="Desert Safari"
         duration="30 Minutes"
         price="AED 140 / person"
-        link="/contact"
+        link="/safari/addon"
       />
 
       <CarCard
@@ -84,7 +84,7 @@
         tour="Desert Safari"
         duration="30 Minutes"
         price="AED 420 / vehicle"
-        link="/contact"
+        link="/safari/addon"
       />
 
       <CarCard
@@ -94,7 +94,7 @@
         tour="10 Edited + All Originals"
         duration="—"
         price="AED 150 / package"
-        link="/contact"
+        link="/safari/addon"
       />
 
       <CarCard
@@ -104,7 +104,7 @@
         tour="Available at Licensed Camps"
         duration="—"
         price="contact for details"
-        link="/contact"
+        link="/safari/addon"
       />
     </div>
 
@@ -190,7 +190,7 @@
 
     <!-- 4. Book now（跳转 contact） -->
     <button class="cta-btn cta-red" @click="bookNow">
-      Book now
+      My WonderCart
     </button>
   </div>
 </div>
@@ -284,6 +284,7 @@ import addon1 from '@/assets/images/cars/addon1.jpg'
 import addon2 from '@/assets/images/cars/addon2.jpg'
 import addon3 from '@/assets/images/cars/addon3.jpg'
 import addon4 from '@/assets/images/cars/addon4.jpg'
+import { useWonderCart } from '@/stores/wonderCart'
 
 
 export default {
@@ -379,7 +380,7 @@ export default {
   },
 
   bookNow() {
-    this.$router.push('/contact');
+     useWonderCart().open();
   }
 
   }
