@@ -1,13 +1,70 @@
 <template>
   <div class="car-card">
-    <img :src="image" :alt="title" class="card-image" />
-    <h2 class="text-xl font-semibold mt-2">{{ title }}</h2>
-    <p class="subtitle" v-if="subtitle">{{ subtitle }}</p>
-    <p><strong>Tour:</strong> {{ tour }}</p>
-    <p><strong>Duration:</strong> {{ duration }}</p>
-    <p class="price"><strong>Price:</strong> <span>{{ price }}</span></p>
+    <!-- 图片可配：keyId-image -->
+    <img
+      :src="image"
+      :alt="title"
+      class="card-image"
+      :id="keyId ? `${keyId}-image` : null"
+      :data-c-src="keyId ? '@id' : null"
+    />
+
+    <!-- 标题可配：keyId-title -->
+    <h2
+      class="text-xl font-semibold mt-2"
+      :id="keyId ? `${keyId}-title` : null"
+      :data-c="keyId ? '@id' : null"
+    >
+      {{ title }}
+    </h2>
+
+    <!-- 副标题可配：keyId-subtitle -->
+    <p
+      class="subtitle"
+      v-if="subtitle"
+      :id="keyId ? `${keyId}-subtitle` : null"
+      :data-c="keyId ? '@id' : null"
+    >
+      {{ subtitle }}
+    </p>
+
+    <!-- Tour 可配：keyId-tour -->
+    <p>
+      <strong>Tour:</strong>
+      <span :id="keyId ? `${keyId}-tour` : null" :data-c="keyId ? '@id' : null">
+        {{ tour }}
+      </span>
+    </p>
+
+    <!-- Duration 可配：keyId-duration -->
+    <p>
+      <strong>Duration:</strong>
+      <span :id="keyId ? `${keyId}-duration` : null" :data-c="keyId ? '@id' : null">
+        {{ duration }}
+      </span>
+    </p>
+
+    <!-- Price 可配（数字/金额）：keyId-price -->
+    <p class="price">
+      <strong>Price:</strong>
+      <span
+        :id="keyId ? `${keyId}-price` : null"
+        :data-c-num="keyId ? '@id' : null"
+        data-format="price-AED"
+      >
+        {{ price }}
+      </span>
+    </p>
+
+    <!-- 按钮文案可配：keyId-ctaLabel（链接本身保持路由） -->
     <router-link :to="link">
-      <button class="learn-more-button">Learn More</button>
+      <button
+        class="learn-more-button"
+        :id="keyId ? `${keyId}-ctaLabel` : null"
+        :data-c="keyId ? '@id' : null"
+      >
+        Learn More
+      </button>
     </router-link>
   </div>
 </template>
@@ -20,11 +77,21 @@ export default {
     title: String,
     tour: String,
     duration: String,
-    price: String,
+    price: [String, Number],
     link: String,
     subtitle: {
       type: String,
       default: 'Car-With-Driver'
+    },
+    /**
+     * 关键：给每张卡传一个 key-id（如 "transfersCardAirport"）
+     * 组件会基于它生成：
+     * - xxx-image / xxx-title / xxx-subtitle / xxx-tour / xxx-duration / xxx-price / xxx-ctaLabel
+     * 后台按这些 id 写值即可覆盖。
+     */
+    keyId: {
+      type: String,
+      default: ''
     }
   }
 }

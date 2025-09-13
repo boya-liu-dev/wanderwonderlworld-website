@@ -2,42 +2,76 @@
   <div class="details-page">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="沙漠冲沙横幅" class="banner" />
+      <img
+        src="@/assets/images/banner7.jpg"
+        alt="沙漠冲沙横幅"
+        class="banner"
+        id="sUpCnBanner"
+        data-c-src="@id"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="金色徽标" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="文字徽标" class="logo-text" />
+        <img
+          src="@/assets/images/logo-www-gold.png"
+          alt="金色徽标"
+          class="logo"
+          id="sUpCnLogoGold"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="@/assets/images/logo-text.png"
+          alt="文字徽标"
+          class="logo-text"
+          id="sUpCnLogoText"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="intro">
-      <h1>加长版沙丘刺激 & 皇家沙漠过夜营</h1>
-      <p>
+      <h1 id="sUpCnH1" data-c="@id">加长版沙丘刺激 & 皇家沙漠过夜营</h1>
+      <p id="sUpCnIntro" data-c="@id">
         尊享私享沙漠行程，由持证沙漠司机驾驶、商业保险车辆运营。可选择更深度的红沙区加长体验，
         或奢雅的皇家过夜线路。ATV 150cc 与双座沙地越野车等加项可在持牌中心加购；如需 Shisha/酒水请联系我们。
         皇家系列含「旅拍摄影包」免费赠送。
       </p>
     </div>
 
-    <!-- 左侧悬浮 WhatsApp（与其他页面一致） -->
+    <!-- 左侧悬浮 WhatsApp -->
     <div class="whatsapp-wrapper">
       <a
         href="https://wa.me/971589831967?text=你好，万德假日迪拜！我想咨询尊享沙漠行程。"
         class="whatsapp-button hover-reveal"
+        aria-label="通过 WhatsApp 咨询尊享沙漠行程"
+        id="sUpCnWAFloat"
+        target="_blank"
+        rel="noopener"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp 图标" />
-        <span class="whatsapp-text">需要帮助？立即咨询！</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp 图标"
+          id="sUpCnWAIcon"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="whatsapp-text" id="sUpCnWAText" data-c="@id">需要帮助？立即咨询！</span>
       </a>
     </div>
 
     <!-- 4 CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">邮件咨询</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp 咨询</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">微信咨询</button>
-        <!-- 改：直接打开购物车 -->
-        <button class="cta-btn cta-red" @click="bookNow">万德购物车</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="sUpCnCtaEmail" data-c="@id">邮件咨询</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="sUpCnCtaWA" data-c="@id">WhatsApp 咨询</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="sUpCnCtaWeChat" data-c="@id">微信咨询</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="sUpCnCtaCart" data-c="@id">万德购物车</button>
       </div>
     </div>
 
@@ -49,96 +83,157 @@
     </div>
 
     <!-- QR Modals -->
-    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div
+      v-if="showWhatsappModal"
+      class="qr-modal"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="sUpCnWAModalH2"
+    >
       <div class="qr-modal-box">
+        <h2 id="sUpCnWAModalH2" class="sr-only" aria-hidden="true">WhatsApp 二维码</h2>
         <button class="qr-close" aria-label="关闭" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp 二维码" />
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="sUpCnWAQR" data-c-src="@id" loading="lazy" decoding="async" />
       </div>
     </div>
-    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div
+      v-if="showWechatModal"
+      class="qr-modal"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="sUpCnWeChatModalH2"
+    >
       <div class="qr-modal-box">
+        <h2 id="sUpCnWeChatModalH2" class="sr-only" aria-hidden="true">微信二维码</h2>
         <button class="qr-close" aria-label="关闭" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="微信二维码" />
+        <img :src="wechatQR" alt="微信二维码" id="sUpCnWeChatQR" data-c-src="@id" loading="lazy" decoding="async" />
       </div>
     </div>
 
-    <!-- Products: one merged card per product -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <!-- Products -->
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`sUpCnProd_${p.id}`"
+    >
+      <h2><span :id="`sUpCnTitle_${p.id}`" data-c="@id">{{ p.title }}</span></h2>
+      <p class="blurb"><span :id="`sUpCnBlurb_${p.id}`" data-c="@id">{{ p.blurb }}</span></p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title + ' 4x4'" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title + ' 4×4/豪华SUV'"
+            :id="`sUpCnImg_${p.id}`"
+            data-c-src="@id"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">AED {{ p.variantA.price }} 起</span>
+              <span class="badge" :id="`sUpCnBadge_${p.id}`" data-c="@id">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`sUpCnPrice_${p.id}`">AED {{ p.variantA.price }} 起</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.variantA.points" :key="i">
+                <span :id="`sUpCnPoint_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
 
-            <!-- 新增：Add to Cart（白字红底） -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">加入购物车</button>
+            <!-- Add to Cart -->
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :aria-label="`将「${p.cartName}」加入购物车`"
+              :id="`sUpCnAdd_${p.id}`"
+              data-c="@id"
+            >
+              加入购物车
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>行程样例</h3>
+        <h3 :id="`sUpCnItH3_${p.id}`" data-c="@id">行程样例</h3>
         <ul>
           <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
-            {{ step }}
+            <span :id="`sUpCnIt_${p.id}_${sIdx}`" data-c="@id">{{ step }}</span>
           </li>
         </ul>
-        <p class="it-note">行程时间与路线可能因交通、天气或营地规定调整。</p>
+        <p class="it-note" :id="`sUpCnItNote_${p.id}`" data-c="@id">
+          行程时间与路线可能因交通、天气或营地规定调整。
+        </p>
       </div>
 
-      <!-- What’s included / Good to know / Add-ons 引导 -->
+      <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>费用包含</h3>
+        <h3 :id="`sUpCnIncH3_${p.id}`" data-c="@id">费用包含</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">
+            <span :id="`sUpCnInc_${p.id}_${idx}`" data-c="@id">{{ i }}</span>
+          </li>
         </ul>
-        <h3>预订须知</h3>
+        <h3 :id="`sUpCnNoteH3_${p.id}`" data-c="@id">预订须知</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">
+            <span :id="`sUpCnNote_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
         <div class="addons-cta">
-          <router-link to="/safari/addon1" class="btn"> 
+          <router-link
+            to="/safari/addon1"
+            class="btn"
+            id="sUpCnAddonsBtn"
+            data-c="@id"
+            aria-label="查看可选加项：ATV 150cc、双座越野车、旅拍、Shisha/酒水"
+          >
             可选加项（ATV 150cc、双座越野车、旅拍、Shisha/酒水）
           </router-link>
         </div>
       </div>
     </section>
 
-    <!-- Policy / Terms block（与 regsafari 一致） -->
+    <!-- Policy / Terms block -->
     <div class="text-card">
-      <h2>服务政策与保险摘要</h2>
+      <h2 id="sUpCnPolicyH2" data-c="@id">服务政策与保险摘要</h2>
       <ul class="policy">
-        <li>私享 4×4 越野车＋持证沙漠司机；车辆均为商业车辆保险（至少含第三者责任险）。建议另购个人旅行保险。</li>
-        <li>接送时间窗：请在通知的上车时间前后预留 ±15 分钟以便路线/交通调度；司机可调整停靠顺序以避开拥堵。</li>
-        <li>健康与安全：沙丘冲沙不建议孕妇、严重心颈背问题客人及婴幼儿参加。4 岁以下必须使用儿童安全座椅（需提前预约）。</li>
-        <li>斋月及宗教日期：现场表演与酒精饮品按阿联酋法规限制或暂停。</li>
-        <li>酒水与水烟：仅限持牌营地提供并受年龄限制；如需 Shisha/酒水价格请联系我们。</li>
-        <li>ATV/越野沙地车为第三方持牌中心运营，按其安全规范与保险执行；必须佩戴头盔，年龄/身高限制适用。</li>
-        <li>免费取消政策以确认单为准；逾期取消/未到场视情况最高可收取 100% 费用。</li>
-        <li>天气与不可抗力：遇沙尘/强降雨等，行程将适当调整为轻活动或优先改期；若部分服务无法提供，将据实部分退款。</li>
+        <li id="sUpCnPol1" data-c="@id">私享 4×4 越野车＋持证沙漠司机；车辆均为商业车辆保险（至少含第三者责任险）。建议另购个人旅行保险。</li>
+        <li id="sUpCnPol2" data-c="@id">接送时间窗：请在通知的上车时间前后预留 ±15 分钟以便路线/交通调度；司机可调整停靠顺序以避开拥堵。</li>
+        <li id="sUpCnPol3" data-c="@id">健康与安全：沙丘冲沙不建议孕妇、严重心颈背问题客人及婴幼儿参加。4 岁以下必须使用儿童安全座椅（需提前预约）。</li>
+        <li id="sUpCnPol4" data-c="@id">斋月及宗教日期：现场表演与酒精饮品按阿联酋法规限制或暂停。</li>
+        <li id="sUpCnPol5" data-c="@id">酒水与水烟：仅限持牌营地提供并受年龄限制；如需 Shisha/酒水价格请联系我们。</li>
+        <li id="sUpCnPol6" data-c="@id">ATV/越野沙地车为第三方持牌中心运营，按其安全规范与保险执行；必须佩戴头盔，年龄/身高限制适用。</li>
+        <li id="sUpCnPol7" data-c="@id">免费取消政策以确认单为准；逾期取消/未到场视情况最高可收取 100% 费用。</li>
+        <li id="sUpCnPol8" data-c="@id">天气与不可抗力：遇沙尘/强降雨等，行程将适当调整为轻活动或优先改期；若部分服务无法提供，将据实部分退款。</li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>常见问题</h2>
+      <h2 id="sUpCnFaqH2" data-c="@id">常见问题</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-        <div class="faq-question" @click="toggleFaq(index)">
+        <button
+          class="faq-question"
+          @click="toggleFaq(index)"
+          :aria-expanded="faq.open.toString()"
+          :aria-controls="`sUpCnFaqA_${index}`"
+          :id="`sUpCnFaqQ_${index}`"
+          data-c="@id"
+        >
           <span>{{ faq.question }}</span>
-          <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
-        </div>
-        <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <span class="faq-icon" aria-hidden="true">{{ faq.open ? "▲" : "▼" }}</span>
+        </button>
+        <div
+          v-if="faq.open"
+          class="faq-answer"
+          role="region"
+          :id="`sUpCnFaqA_${index}`"
+          :aria-labelledby="`sUpCnFaqQ_${index}`"
+        >
+          <p :id="`sUpCnFaqAText_${index}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
@@ -424,7 +519,7 @@ export default {
 .bullets{ margin:0; padding-left:18px; color:#444; line-height:1.6; }
 .bullets li{ margin-bottom:6px; }
 
-/* 新增：Add to Cart 按钮（白字红底） */
+/* Add to Cart 按钮（白字红底） */
 .btn-addcart{
   width:100%;
   height:44px;
@@ -457,8 +552,11 @@ export default {
 /* FAQs */
 .faq-card{ background:#f8f8f8; margin:40px auto; padding:25px; border-radius:8px; max-width:1000px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
 .faq-card h2{ margin:0 0 12px; }
-.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; cursor:pointer; }
-.faq-question{ display:flex; justify-content:space-between; font-weight:600; color:#333; }
+.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; }
+.faq-question{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  font-weight:600; color:#333; background:transparent; border:none; padding:0; text-align:left; cursor:pointer;
+}
 .faq-answer{ margin-top:8px; color:#555; }
 .faq-icon{ color:#b01b1b; }
 
@@ -474,4 +572,10 @@ export default {
 .itinerary-card h3{ margin:6px 0 10px; }
 .itinerary-card ul{ margin:0; padding-left:18px; line-height:1.6; color:#444; }
 .it-note{ margin-top:8px; font-size:.95rem; color:#666; }
+
+/* 屏幕阅读器可见性辅助 */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0);
+  white-space:nowrap; border:0;
+}
 </style>

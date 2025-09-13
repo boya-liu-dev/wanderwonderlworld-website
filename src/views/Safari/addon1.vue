@@ -2,17 +2,39 @@
   <div class="details-page">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="加选项目横幅" class="banner" />
+      <img
+        src="@/assets/images/banner7.jpg"
+        alt="加选项目横幅"
+        class="banner"
+        id="safAddonsZhBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="金色标志" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="文字标志" class="logo-text" />
+        <img
+          src="@/assets/images/logo-www-gold.png"
+          alt="金色标志"
+          class="logo"
+          id="safAddonsZhLogoGold"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="@/assets/images/logo-text.png"
+          alt="文字标志"
+          class="logo-text"
+          id="safAddonsZhLogoText"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="intro">
-      <h1>沙漠探险加选项目</h1>
-      <p>
+      <h1 id="safAddonsZhH1" data-c="@id">沙漠探险加选项目</h1>
+      <p id="safAddonsZhIntro" data-c="@id">
         用人气加购项目升级你的沙漠之旅。全地形车与沙滩车由持牌合作营地运营，
         在专属沙丘/赛道上进行，含安全讲解与防护装备；旅拍由我们信赖的专业摄影师操刀；
         水烟/酒水仅在持牌营地供应，敬请理解。
@@ -24,52 +46,112 @@
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20have%20a%20question%20about%20Desert%20Safari%20add-ons."
         class="whatsapp-button hover-reveal"
+        aria-label="通过 WhatsApp 咨询沙漠探险加选项目"
+        id="safAddonsZhWAFloat"
+        data-c="@id"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">需要帮助？在线咨询！</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="safAddonsZhWAIcon"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="whatsapp-text" id="safAddonsZhWAText" data-c="@id">需要帮助？在线咨询！</span>
       </a>
     </div>
 
     <!-- 4 CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <a class="cta-btn cta-gray" :href="`mailto:${emailToCopy}`">邮件联系我们</a>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp 联系我们</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">微信联系我们</button>
-        <button class="cta-btn cta-red" @click="bookNow">万德购物车</button>
+        <a
+          class="cta-btn cta-gray"
+          :href="`mailto:${emailToCopy}`"
+          id="safAddonsZhCtaEmail"
+          data-c="@id"
+        >邮件联系我们</a>
+        <button
+          class="cta-btn cta-green"
+          @click="openWhatsappModal"
+          id="safAddonsZhCtaWA"
+          data-c="@id"
+        >WhatsApp 联系我们</button>
+        <button
+          class="cta-btn cta-green"
+          @click="openWechatModal"
+          id="safAddonsZhCtaWeChat"
+          data-c="@id"
+        >微信联系我们</button>
+        <button
+          class="cta-btn cta-red"
+          @click="bookNow"
+          id="safAddonsZhCtaCart"
+          data-c="@id"
+        >万德购物车</button>
       </div>
     </div>
 
     <!-- QR Modals -->
-    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div
+      v-if="showWhatsappModal"
+      class="qr-modal"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="safAddonsZhWAModalTitle"
+    >
       <div class="qr-modal-box">
-        <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp 二维码" />
+        <button class="qr-close" aria-label="关闭" @click="closeModals">×</button>
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="safAddonsZhWAQR" data-c-src="@id" />
       </div>
     </div>
-    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div
+      v-if="showWechatModal"
+      class="qr-modal"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="safAddonsZhWeChatModalTitle"
+    >
       <div class="qr-modal-box">
-        <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="微信二维码" />
+        <button class="qr-close" aria-label="关闭" @click="closeModals">×</button>
+        <img :src="wechatQR" alt="微信二维码" id="safAddonsZhWeChatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- Add-on products -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`safAddonsZhProd_${p.id}`"
+    >
+      <h2><span :id="`safAddonsZhTitle_${p.id}`" data-c="@id">{{ p.title }}</span></h2>
+      <p class="blurb"><span :id="`safAddonsZhBlurb_${p.id}`" data-c="@id">{{ p.blurb }}</span></p>
 
       <div class="product-grid">
-        <!-- Single card per add-on -->
         <div class="product-card">
-          <img :src="p.image" :alt="p.title" />
+          <img
+            :src="p.image"
+            :alt="p.title"
+            :id="`safAddonsZhImg_${p.id}`"
+            data-c-src="@id"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.badge }}</span>
-              <span class="price" v-html="p.priceHtml"></span>
+              <span class="badge" :id="`safAddonsZhBadge_${p.id}`" data-c="@id">{{ p.badge }}</span>
+              <span
+                class="price"
+                v-html="p.priceHtml"
+                :id="`safAddonsZhPrice_${p.id}`"
+                data-c-html="@id"
+              ></span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.points" :key="i">
+                <span :id="`safAddonsZhPoint_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
 
             <!-- Buttons -->
@@ -77,6 +159,8 @@
               v-if="p.type === 'cart'"
               class="btn-addcart"
               @click="addToCart(p.cartName)"
+              :id="`safAddonsZhAdd_${p.id}`"
+              data-c="@id"
             >
               加入万德购物车
             </button>
@@ -85,7 +169,10 @@
               v-else-if="p.type === 'wa'"
               class="btn-wa"
               href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20want%20to%20ask%20about%20Shisha/Drinks%20add-on."
-              target="_blank" rel="noopener"
+              target="_blank"
+              rel="noopener"
+              :id="`safAddonsZhWA_${p.id}`"
+              data-c="@id"
             >
               WhatsApp 咨询
             </a>
@@ -95,37 +182,66 @@
 
       <!-- Notes per product (optional) -->
       <div class="rules" v-if="p.notes && p.notes.length">
-        <h3>预订须知</h3>
+        <h3 :id="`safAddonsZhGoodTitle_${p.id}`" data-c="@id">预订须知</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="idx">
+            <span :id="`safAddonsZhNote_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Policy / Safety -->
     <div class="text-card">
-      <h2>安全、保险与参与规则</h2>
+      <h2 id="safAddonsZhPolicyH2" data-c="@id">安全、保险与参与规则</h2>
       <ul class="policy">
-        <li>ATV/沙滩车为<strong>自驾</strong>体验，由我们持牌的合作营地运营；含基础安全讲解、头盔与护目镜。建议穿包脚鞋。</li>
-        <li>骑行需自行承担风险；合作营地依阿联酋规定购买商业责任险。我们建议您自带个人旅行/医疗保险。</li>
-        <li><strong>不适宜人群：</strong>孕客；有背/颈/脊椎伤病者；严重心脏病；近期大型手术康复期人士。</li>
-        <li><strong>年龄政策：</strong>ATV 建议 16 岁以上；沙滩车驾驶通常需 18 岁以上并持有效驾照。未成年人可在监护人同乘下体验。</li>
-        <li>严禁酒精/药物影响下骑行；现场需签署免责声明。运营方可能收取可退押金或冻结额度。</li>
-        <li>仅可在指定区域骑行，请遵守向导指示与生态保护规定；危险驾驶可能被终止且不予退款。</li>
-        <li>天气、沙况与日照会影响路线与节奏；为安全起见，运营方可能调整或取消，我们会据合作方政策改期或退款。</li>
+        <li id="safAddonsZhPol1" data-c-html="@id">
+          ATV/沙滩车为<strong>自驾</strong>体验，由我们持牌的合作营地运营；含基础安全讲解、头盔与护目镜。建议穿包脚鞋。
+        </li>
+        <li id="safAddonsZhPol2" data-c="@id">
+          骑行需自行承担风险；合作营地依阿联酋规定购买商业责任险。我们建议您自带个人旅行/医疗保险。
+        </li>
+        <li id="safAddonsZhPol3" data-c-html="@id">
+          <strong>不适宜人群：</strong>孕客；有背/颈/脊椎伤病者；严重心脏病；近期大型手术康复期人士。
+        </li>
+        <li id="safAddonsZhPol4" data-c-html="@id">
+          <strong>年龄政策：</strong>ATV 建议 16 岁以上；沙滩车驾驶通常需 18 岁以上并持有效驾照。未成年人可在监护人同乘下体验。
+        </li>
+        <li id="safAddonsZhPol5" data-c="@id">
+          严禁酒精/药物影响下骑行；现场需签署免责声明。运营方可能收取可退押金或冻结额度。
+        </li>
+        <li id="safAddonsZhPol6" data-c="@id">
+          仅可在指定区域骑行，请遵守向导指示与生态保护规定；危险驾驶可能被终止且不予退款。
+        </li>
+        <li id="safAddonsZhPol7" data-c="@id">
+          天气、沙况与日照会影响路线与节奏；为安全起见，运营方可能调整或取消，我们会据合作方政策改期或退款。
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>常见问题</h2>
+      <h2 id="safAddonsZhFaqH2" data-c="@id">常见问题</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-        <div class="faq-question" @click="toggleFaq(index)">
+        <button
+          class="faq-question"
+          @click="toggleFaq(index)"
+          :aria-expanded="faq.open.toString()"
+          :aria-controls="`safAddonsZhFaqA_${index}`"
+          :id="`safAddonsZhFaqQ_${index}`"
+          data-c="@id"
+        >
           <span>{{ faq.question }}</span>
-          <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
-        </div>
-        <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <span class="faq-icon" aria-hidden="true">{{ faq.open ? "▲" : "▼" }}</span>
+        </button>
+        <div
+          v-if="faq.open"
+          class="faq-answer"
+          role="region"
+          :id="`safAddonsZhFaqA_${index}`"
+          :aria-labelledby="`safAddonsZhFaqQ_${index}`"
+        >
+          <p :id="`safAddonsZhFaqAText_${index}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
@@ -163,7 +279,7 @@ export default {
           ],
           notes: [
             '建议 16 岁以上骑行；未成年人可按营地规则与双人骑或随导体验。',
-            '建议穿包脚鞋，长裤更舒适。',
+            '建议穿包脚鞋，长裤更舒适。'
           ],
           type: 'cart',
           cartName: 'ATV Ride'
@@ -181,7 +297,7 @@ export default {
             '含前导车/安全装备'
           ],
           notes: [
-            '驾驶者需年满 18 岁并持有效驾照；乘客为未成年人需遵守营地政策。',
+            '驾驶者需年满 18 岁并持有效驾照；乘客为未成年人需遵守营地政策。'
           ],
           type: 'cart',
           cartName: 'Buggy Ride'
@@ -199,7 +315,7 @@ export default {
             '最适合日落沙丘与亲子合影'
           ],
           notes: [
-            '若预订了「皇家沙漠过夜」，包含基础旅拍，无需重复加购。',
+            '若预订了「皇家沙漠过夜」，包含基础旅拍，无需重复加购。'
           ],
           type: 'cart',
           cartName: 'Photography'
@@ -218,9 +334,9 @@ export default {
           ],
           notes: [
             '涉及酒水/水烟的供应受阿联酋牌照法规限制，具体以当日营地为准。',
-            '请通过 WhatsApp 与我们确认可选项、价格与年龄政策。',
+            '请通过 WhatsApp 与我们确认可选项、价格与年龄政策。'
           ],
-          type: 'wa' // 走 WhatsApp 咨询
+          type: 'wa'
         }
       ],
 
@@ -264,18 +380,13 @@ export default {
     }
   },
   methods: {
-    // CTA
     openWhatsappModal() { this.showWhatsappModal = true },
     openWechatModal() { this.showWechatModal = true },
     closeModals() { this.showWhatsappModal = false; this.showWechatModal = false },
 
-    // 打开购物车
     bookNow() { this.cart.open() },
-
-    // 加入购物车（只传名字）
     addToCart(name) { this.cart.add(name) },
 
-    // FAQ
     toggleFaq(index) { this.faqs[index].open = !this.faqs[index].open }
   }
 }
@@ -296,32 +407,15 @@ export default {
 .intro h1 { font-size: 2rem; margin: 0 0 8px; }
 
 /* 左侧悬浮 WhatsApp */
-.whatsapp-wrapper {
-  position: fixed;
-  left: 7px;
-  top: 75%;
-  transform: translateY(-50%);
-  z-index: 9999;
-}
+.whatsapp-wrapper { position: fixed; left: 7px; top: 75%; transform: translateY(-50%); z-index: 9999; }
 .whatsapp-button {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  padding: 1px 15px;
-  border-radius: 100px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  display: flex; align-items: center; background-color: white; padding: 1px 15px;
+  border-radius: 100px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none; transition: all 0.3s ease-in-out;
 }
 .whatsapp-button:hover { transform: scale(1.05); }
 .whatsapp-button img { width: 58px; height: 58px; margin-right: 3px; }
-.hover-reveal .whatsapp-text {
-  max-width: 0; opacity: 0; overflow: hidden;
-  transition: all 0.3s ease-in-out;
-}
-.hover-reveal:hover .whatsapp-text {
-  max-width: 200px; opacity: 1; margin-left: 10px;
-}
+.hover-reveal .whatsapp-text { max-width: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease-in-out; }
+.hover-reveal:hover .whatsapp-text { max-width: 200px; opacity: 1; margin-left: 10px; }
 
 /* CTA row */
 .cta-row-wrapper { max-width: 1000px; margin: 18px auto 6px; padding: 0 20px; }
@@ -329,16 +423,18 @@ export default {
 @media (max-width: 900px){ .cta-row{ grid-template-columns: repeat(2,1fr);} }
 @media (max-width: 520px){ .cta-row{ grid-template-columns: 1fr;} }
 
-.cta-btn{ height:56px; border:none; border-radius:12px; font-weight:700; cursor:pointer;
+.cta-btn{
+  height:56px; border:none; border-radius:12px; font-weight:700; cursor:pointer;
   transition: transform .08s ease, box-shadow .18s ease; box-shadow:0 4px 12px rgba(0,0,0,.08);
-  display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+  display:inline-flex; align-items:center; justify-content:center; text-decoration:none;
+}
 .cta-btn:active{ transform: translateY(1px); }
 .cta-gray  { background:hsl(65, 5%, 53%); color:hsl(0, 0%, 100%); }
 .cta-green { background:hsl(136, 90%, 27%); color:hsl(0, 0%, 100%); }
 .cta-red   { background:hsl(0, 93%, 32%); color:hsl(0, 0%, 100%); }
 .cta-btn:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
 
-/* Toast & QR modal (reused) */
+/* QR modal */
 .qr-modal{ position:fixed; inset:0; background:rgba(0,0,0,.4); display:grid; place-items:center; z-index:2000; }
 .qr-modal-box{ position:relative; background:#fff; border-radius:16px; padding:16px; width:min(90vw,520px); box-shadow:0 16px 32px rgba(0,0,0,.25); }
 .qr-modal-box img{ width:100%; height:auto; display:block; border-radius:12px; }
@@ -364,32 +460,15 @@ export default {
 
 /* Buttons */
 .btn-addcart{
-  width:100%;
-  height:44px;
-  margin-top:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:hsl(0, 93%, 32%);
-  color:#fff;
-  transition: box-shadow .18s ease, transform .08s ease;
+  width:100%; height:44px; margin-top:12px; border:none; border-radius:10px; font-weight:700; cursor:pointer;
+  background:hsl(0, 93%, 32%); color:#fff; transition: box-shadow .18s ease, transform .08s ease;
 }
 .btn-addcart:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
 .btn-addcart:active{ transform: translateY(1px); }
 
 .btn-wa{
-  width:100%;
-  height:44px;
-  margin-top:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:hsl(136, 90%, 27%);
-  color:#fff;
-  display:inline-flex; align-items:center; justify-content:center;
-  text-decoration:none;
+  width:100%; height:44px; margin-top:12px; border:none; border-radius:10px; font-weight:700; cursor:pointer;
+  background:hsl(136, 90%, 27%); color:#fff; display:inline-flex; align-items:center; justify-content:center; text-decoration:none;
 }
 .btn-wa:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
 
@@ -406,8 +485,11 @@ export default {
 /* FAQs */
 .faq-card{ background:#f8f8f8; margin:40px auto; padding:25px; border-radius:8px; max-width:1000px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
 .faq-card h2{ margin:0 0 12px; }
-.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; cursor:pointer; }
-.faq-question{ display:flex; justify-content:space-between; font-weight:600; color:#333; }
+.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; }
+.faq-question{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  font-weight:600; color:#333; background:transparent; border:none; padding:0; text-align:left; cursor:pointer;
+}
 .faq-answer{ margin-top:8px; color:#555; }
 .faq-icon{ color:#b01b1b; }
 </style>

@@ -2,37 +2,64 @@
   <div class="packages">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="packagesBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="packagesLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="packagesLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai Holiday Packages — Private & Flexible</h1>
-      <p>
+      <h1 id="packagesIntroTitle" data-c="@id">Dubai Holiday Packages — Private & Flexible</h1>
+      <p id="packagesIntroP1" data-c-html="@id">
         Plan your Dubai holiday the smart way. Our four private, land-only packages blend must-see icons
-  with heat-smart pacing: outdoor in the morning/evening, indoor at noon. Old Dubai walking with an
-  abra ride is included as standard (with a licensed guide for the walk), while an English-speaking
-  driver-guide escorts you throughout. Value-first pricing, Adult & Child rates, private airport
-  transfers, handpicked hotels with breakfast, and verified vehicles keep the trip seamless.
+        with heat-smart pacing: outdoor in the morning/evening, indoor at noon. Old Dubai walking with an
+        abra ride is included as standard (with a licensed guide for the walk), while an English-speaking
+        driver-guide escorts you throughout. Value-first pricing, Adult & Child rates, private airport
+        transfers, handpicked hotels with breakfast, and verified vehicles keep the trip seamless.
       </p>
     </div>
 
     <div class="whatsapp-wrapper">
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
-        class="whatsapp-button hover-reveal">
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        class="whatsapp-button hover-reveal"
+        id="packagesWhatsappLink"
+        data-c-src="@id"
+      >
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="packagesWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="packagesWhatsappText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- Cards (4 packages) -->
     <div class="cards-container">
       <CarCard
+        key-id="packagesCard3N"
         :image="car1"
         title="3 Nights Dubai Starter"
         subtitle="Tour-Package"
@@ -43,6 +70,7 @@
       />
 
       <CarCard
+        key-id="packagesCard4N"
         :image="car2"
         title="4 Nights Family Value"
         subtitle="Tour-Package"
@@ -53,6 +81,7 @@
       />
 
       <CarCard
+        key-id="packagesCard5N"
         :image="car3"
         title="5 Nights Dubai + Abu Dhabi Highlights"
         subtitle="Tour-Package"
@@ -63,6 +92,7 @@
       />
 
       <CarCard
+        key-id="packagesCard6N"
         :image="car4"
         title="6 Nights Signature Plus"
         subtitle="Tour-Package"
@@ -75,122 +105,156 @@
 
     <!-- Price List -->
     <div class="text-card">
-      <h2>Dubai Tour Packages Price List</h2>
+      <h2 id="packagesPriceTitle" data-c="@id">Dubai Tour Packages Price List</h2>
       <table class="price-table">
         <thead>
           <tr>
-            <th>Package</th>
-            <th>Time/Duration</th>
-            <th>Price</th>
+            <th id="packagesPriceThPkg" data-c="@id">Package</th>
+            <th id="packagesPriceThDur" data-c="@id">Time/Duration</th>
+            <th id="packagesPriceThPrice" data-c="@id">Price</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>3 Nights Dubai Starter</td>
-            <td>4 Days</td>
-            <td><strong style="color:#b01b1b;">Adult AED 849 | Child AED 669</strong></td>
+            <td id="packagesPrice3NTitle" data-c="@id">3 Nights Dubai Starter</td>
+            <td id="packagesPrice3NDuration" data-c="@id">4 Days</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                <span id="packagesPrice3NAdultLabel" data-c="@id">Adult</span>
+                &nbsp;
+                <span id="packagesPrice3NAdult" data-c-num="@id" data-format="price-AED">AED 849</span>
+                &nbsp;|&nbsp;
+                <span id="packagesPrice3NChildLabel" data-c="@id">Child</span>
+                &nbsp;
+                <span id="packagesPrice3NChild" data-c-num="@id" data-format="price-AED">AED 669</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>4 Nights Family Value</td>
-            <td>5 Days</td>
-            <td><strong style="color:#b01b1b;">Adult AED 1099 | Child AED 919</strong></td>
+            <td id="packagesPrice4NTitle" data-c="@id">4 Nights Family Value</td>
+            <td id="packagesPrice4NDuration" data-c="@id">5 Days</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                <span id="packagesPrice4NAdultLabel" data-c="@id">Adult</span>
+                &nbsp;
+                <span id="packagesPrice4NAdult" data-c-num="@id" data-format="price-AED">AED 1099</span>
+                &nbsp;|&nbsp;
+                <span id="packagesPrice4NChildLabel" data-c="@id">Child</span>
+                &nbsp;
+                <span id="packagesPrice4NChild" data-c-num="@id" data-format="price-AED">AED 919</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>5 Nights Dubai + Abu Dhabi Highlights</td>
-            <td>6 Days</td>
-            <td><strong style="color:#b01b1b;">Adult AED 1349 | Child AED 1169</strong></td>
+            <td id="packagesPrice5NTitle" data-c="@id">5 Nights Dubai + Abu Dhabi Highlights</td>
+            <td id="packagesPrice5NDuration" data-c="@id">6 Days</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                <span id="packagesPrice5NAdultLabel" data-c="@id">Adult</span>
+                &nbsp;
+                <span id="packagesPrice5NAdult" data-c-num="@id" data-format="price-AED">AED 1349</span>
+                &nbsp;|&nbsp;
+                <span id="packagesPrice5NChildLabel" data-c="@id">Child</span>
+                &nbsp;
+                <span id="packagesPrice5NChild" data-c-num="@id" data-format="price-AED">AED 1169</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>6 Nights Signature Plus</td>
-            <td>7 Days</td>
-            <td><strong style="color:#b01b1b;">Adult AED 1599 | Child AED 1419</strong></td>
+            <td id="packagesPrice6NTitle" data-c="@id">6 Nights Signature Plus</td>
+            <td id="packagesPrice6NDuration" data-c="@id">7 Days</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                <span id="packagesPrice6NAdultLabel" data-c="@id">Adult</span>
+                &nbsp;
+                <span id="packagesPrice6NAdult" data-c-num="@id" data-format="price-AED">AED 1599</span>
+                &nbsp;|&nbsp;
+                <span id="packagesPrice6NChildLabel" data-c="@id">Child</span>
+                &nbsp;
+                <span id="packagesPrice6NChild" data-c-num="@id" data-format="price-AED">AED 1419</span>
+              </strong>
+            </td>
           </tr>
         </tbody>
       </table>
-      <p style="margin-top:8px;font-size:0.95rem;color:#555;">
-  * Rates are per person based on twin/double sharing. Prices include 5% VAT.
-  Tourism Dirham is payable at the hotel (~AED 10–20 per room per night).
-</p>
+      <p
+        style="margin-top:8px;font-size:0.95rem;color:#555;"
+        id="packagesPriceFootnote"
+        data-c-html="@id"
+      >
+        * Rates are per person based on twin/double sharing. Prices include 5% VAT.
+        Tourism Dirham is payable at the hotel (~AED 10–20 per room per night).
+      </p>
     </div>
 
     <!-- CTA buttons (unchanged) -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="packagesCTAEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="packagesCTAWhatsApp" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="packagesCTAWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="packagesCTACart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
     <!-- Toast & Modals (unchanged) -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard</p>
+        <p id="packagesEmailCopiedText" data-c-html="@id"><strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard</p>
       </div>
     </div>
 
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="packagesWhatsappQR" data-c-src="@id" />
       </div>
     </div>
 
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="packagesWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="packagesFaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`packagesFaqQ${index+1}`" data-c="@id">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`packagesFaqA${index+1}`" data-c-html="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
 
     <!-- Copy blocks -->
-   <div class="text-card">
-   <h2>Discover Dubai Your Way: Our Private Packages</h2>
-   <p><strong>3 Nights Dubai Starter:</strong> Old Dubai walking tour (licensed guide, ~2 hours) with an abra ride, plus your choice of <em>Dubai Frame</em> or <em>The View at The Palm</em>. Enjoy a Dubai Marina dinner cruise and an evening desert safari (families may switch to a gentler morning version with ≥48h notice).</p>
-
-<p><strong>4 Nights Family Value:</strong> Evening arrival buffer on Day 1; desert safari moves to Day 2 for better energy. Modern Dubai half-day with Burj Khalifa 124/125 (non-prime), and a relaxed evening around JBR & Bluewaters. Kid-friendly swaps (e.g., aquarium) are available.</p>
-
-<p><strong>5 Nights Dubai + Abu Dhabi Highlights:</strong> Abu Dhabi sits mid-trip for a smoother pace: Sheikh Zayed Grand Mosque (inside visit; Friday visitor hours are limited) and Louvre Abu Dhabi (typically closed on Mondays; we’ll adjust as needed). Back in Dubai, combine Old Dubai walking + abra with your pre-booked Burj Khalifa time slot and a Marina dinner cruise.</p>
-
-<p><strong>6 Nights Signature Plus:</strong> VIP desert safari upgrade, Atlantis Aquaventure Waterpark & Lost Chambers, plus one free day for shopping or pool time. Includes a full-day Abu Dhabi (Grand Mosque inside + Qasr Al Watan courtyard or Louvre). An optional sunset private yacht from Dubai Marina can be arranged.</p>
-   </div>
+    <div class="text-card">
+      <h2 id="packagesS1Title" data-c="@id">Discover Dubai Your Way: Our Private Packages</h2>
+      <p id="packagesS1P1" data-c-html="@id"><strong>3 Nights Dubai Starter:</strong> Old Dubai walking tour (licensed guide, ~2 hours) with an abra ride, plus your choice of <em>Dubai Frame</em> or <em>The View at The Palm</em>. Enjoy a Dubai Marina dinner cruise and an evening desert safari (families may switch to a gentler morning version with ≥48h notice).</p>
+      <p id="packagesS1P2" data-c-html="@id"><strong>4 Nights Family Value:</strong> Evening arrival buffer on Day 1; desert safari moves to Day 2 for better energy. Modern Dubai half-day with Burj Khalifa 124/125 (non-prime), and a relaxed evening around JBR & Bluewaters. Kid-friendly swaps (e.g., aquarium) are available.</p>
+      <p id="packagesS1P3" data-c-html="@id"><strong>5 Nights Dubai + Abu Dhabi Highlights:</strong> Abu Dhabi sits mid-trip for a smoother pace: Sheikh Zayed Grand Mosque (inside visit; Friday visitor hours are limited) and Louvre Abu Dhabi (typically closed on Mondays; we’ll adjust as needed). Back in Dubai, combine Old Dubai walking + abra with your pre-booked Burj Khalifa time slot and a Marina dinner cruise.</p>
+      <p id="packagesS1P4" data-c-html="@id"><strong>6 Nights Signature Plus:</strong> VIP desert safari upgrade, Atlantis Aquaventure Waterpark & Lost Chambers, plus one free day for shopping or pool time. Includes a full-day Abu Dhabi (Grand Mosque inside + Qasr Al Watan courtyard or Louvre). An optional sunset private yacht from Dubai Marina can be arranged.</p>
+    </div>
 
     <div class="text-card">
-  <h2>Terms & Conditions (Tour Packages)</h2>
-
-  <p><strong>Pricing & Rooming:</strong> Land-only rates per adult based on twin/double sharing. <em>Prices include 5% VAT.</em> Child (3–10) shares existing bedding unless an extra bed is purchased; infant 0–2 free (no bed). Tourism Dirham hotel tax is payable at the hotel (approx. AED 10–20 per room per night). Standard hotel check-in 15:00 / check-out 12:00; early/late arrangements subject to availability or surcharge.</p>
-
-  <p><strong>Inclusions:</strong> Round-trip private airport transfers (DXB), selected hotel with daily breakfast, <em>private vehicle with an English-speaking driver-guide</em>, <em>licensed guide for Old Dubai walking (~2 hours)</em>, listed attraction tickets per package (e.g., Burj Khalifa 124/125; The View/Dubai Frame; Louvre/Aquaventure as stated), Dubai Marina dinner cruise <em>with private transfers</em>, evening desert safari (VIP upgrade where specified), and bottled water in the vehicle.</p>
-
-  <p><strong>Exclusions:</strong> International flights, visas, personal travel insurance; lunches/dinners unless stated; alcoholic drinks; personal expenses; optional activities/upgrades; additional licensed guide on other touring days unless specified; peak/event supplements; single supplement/extra bed; porterage; discretionary tips.</p>
-
-  <p><strong>Child Seats & Safety:</strong> In the UAE, infants and young children must use an age-appropriate child/booster seat and occupy a seat in the vehicle. Please request the number of seats at booking; compliance is required by law.</p>
-
-  <p><strong>Abu Dhabi Grand Mosque:</strong> Ladies must cover hair, shoulders and legs; men must wear long trousers. Security is strict and entry may be refused if attire is incomplete. Friday visitor hours are limited.</p>
-
-  <p><strong>Ramadan & Peak Periods:</strong> Desert-camp entertainment pauses; alcohol service is restricted; attraction hours may change. New Year’s Eve and major events may carry mandatory supplements.</p>
-
-  <p><strong>Amendment & Cancellation:</strong> ≥48 hours before service: free change/refund; 24–48 hours: 50% charge; &lt;24 hours or no-show: 100% charge. Non-refundable attraction tickets/hotel nights follow supplier policy. In force-majeure events (e.g., sandstorm, heavy rain), we re-schedule first; if not possible, only unrecoverable supplier costs apply.</p>
-</div>
+      <h2 id="packagesS2Title" data-c="@id">Terms & Conditions (Tour Packages)</h2>
+      <p id="packagesS2P1" data-c-html="@id"><strong>Pricing & Rooming:</strong> Land-only rates per adult based on twin/double sharing. <em>Prices include 5% VAT.</em> Child (3–10) shares existing bedding unless an extra bed is purchased; infant 0–2 free (no bed). Tourism Dirham hotel tax is payable at the hotel (approx. AED 10–20 per room per night). Standard hotel check-in 15:00 / check-out 12:00; early/late arrangements subject to availability or surcharge.</p>
+      <p id="packagesS2P2" data-c-html="@id"><strong>Inclusions:</strong> Round-trip private airport transfers (DXB), selected hotel with daily breakfast, <em>private vehicle with an English-speaking driver-guide</em>, <em>licensed guide for Old Dubai walking (~2 hours)</em>, listed attraction tickets per package (e.g., Burj Khalifa 124/125; The View/Dubai Frame; Louvre/Aquaventure as stated), Dubai Marina dinner cruise <em>with private transfers</em>, evening desert safari (VIP upgrade where specified), and bottled water in the vehicle.</p>
+      <p id="packagesS2P3" data-c-html="@id"><strong>Exclusions:</strong> International flights, visas, personal travel insurance; lunches/dinners unless stated; alcoholic drinks; personal expenses; optional activities/upgrades; additional licensed guide on other touring days unless specified; peak/event supplements; single supplement/extra bed; porterage; discretionary tips.</p>
+      <p id="packagesS2P4" data-c-html="@id"><strong>Child Seats & Safety:</strong> In the UAE, infants and young children must use an age-appropriate child/booster seat and occupy a seat in the vehicle. Please request the number of seats at booking; compliance is required by law.</p>
+      <p id="packagesS2P5" data-c-html="@id"><strong>Abu Dhabi Grand Mosque:</strong> Ladies must cover hair, shoulders and legs; men must wear long trousers. Security is strict and entry may be refused if attire is incomplete. Friday visitor hours are limited.</p>
+      <p id="packagesS2P6" data-c-html="@id"><strong>Ramadan & Peak Periods:</strong> Desert-camp entertainment pauses; alcohol service is restricted; attraction hours may change. New Year’s Eve and major events may carry mandatory supplements.</p>
+      <p id="packagesS2P7" data-c-html="@id"><strong>Amendment & Cancellation:</strong> ≥48 hours before service: free change/refund; 24–48 hours: 50% charge; &lt;24 hours or no-show: 100% charge. Non-refundable attraction tickets/hotel nights follow supplier policy. In force-majeure events (e.g., sandstorm, heavy rain), we re-schedule first; if not possible, only unrecoverable supplier costs apply.</p>
+    </div>
 
     <div class="text-card">
-      <h2>WanderWonderWorld Tour Package Services</h2>
-      <p>
+      <h2 id="packagesS3Title" data-c="@id">WanderWonderWorld Tour Package Services</h2>
+      <p id="packagesS3P1" data-c-html="@id">
         We design heat-smart itineraries (indoor at noon, outdoors in the golden hour), include Old
         Dubai walking with Abra as standard, and offer family friendly Safari options. WhatsApp
         concierge (08:00–22:00), verified drivers, clean camps, child seats on request, and one free
@@ -352,7 +416,7 @@ export default {
 @media (max-width: 900px) { .cta-row { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .cta-row { grid-template-columns: 1fr; } }
 
-.cta-btn { height: 56px; border: none; border-radius: 12px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; transition: transform .08s ease, box-shadow .18s ease; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+.cta-btn { height: 56px; border: none; border-radius: 12px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; transition: transform .08s ease, box-shadow .18s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 .cta-btn:active { transform: translateY(1px); }
 .cta-gray  { background:hsl(65, 5%, 53%); color:hsl(0, 0%, 100%); }
 .cta-green { background:hsl(136, 90%, 27%); color:hsl(0, 0%, 100%); }

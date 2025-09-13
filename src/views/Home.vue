@@ -2,21 +2,39 @@
   <div class="home">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="bannerImages[currentIndex]" alt="Banner" class="banner" />
+      <img
+        :src="bannerImages[currentIndex]"
+        alt="Banner"
+        class="banner"
+        id="homeEnBanner"
+        data-c-src="@id"
+      />
       <!-- Floating logos -->
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="Gold Logo" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
+        <img
+          src="@/assets/images/logo-www-gold.png"
+          alt="Gold Logo"
+          class="logo"
+          id="homeEnLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          src="@/assets/images/logo-text.png"
+          alt="Text Logo"
+          class="logo-text"
+          id="homeEnLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
-    <h2>Welcome to WanderWonderWorldDubai.com</h2>
-    <p class="slogan">Your Journey, Our Passion.</p>
+    <h2 id="homeEnWelcomeTitle" data-c="@id">Welcome to WanderWonderWorldDubai.com</h2>
+    <p class="slogan" id="homeEnSlogan" data-c="@id">Your Journey, Our Passion.</p>
 
     <!-- Intro + News -->
     <div class="intro-text">
-      <h3>Dubai Travel & Tourism with a Personal Touch</h3>
-      <p>
+      <h3 id="homeEnIntroTitle" data-c="@id">Dubai Travel & Tourism with a Personal Touch</h3>
+      <p id="homeEnIntroP1" data-c="@id">
         WanderWonderWorld is your trusted travel companion in Dubai, offering exceptional service
         and unforgettable experiences. Whether you're arriving in style with our private transfers,
         exploring the golden desert, or cruising through the city skyline, we craft journeys that
@@ -34,7 +52,7 @@
         <!-- Why book with us / 信任与差异点 -->
         <section class="trust-col">
           <section class="trust">
-            <h3 class="trust-title">Your trusted tour expert in Dubai</h3>
+            <h3 class="trust-title" id="homeEnTrustTitle" data-c="@id">Your trusted tour expert in Dubai</h3>
 
             <div class="trust-stack">
               <!-- 1. Licensed & insured -->
@@ -46,8 +64,8 @@
                   </svg>
                 </div>
                 <div class="trust-text">
-                  <h4>Licensed & insured</h4>
-                  <p>
+                  <h4 id="homeEnTrust1Title" data-c="@id">Licensed & insured</h4>
+                  <p id="homeEnTrust1P" data-c="@id">
                     RTA-licensed vehicles and commercially insured drivers. DTCM-compliant tour
                     operations for peace of mind.
                   </p>
@@ -63,8 +81,8 @@
                   </svg>
                 </div>
                 <div class="trust-text">
-                  <h4>Heat-Smart pacing</h4>
-                  <p>
+                  <h4 id="homeEnTrust2Title" data-c="@id">Heat-Smart pacing</h4>
+                  <p id="homeEnTrust2P" data-c="@id">
                     Outdoor in the morning/evening, indoor at noon (views, museums, malls) — a cooler,
                     family-friendly rhythm in summer.
                   </p>
@@ -81,8 +99,8 @@
                   </svg>
                 </div>
                 <div class="trust-text">
-                  <h4>Private driver-guide</h4>
-                  <p>
+                  <h4 id="homeEnTrust3Title" data-c="@id">Private driver-guide</h4>
+                  <p id="homeEnTrust3P" data-c="@id">
                     English-speaking driver-guides for road & outdoor commentary; licensed guides added
                     for Old Dubai walk or select venues.
                   </p>
@@ -99,15 +117,21 @@
           href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
           class="whatsapp-button hover-reveal"
         >
-          <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-          <span class="whatsapp-text">Need help? Chat with us!</span>
+          <img
+            src="@/assets/images/whatsapp-icon.png"
+            alt="WhatsApp"
+            id="homeEnWhatsappIcon"
+            data-c-src="@id"
+          />
+          <span class="whatsapp-text" id="homeEnWhatsappText" data-c="@id">Need help? Chat with us!</span>
         </a>
       </div>
 
       <!-- Private Transfers -->
-      <h3 class="section-title">Private Transfers</h3>
+      <h3 class="section-title" id="homeEnSecTransfersTitle" data-c="@id">Private Transfers</h3>
       <div class="cards-container">
         <CarCard
+          key-id="homeEnTransfersAirport"
           :image="car1"
           title="Airport Transfers"
           tour="Dubai City"
@@ -116,6 +140,7 @@
           link="/transfers/short"
         />
         <CarCard
+          key-id="homeEnTransfersHalfDay"
           :image="car2"
           title="Half-Day with Driver"
           tour="Dubai City"
@@ -124,6 +149,7 @@
           link="/transfers/short"
         />
         <CarCard
+          key-id="homeEnTransfersFullDay"
           :image="car3"
           title="Full-Day with Driver"
           tour="Dubai City"
@@ -132,6 +158,7 @@
           link="/transfers/long"
         />
         <CarCard
+          key-id="homeEnTransfersAUH"
           :image="car4"
           title="Dubai to Abu Dhabi"
           tour="Abu Dhabi"
@@ -142,9 +169,10 @@
       </div>
 
       <!-- Tour Packages -->
-      <h3 class="section-title">Tour Packages</h3>
+      <h3 class="section-title" id="homeEnSecPackagesTitle" data-c="@id">Tour Packages</h3>
       <div class="cards-container">
         <CarCard
+          key-id="homeEnPkg3N"
           :image="tp1"
           title="3 Nights Dubai Starter"
           subtitle="Tour-Package"
@@ -154,6 +182,7 @@
           link="/package/34nights"
         />
         <CarCard
+          key-id="homeEnPkg4N"
           :image="tp2"
           title="4 Nights Family Value"
           subtitle="Tour-Package"
@@ -163,6 +192,7 @@
           link="/package/34nights"
         />
         <CarCard
+          key-id="homeEnPkg5N"
           :image="tp3"
           title="5 Nights Dubai + Abu Dhabi Highlights"
           subtitle="Tour-Package"
@@ -172,6 +202,7 @@
           link="/package/56nights"
         />
         <CarCard
+          key-id="homeEnPkg6N"
           :image="tp4"
           title="6 Nights Signature Plus"
           subtitle="Tour-Package"
@@ -183,9 +214,10 @@
       </div>
 
       <!-- Desert Safari -->
-      <h3 class="section-title">Desert Safari</h3>
+      <h3 class="section-title" id="homeEnSecSafariTitle" data-c="@id">Desert Safari</h3>
       <div class="cards-container">
         <CarCard
+          key-id="homeEnSafariMorning"
           :image="sf1"
           title="Morning Dunes Drive"
           subtitle="Classic Line"
@@ -195,6 +227,7 @@
           link="/safari/regsafari"
         />
         <CarCard
+          key-id="homeEnSafariSunset"
           :image="sf2"
           title="Sunset Dunes Select"
           subtitle="Signature Line"
@@ -204,6 +237,7 @@
           link="/safari/regsafari"
         />
         <CarCard
+          key-id="homeEnSafariExtended"
           :image="sf3"
           title="Extended Dunes Thrill"
           subtitle="Prestige Line"
@@ -213,6 +247,7 @@
           link="/safari/upsafari"
         />
         <CarCard
+          key-id="homeEnSafariRoyal"
           :image="sf4"
           title="Royal Dunes Safari"
           subtitle="Royal Line"
@@ -224,9 +259,10 @@
       </div>
 
       <!-- City Tour -->
-      <h3 class="section-title">City Tour</h3>
+      <h3 class="section-title" id="homeEnSecCityTitle" data-c="@id">City Tour</h3>
       <div class="cards-container">
         <CarCard
+          key-id="homeEnCityHalfDay"
           :image="ct1"
           title="Half-Day Dubai Essentials"
           subtitle="City-Tour-Services"
@@ -236,6 +272,7 @@
           link="/city/city12"
         />
         <CarCard
+          key-id="homeEnCityFullDay"
           :image="ct2"
           title="Full-Day Dubai Panorama"
           subtitle="City-Tour-Services"
@@ -245,6 +282,7 @@
           link="/city/city12"
         />
         <CarCard
+          key-id="homeEnCityAbuDhabi"
           :image="ct3"
           title="Abu Dhabi Culture Day"
           subtitle="City-Tour-Services"
@@ -254,6 +292,7 @@
           link="/city/city34"
         />
         <CarCard
+          key-id="homeEnCityHatta"
           :image="ct4"
           title="Hatta Mountain Escape"
           subtitle="City-Tour-Services"
@@ -265,9 +304,10 @@
       </div>
 
       <!-- Dhow Cruise -->
-      <h3 class="section-title">Dhow Cruise</h3>
+      <h3 class="section-title" id="homeEnSecCruiseTitle" data-c="@id">Dhow Cruise</h3>
       <div class="cards-container">
         <CarCard
+          key-id="homeEnCruiseCreek"
           :image="dc1"
           title="Creek Classic Dhow Dinner"
           subtitle="Dhow-Cruise-Tour"
@@ -277,6 +317,7 @@
           link="/city/sndcruise"
         />
         <CarCard
+          key-id="homeEnCruiseMarina"
           :image="dc2"
           title="Dubai Marina Dhow Dinner"
           subtitle="Dhow-Cruise-Tour"
@@ -286,6 +327,7 @@
           link="/city/sndcruise"
         />
         <CarCard
+          key-id="homeEnCruiseCanal"
           :image="dc3"
           title="Water Canal Glassboat Dinner"
           subtitle="Dhow-Cruise-Tour"
@@ -295,6 +337,7 @@
           link="/city/sndcruise"
         />
         <CarCard
+          key-id="homeEnCruiseLotus"
           :image="dc4"
           title="Lotus Mega Yacht Dinner"
           subtitle="Dhow-Cruise-Tour"
@@ -307,32 +350,32 @@
 
       <!-- 文本卡片：网站使用流程（全英文） -->
       <div class="text-card">
-        <h2>How to Use WanderWonderWorld — Simple & Clear</h2>
+        <h2 id="homeEnHowToTitle" data-c="@id">How to Use WanderWonderWorld — Simple & Clear</h2>
         <ol class="process-list">
-          <li><strong>Browse</strong> any section above — Private Transfers, Tour Packages, Desert Safaris, City Tours, or Dhow Cruises.</li>
-          <li><strong>Add to WonderCart</strong> by tapping “Add to WonderCart” or “Book now” to collect any services you like.</li>
-          <li><strong>Open WonderCart</strong> and fill in your name, email, travel date, and a short message. Send multiple items in one request.</li>
-          <li><strong>Submit</strong> — we’ll reply by email within <em>3 business days</em>. Need it sooner? Reach us on
+          <li id="homeEnHowToL1" data-c-html="@id"><strong>Browse</strong> any section above — Private Transfers, Tour Packages, Desert Safaris, City Tours, or Dhow Cruises.</li>
+          <li id="homeEnHowToL2" data-c-html="@id"><strong>Add to WonderCart</strong> by tapping “Add to WonderCart” or “Book now” to collect any services you like.</li>
+          <li id="homeEnHowToL3" data-c-html="@id"><strong>Open WonderCart</strong> and fill in your name, email, travel date, and a short message. Send multiple items in one request.</li>
+          <li id="homeEnHowToL4" data-c-html="@id"><strong>Submit</strong> — we’ll reply by email within <em>3 business days</em>. Need it sooner? Reach us on
             <a href="https://wa.me/971589831967" target="_blank" rel="noopener">WhatsApp</a> or
             <a href="mailto:info@wanderwonderworlddubai.com">Email</a>.
           </li>
-          <li><strong>Finalize</strong> — once confirmed, you’ll receive your schedule and pickup details. We reconfirm on WhatsApp 24h before service.</li>
+          <li id="homeEnHowToL5" data-c-html="@id"><strong>Finalize</strong> — once confirmed, you’ll receive your schedule and pickup details. We reconfirm on WhatsApp 24h before service.</li>
         </ol>
       </div>
 
       <!-- 文本卡片：FAQs（红三角折叠） -->
       <div class="text-card faq-accordion">
-        <h2>FAQs — Dubai in a Nutshell</h2>
+        <h2 id="homeEnFaqTitle" data-c="@id">FAQs — Dubai in a Nutshell</h2>
 
         <div v-for="(f, i) in faqs" :key="i" class="faq-row">
           <button class="faq-q" @click="toggleFaq(i)" :aria-expanded="f.open.toString()">
             <span class="tri" :class="{ open: f.open }"></span>
-            {{ f.q }}
+            <span :id="`homeEnFaqQ${i+1}`" data-c="@id">{{ f.q }}</span>
           </button>
 
           <transition name="faq">
             <div v-if="f.open" class="faq-a">
-              <p v-html="f.a"></p>
+              <p :id="`homeEnFaqA${i+1}`" data-c-html="@id" v-html="f.a"></p>
             </div>
           </transition>
         </div>
@@ -397,7 +440,7 @@ export default {
       ct1, ct2, ct3, ct4,
       dc1, dc2, dc3, dc4,
 
-      /* ✅ 把 FAQs 放到 data 里，确保是响应式 */
+      /* ✅ FAQs 响应式 */
       faqs: [
         {
           q: "What is Dubai’s historical arc?",

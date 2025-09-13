@@ -2,17 +2,35 @@
   <div class="packages-34n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="pkg34EnBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="pkg34EnLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="pkg34EnLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai Tour Packages — 3 & 4 Nights Packages</h1>
-      <p>
+      <h1 id="pkg34EnIntroTitle" data-c="@id">Dubai Tour Packages — 3 & 4 Nights Packages</h1>
+      <p id="pkg34EnIntroP1" data-c-html="@id">
         Heat-Smart pacing (outdoor in the morning/evening, indoor at noon), Old Dubai walking with an abra ride,
         flexible desert safari, and value-first pricing. An English-speaking driver-guide escorts you throughout
         (licensed guide included for the Old Dubai walk). Adult & Child pricing is clear; hotels with breakfast and
@@ -26,25 +44,30 @@
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20tour%20packages."
         class="whatsapp-button hover-reveal"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="pkg34EnWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="pkg34EnWhatsappText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="pkg34EnCTAEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="pkg34EnCTAWhatsApp" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="pkg34EnCTAWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="pkg34EnCTACart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
     <!-- Toast -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
+        <p id="pkg34EnEmailCopiedText" data-c-html="@id"><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
       </div>
     </div>
 
@@ -52,86 +75,124 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="pkg34EnWhatsappQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="pkg34EnWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== Packages (2 sections like regsafari) ===== -->
     <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+      <h2 :id="`pkg34En_${p.id}Title`" :data-c="'@id'">{{ p.title }}</h2>
+      <p class="blurb" :id="`pkg34En_${p.id}Blurb`" :data-c-html="'@id'">{{ p.blurb }}</p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`pkg34En_${p.id}Image`"
+            :data-c-src="'@id'"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`pkg34En_${p.id}Badge`" :data-c="'@id'">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`pkg34En_${p.id}Price`" :data-c="'@id'">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.variantA.points"
+                :key="i"
+                :id="`pkg34En_${p.id}Point_${i}`"
+                :data-c="'@id'"
+              >
+                {{ b }}
+              </li>
             </ul>
             <!-- Add to Cart -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`pkg34En_${p.id}AddCart`"
+              :data-c="'@id'"
+            >Add to Cart</button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>Sample Itinerary</h3>
+        <h3 :id="`pkg34En_${p.id}ItineraryTitle`" :data-c="'@id'">Sample Itinerary</h3>
         <ul>
-          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+          <li
+            v-for="(step, sIdx) in p.itinerary"
+            :key="'it-'+p.id+'-'+sIdx"
+            :id="`pkg34En_${p.id}It_${sIdx}`"
+            :data-c="'@id'"
+          >
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">Timing windows can be adjusted to your flight schedule and seasonal conditions.</p>
+        <p class="it-note" :id="`pkg34En_${p.id}ItNote`" :data-c="'@id'">
+          Timing windows can be adjusted to your flight schedule and seasonal conditions.
+        </p>
       </div>
 
       <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>What’s included</h3>
+        <h3 :id="`pkg34En_${p.id}IncTitle`" :data-c="'@id'">What’s included</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li
+            v-for="(i,idx) in p.includes"
+            :key="'inc-'+idx"
+            :id="`pkg34En_${p.id}Inc_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ i }}
+          </li>
         </ul>
-        <h3>Good to know</h3>
+        <h3 :id="`pkg34En_${p.id}NoteTitle`" :data-c="'@id'">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li
+            v-for="(n,idx) in p.notes"
+            :key="'note-'+idx"
+            :id="`pkg34En_${p.id}Note_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ n }}
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Global Policy / Terms -->
     <div class="text-card">
-      <h2>Pricing & Policy Notes</h2>
+      <h2 id="pkg34EnPolicyTitle" data-c="@id">Pricing & Policy Notes</h2>
       <ul class="policy">
-        <li>Land-Only packages (no flights/visa). Per-person rates based on twin/double sharing. Prices include 5% VAT.</li>
-        <li>Tourism Dirham is payable at the hotel (~AED 10–20 per room per night, by hotel class).</li>
-        <li>Infant 0–2 free (no bed). By UAE law, infants/children must use an age-appropriate seat and occupy a seat in the vehicle—please request at booking. Child 3–10 pays child rate; 11+ adult rate.</li>
-        <li>Standard hotel policy: check-in 15:00 / check-out 12:00. Early/late arrangements per hotel availability/surcharge.</li>
-        <li>Attraction time slots (e.g., Burj Khalifa, The View, Frame, dinner cruise) are subject to availability and seasonal/event calendars.</li>
-        <li>Ramadan & religious dates: camp shows pause; alcohol service restricted; hours may change.</li>
-        <li>Amendment & cancellation: ≥48h free; 24–48h 50%; &lt;24h or no-show 100%. Non-refundable tickets/hotel nights follow supplier policy. Force-majeure: re-schedule first; otherwise only unrecoverable costs apply.</li>
+        <li id="pkg34EnPolicy_0" data-c="@id">Land-Only packages (no flights/visa). Per-person rates based on twin/double sharing. Prices include 5% VAT.</li>
+        <li id="pkg34EnPolicy_1" data-c="@id">Tourism Dirham is payable at the hotel (~AED 10–20 per room per night, by hotel class).</li>
+        <li id="pkg34EnPolicy_2" data-c="@id">Infant 0–2 free (no bed). By UAE law, infants/children must use an age-appropriate seat and occupy a seat in the vehicle—please request at booking. Child 3–10 pays child rate; 11+ adult rate.</li>
+        <li id="pkg34EnPolicy_3" data-c="@id">Standard hotel policy: check-in 15:00 / check-out 12:00. Early/late arrangements per hotel availability/surcharge.</li>
+        <li id="pkg34EnPolicy_4" data-c="@id">Attraction time slots (e.g., Burj Khalifa, The View, Frame, dinner cruise) are subject to availability and seasonal/event calendars.</li>
+        <li id="pkg34EnPolicy_5" data-c="@id">Ramadan & religious dates: camp shows pause; alcohol service restricted; hours may change.</li>
+        <li id="pkg34EnPolicy_6" data-c="@id">Amendment & cancellation: ≥48h free; 24–48h 50%; &lt;24h or no-show 100%. Non-refundable tickets/hotel nights follow supplier policy. Force-majeure: re-schedule first; otherwise only unrecoverable costs apply.</li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="pkg34EnFaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`pkg34EnFaqQ_${index}`" :data-c="'@id'">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`pkg34EnFaqA_${index}`" :data-c="'@id'">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

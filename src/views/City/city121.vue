@@ -2,17 +2,35 @@
   <div class="packages-34n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="套餐横幅" class="banner" />
+      <img
+        :src="banner"
+        alt="套餐横幅"
+        class="banner"
+        id="city12cnBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="金色标志" class="logo" />
-        <img :src="logoText" alt="文字标志" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="金色标志"
+          class="logo"
+          id="city12cnLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="文字标志"
+          class="logo-text"
+          id="city12cnLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>迪拜城市观光 — 半日 & 全日</h1>
-      <p>
+      <h1 id="city12cnIntroH1" data-c="@id">迪拜城市观光 — 半日 & 全日</h1>
+      <p id="city12cnIntroP1" data-c="@id">
         专为迪拜气候与动线设计的两款弹性私家行程：避暑节奏（早晚户外、正午室内）、含老迪拜徒步
         + 阿布拉摆渡，全程英文司导顺畅衔接；老城徒步段配持证讲解。每车清晰计价（7 座车，最多 6 位客人），
         可选观景台预约时段，加购项目透明可选。
@@ -25,18 +43,23 @@
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20city%20tours."
         class="whatsapp-button hover-reveal"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">需要帮助？点击咨询！</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="city12cnWhatsIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="city12cnWhatsText" data-c="@id">需要帮助？点击咨询！</span>
       </a>
     </div>
 
     <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">邮件联系我们</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp 联系我们</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">微信联系我们</button>
-        <button class="cta-btn cta-red" @click="bookNow">万德购物车</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="city12cnBtnEmail" data-c="@id">邮件联系我们</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="city12cnBtnWhats" data-c="@id">WhatsApp 联系我们</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="city12cnBtnWechat" data-c="@id">微信联系我们</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="city12cnBtnCart" data-c="@id">万德购物车</button>
       </div>
     </div>
 
@@ -51,86 +74,125 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp 二维码" />
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="city12cnWhatsQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="微信二维码" />
+        <img :src="wechatQR" alt="微信二维码" id="city12cnWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== Products (Half-Day & Full-Day) ===== -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`city12cnProd_${p.id}`"
+    >
+      <h2><span :id="`city12cnTitle_${p.id}`" data-c="@id">{{ p.title }}</span></h2>
+      <p class="blurb">
+        <span :id="`city12cnBlurb_${p.id}`" data-c="@id">{{ p.blurb }}</span>
+      </p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`city12cnImg_${p.id}`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`city12cnBadge_${p.id}`" data-c="@id">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`city12cnPrice_${p.id}`" data-c="@id">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.variantA.points" :key="i">
+                <span :id="`city12cnPoint_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
             <!-- Add to Cart -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">加入万德购物车</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`city12cnAdd_${p.id}`"
+              data-c="@id"
+            >
+              加入万德购物车
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>参考行程</h3>
+        <h3 :id="`city12cnItinTitle_${p.id}`" data-c="@id">参考行程</h3>
         <ul>
           <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
-            {{ step }}
+            <span :id="`city12cnItin_${p.id}_${sIdx}`" data-c="@id">{{ step }}</span>
           </li>
         </ul>
-        <p class="it-note">可根据您的航班时间与季节状况灵活微调。</p>
+        <p class="it-note" :id="`city12cnItinNote_${p.id}`" data-c="@id">可根据您的航班时间与季节状况灵活微调。</p>
       </div>
 
       <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>费用包含</h3>
+        <h3 :id="`city12cnInclTitle_${p.id}`" data-c="@id">费用包含</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">
+            <span :id="`city12cnIncl_${p.id}_${idx}`" data-c="@id">{{ i }}</span>
+          </li>
         </ul>
-        <h3>预订须知</h3>
+        <h3 :id="`city12cnGoodTitle_${p.id}`" data-c="@id">预订须知</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">
+            <span :id="`city12cnNote_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Global Policy / Terms -->
     <div class="text-card">
-      <h2>价格与预订政策</h2>
+      <h2 id="city12cnPolicyTitle" data-c="@id">价格与预订政策</h2>
       <ul class="policy">
-        <li>每车计价（7 座车辆；最多 6 位客人）。超时按 <strong>AED 75/小时</strong> 收费（超过预定游览时长）。</li>
-        <li>迪拜线路含老迪拜徒步（约 2 小时）持证讲解与阿布拉摆渡船票。</li>
-        <li>观景台与景点门票（如哈利法塔、The View、迪拜之框、水族馆）可加购，需以时段库存为准。</li>
-        <li>儿童/增高座椅为阿联酋法定要求——请预订时备注（每位儿童需独立占座）。</li>
-        <li>车辆内禁止饮食/吸烟；老城区域建议简约得体着装。</li>
-        <li>改期与取消：≥24 小时免费；12–24 小时收 50%；&lt;12 小时或未到场收 100%。不可抗力（沙尘/暴雨/封路）优先改期，若无法改期，仅扣除不可追回的第三方费用。</li>
-        <li>偏远接送（Jebel Ali / DWC / 沙迦边界）可能加收小额车补。服务前 24 小时通过 WhatsApp 再次确认。</li>
+        <li id="city12cnPolicy1" data-c-html="@id">
+          每车计价（7 座车辆；最多 6 位客人）。超时按 <strong>AED 75/小时</strong> 收费（超过预定游览时长）。
+        </li>
+        <li id="city12cnPolicy2" data-c="@id">
+          迪拜线路含老迪拜徒步（约 2 小时）持证讲解与阿布拉摆渡船票。
+        </li>
+        <li id="city12cnPolicy3" data-c="@id">
+          观景台与景点门票（如哈利法塔、The View、迪拜之框、水族馆）可加购，需以时段库存为准。
+        </li>
+        <li id="city12cnPolicy4" data-c="@id">
+          儿童/增高座椅为阿联酋法定要求——请预订时备注（每位儿童需独立占座）。
+        </li>
+        <li id="city12cnPolicy5" data-c="@id">
+          车辆内禁止饮食/吸烟；老城区域建议简约得体着装。
+        </li>
+        <li id="city12cnPolicy6" data-c="@id">
+          改期与取消：≥24 小时免费；12–24 小时收 50%；&lt;12 小时或未到场收 100%。不可抗力（沙尘/暴雨/封路）优先改期，若无法改期，仅扣除不可追回的第三方费用。
+        </li>
+        <li id="city12cnPolicy7" data-c="@id">
+          偏远接送（Jebel Ali / DWC / 沙迦边界）可能加收小额车补。服务前 24 小时通过 WhatsApp 再次确认。
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>常见问题</h2>
+      <h2 id="city12cnFaqTitle" data-c="@id">常见问题</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`city12cnFAQQ_${index+1}`" data-c="@id">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`city12cnFAQA_${index+1}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

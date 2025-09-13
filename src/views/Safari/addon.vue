@@ -2,17 +2,39 @@
   <div class="details-page">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="Add-ons Banner" class="banner" />
+      <img
+        src="@/assets/images/banner7.jpg"
+        alt="Add-ons Banner"
+        class="banner"
+        id="safAddonsEnBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="Gold Logo" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
+        <img
+          src="@/assets/images/logo-www-gold.png"
+          alt="Gold Logo"
+          class="logo"
+          id="safAddonsEnLogoGold"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="@/assets/images/logo-text.png"
+          alt="Text Logo"
+          class="logo-text"
+          id="safAddonsEnLogoText"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="intro">
-      <h1>Desert Safari Add-ons</h1>
-      <p>
+      <h1 id="safAddonsEnH1" data-c="@id">Desert Safari Add-ons</h1>
+      <p id="safAddonsEnIntro" data-c="@id">
         Upgrade your Desert Safari with popular add-ons. ATV & Buggy are operated by licensed
         partners on dedicated dunes/tracks with safety briefing and protective gear. Photography is
         handled by our trusted photographers. Shisha/Drinks are served only at licensed camps.
@@ -24,52 +46,117 @@
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20have%20a%20question%20about%20Desert%20Safari%20add-ons."
         class="whatsapp-button hover-reveal"
+        aria-label="Chat with us on WhatsApp about Desert Safari add-ons"
+        id="safAddonsEnWAFloat"
+        data-c="@id"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="safAddonsEnWAIcon"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="whatsapp-text" id="safAddonsEnWAText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- 4 CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <a class="cta-btn cta-gray" :href="`mailto:${emailToCopy}`">Email us</a>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <a
+          class="cta-btn cta-gray"
+          :href="`mailto:${emailToCopy}`"
+          id="safAddonsEnCtaEmail"
+          data-c="@id"
+        >Email us</a>
+        <button
+          class="cta-btn cta-green"
+          @click="openWhatsappModal"
+          id="safAddonsEnCtaWA"
+          data-c="@id"
+        >WhatsApp us</button>
+        <button
+          class="cta-btn cta-green"
+          @click="openWechatModal"
+          id="safAddonsEnCtaWeChat"
+          data-c="@id"
+        >Wechat us</button>
+        <button
+          class="cta-btn cta-red"
+          @click="bookNow"
+          id="safAddonsEnCtaCart"
+          data-c="@id"
+        >My WonderCart</button>
       </div>
     </div>
 
     <!-- QR Modals -->
-    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div
+      v-if="showWhatsappModal"
+      class="qr-modal"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="safAddonsEnWAModalTitle"
+    >
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="safAddonsEnWAQR" data-c-src="@id" />
       </div>
     </div>
-    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div
+      v-if="showWechatModal"
+      class="qr-modal"
+      aria-modal="true"
+      role="dialog"
+      aria-labelledby="safAddonsEnWeChatModalTitle"
+    >
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="safAddonsEnWeChatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- Add-on products -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section
+      v-for="(p, pIdx) in products"
+      :key="p.id"
+      class="product"
+      :id="`safAddonsEnProd_${p.id}`"
+    >
+      <h2>
+        <span :id="`safAddonsEnTitle_${p.id}`" data-c="@id">{{ p.title }}</span>
+      </h2>
+      <p class="blurb">
+        <span :id="`safAddonsEnBlurb_${p.id}`" data-c="@id">{{ p.blurb }}</span>
+      </p>
 
       <div class="product-grid">
         <!-- Single card per add-on -->
         <div class="product-card">
-          <img :src="p.image" :alt="p.title" />
+          <img
+            :src="p.image"
+            :alt="p.title"
+            :id="`safAddonsEnImg_${p.id}`"
+            data-c-src="@id"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.badge }}</span>
-              <span class="price" v-html="p.priceHtml"></span>
+              <span class="badge" :id="`safAddonsEnBadge_${p.id}`" data-c="@id">{{ p.badge }}</span>
+              <span
+                class="price"
+                v-html="p.priceHtml"
+                :id="`safAddonsEnPrice_${p.id}`"
+                data-c-html="@id"
+              ></span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.points" :key="i">
+                <span :id="`safAddonsEnPoint_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
 
             <!-- Buttons -->
@@ -77,6 +164,8 @@
               v-if="p.type === 'cart'"
               class="btn-addcart"
               @click="addToCart(p.cartName)"
+              :id="`safAddonsEnAdd_${p.id}`"
+              data-c="@id"
             >
               Add to Cart
             </button>
@@ -85,7 +174,10 @@
               v-else-if="p.type === 'wa'"
               class="btn-wa"
               href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20want%20to%20ask%20about%20Shisha/Drinks%20add-on."
-              target="_blank" rel="noopener"
+              target="_blank"
+              rel="noopener"
+              :id="`safAddonsEnWA_${p.id}`"
+              data-c="@id"
             >
               WhatsApp us
             </a>
@@ -95,37 +187,66 @@
 
       <!-- Notes per product (optional) -->
       <div class="rules" v-if="p.notes && p.notes.length">
-        <h3>Good to know</h3>
+        <h3 :id="`safAddonsEnGoodTitle_${p.id}`" data-c="@id">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="idx">
+            <span :id="`safAddonsEnNote_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Policy / Safety -->
     <div class="text-card">
-      <h2>Safety, Insurance & Participation Rules</h2>
+      <h2 id="safAddonsEnPolicyH2" data-c="@id">Safety, Insurance & Participation Rules</h2>
       <ul class="policy">
-        <li>ATV/Buggy are <strong>self-drive</strong> experiences operated by our licensed partners. A basic safety briefing, helmets and goggles are provided. Closed shoes recommended.</li>
-        <li>Participation is at your own risk; our partners carry commercial liability cover as required by UAE rules. We recommend guests hold personal travel/medical insurance.</li>
-        <li><strong>Not suitable</strong> for pregnant guests; those with back/neck/spine injuries; serious heart conditions; or recent major surgery.</li>
-        <li><strong>Age policy:</strong> Adult riders 16+ for ATV; Buggy drivers typically 18+ (with valid driving license). Minors may ride as passengers with a parent/guardian.</li>
-        <li>Zero tolerance for alcohol/drugs before or during riding. A waiver/indemnity form must be signed on site. Operators may request a refundable damage deposit or hold.</li>
-        <li>Riding is restricted to designated areas; respect guide instructions and local conservation rules. Reckless driving may result in termination without refund.</li>
-        <li>Weather, sand condition and daylight may affect the route/pace. Operator may modify or cancel for safety; equivalent alternatives or refunds will be advised.</li>
+        <li id="safAddonsEnPol1" data-c-html="@id">
+          ATV/Buggy are <strong>self-drive</strong> experiences operated by our licensed partners. A basic safety briefing, helmets and goggles are provided. Closed shoes recommended.
+        </li>
+        <li id="safAddonsEnPol2" data-c="@id">
+          Participation is at your own risk; our partners carry commercial liability cover as required by UAE rules. We recommend guests hold personal travel/medical insurance.
+        </li>
+        <li id="safAddonsEnPol3" data-c-html="@id">
+          <strong>Not suitable</strong> for pregnant guests; those with back/neck/spine injuries; serious heart conditions; or recent major surgery.
+        </li>
+        <li id="safAddonsEnPol4" data-c-html="@id">
+          <strong>Age policy:</strong> Adult riders 16+ for ATV; Buggy drivers typically 18+ (with valid driving license). Minors may ride as passengers with a parent/guardian.
+        </li>
+        <li id="safAddonsEnPol5" data-c="@id">
+          Zero tolerance for alcohol/drugs before or during riding. A waiver/indemnity form must be signed on site. Operators may request a refundable damage deposit or hold.
+        </li>
+        <li id="safAddonsEnPol6" data-c="@id">
+          Riding is restricted to designated areas; respect guide instructions and local conservation rules. Reckless driving may result in termination without refund.
+        </li>
+        <li id="safAddonsEnPol7" data-c="@id">
+          Weather, sand condition and daylight may affect the route/pace. Operator may modify or cancel for safety; equivalent alternatives or refunds will be advised.
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="safAddonsEnFaqH2" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-        <div class="faq-question" @click="toggleFaq(index)">
+        <button
+          class="faq-question"
+          @click="toggleFaq(index)"
+          :aria-expanded="faq.open.toString()"
+          :aria-controls="`safAddonsEnFaqA_${index}`"
+          :id="`safAddonsEnFaqQ_${index}`"
+          data-c="@id"
+        >
           <span>{{ faq.question }}</span>
-          <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
-        </div>
-        <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <span class="faq-icon" aria-hidden="true">{{ faq.open ? "▲" : "▼" }}</span>
+        </button>
+        <div
+          v-if="faq.open"
+          class="faq-answer"
+          role="region"
+          :id="`safAddonsEnFaqA_${index}`"
+          :aria-labelledby="`safAddonsEnFaqQ_${index}`"
+        >
+          <p :id="`safAddonsEnFaqAText_${index}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
@@ -143,7 +264,6 @@ import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
 
 import { useWonderCart } from '@/stores/wonderCart'
-
 
 export default {
   name: 'SafariAddons',
@@ -164,7 +284,7 @@ export default {
           ],
           notes: [
             'Riders 16+ recommended; minors can ride on twin/with guide subject to operator rules.',
-            'Wear closed shoes; long trousers suggested.',
+            'Wear closed shoes; long trousers suggested.'
           ],
           type: 'cart',
           cartName: 'ATV Ride'
@@ -182,7 +302,7 @@ export default {
             'Guide/lead buggy & safety gear included'
           ],
           notes: [
-            'Driver must be 18+ with valid driving license; passenger seat for minors subject to operator policy.',
+            'Driver must be 18+ with valid driving license; passenger seat for minors subject to operator policy.'
           ],
           type: 'cart',
           cartName: 'Buggy Ride'
@@ -200,7 +320,7 @@ export default {
             'Ideal for sunset dunes & family portraits'
           ],
           notes: [
-            'If you booked Royal Dunes Safari, photography is already complimentary—no need to add.',
+            'If you booked Royal Dunes Safari, photography is already complimentary—no need to add.'
           ],
           type: 'cart',
           cartName: 'Photography'
@@ -219,9 +339,9 @@ export default {
           ],
           notes: [
             'For shisha/alcohol service, UAE licensing rules apply. Availability depends on the camp you visit.',
-            'Please contact us on WhatsApp to confirm options, pricing and age policy.',
+            'Please contact us on WhatsApp to confirm options, pricing and age policy.'
           ],
-          type: 'wa' // 走 WhatsApp 咨询
+          type: 'wa'
         }
       ],
 
@@ -330,16 +450,18 @@ export default {
 @media (max-width: 900px){ .cta-row{ grid-template-columns: repeat(2,1fr);} }
 @media (max-width: 520px){ .cta-row{ grid-template-columns: 1fr;} }
 
-.cta-btn{ height:56px; border:none; border-radius:12px; font-weight:700; cursor:pointer;
+.cta-btn{
+  height:56px; border:none; border-radius:12px; font-weight:700; cursor:pointer;
   transition: transform .08s ease, box-shadow .18s ease; box-shadow:0 4px 12px rgba(0,0,0,.08);
-  display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+  display:inline-flex; align-items:center; justify-content:center; text-decoration:none;
+}
 .cta-btn:active{ transform: translateY(1px); }
 .cta-gray  { background:hsl(65, 5%, 53%); color:hsl(0, 0%, 100%); }
 .cta-green { background:hsl(136, 90%, 27%); color:hsl(0, 0%, 100%); }
 .cta-red   { background:hsl(0, 93%, 32%); color:hsl(0, 0%, 100%); }
 .cta-btn:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
 
-/* Toast & QR modal (reused) */
+/* QR modal */
 .qr-modal{ position:fixed; inset:0; background:rgba(0,0,0,.4); display:grid; place-items:center; z-index:2000; }
 .qr-modal-box{ position:relative; background:#fff; border-radius:16px; padding:16px; width:min(90vw,520px); box-shadow:0 16px 32px rgba(0,0,0,.25); }
 .qr-modal-box img{ width:100%; height:auto; display:block; border-radius:12px; }
@@ -365,31 +487,15 @@ export default {
 
 /* Buttons */
 .btn-addcart{
-  width:100%;
-  height:44px;
-  margin-top:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:hsl(0, 93%, 32%);
-  color:#fff;
-  transition: box-shadow .18s ease, transform .08s ease;
+  width:100%; height:44px; margin-top:12px; border:none; border-radius:10px; font-weight:700; cursor:pointer;
+  background:hsl(0, 93%, 32%); color:#fff; transition: box-shadow .18s ease, transform .08s ease;
 }
 .btn-addcart:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
 .btn-addcart:active{ transform: translateY(1px); }
 
 .btn-wa{
-  width:100%;
-  height:44px;
-  margin-top:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:hsl(136, 90%, 27%);
-  color:#fff;
-  display:inline-flex; align-items:center; justify-content:center;
+  width:100%; height:44px; margin-top:12px; border:none; border-radius:10px; font-weight:700; cursor:pointer;
+  background:hsl(136, 90%, 27%); color:#fff; display:inline-flex; align-items:center; justify-content:center;
   text-decoration:none;
 }
 .btn-wa:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
@@ -407,8 +513,11 @@ export default {
 /* FAQs */
 .faq-card{ background:#f8f8f8; margin:40px auto; padding:25px; border-radius:8px; max-width:1000px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
 .faq-card h2{ margin:0 0 12px; }
-.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; cursor:pointer; }
-.faq-question{ display:flex; justify-content:space-between; font-weight:600; color:#333; }
+.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; }
+.faq-question{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  font-weight:600; color:#333; background:transparent; border:none; padding:0; text-align:left; cursor:pointer;
+}
 .faq-answer{ margin-top:8px; color:#555; }
 .faq-icon{ color:#b01b1b; }
 </style>

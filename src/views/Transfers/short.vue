@@ -1,18 +1,36 @@
 <template>
-  <div class="details-page">
+  <div class="details-page" id="tsRoot" data-c="@id">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="Transfers Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Transfers Banner"
+        class="banner"
+        id="tsBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="Gold Logo" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="tsLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="tsLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="intro">
-      <h1>Airport Transfers & Half-Day With Driver</h1>
-      <p>
+      <h1 id="tsTitle" data-c="@id">Airport Transfers & Half-Day With Driver</h1>
+      <p id="tsIntro" data-c="@id">
         Reliable private transport in Dubai with professional chauffeurs and commercially insured vehicles.
         Choose a quick airport run or hire a car with driver for a half day – perfect for meetings or light sightseeing.
       </p>
@@ -23,9 +41,16 @@
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
         class="whatsapp-button hover-reveal"
+        id="tsWAFloatLink"
+        data-c-href="@id"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          :src="waIcon"
+          alt="WhatsApp"
+          id="tsWAFloatIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="tsWAFloatText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
@@ -33,18 +58,29 @@
     <div class="cta-row-wrapper">
       <div class="cta-row">
         <!-- 改成 mailto 直开邮箱 -->
-        <a class="cta-btn cta-gray" :href="'mailto:'+emailToCopy">Email us</a>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
+        <a
+          class="cta-btn cta-gray"
+          :href="'mailto:'+emailToCopy"
+          id="tsCTAEmail"
+          data-c="@id"
+        >Email us</a>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="tsCTAWhatsApp" data-c="@id">
+          WhatsApp us
+        </button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="tsCTAWechat" data-c="@id">
+          Wechat us
+        </button>
         <!-- 改为直接打开 WonderCart -->
-        <button class="cta-btn cta-red" @click="openCart">My WonderCart</button>
+        <button class="cta-btn cta-red" @click="openCart" id="tsCTACart" data-c="@id">
+          My WonderCart
+        </button>
       </div>
     </div>
 
     <!-- Toast: email copied（保留不再触发） -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
+        <p id="tsToastCopied" data-c-html="@id"><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
       </div>
     </div>
 
@@ -52,37 +88,55 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="tsWhatsAppQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="tsWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- Products: two panels (data-driven) -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`ts_${p.id}`"
+      :data-c="'@id'"
+    >
+      <h2 :id="`ts_${p.id}_title`" :data-c="'@id'">{{ p.title }}</h2>
+      <p class="blurb" :id="`ts_${p.id}_blurb`" :data-c="'@id'">{{ p.blurb }}</p>
 
       <div class="product-grid">
         <!-- SUV -->
         <div class="product-card">
-          <img :src="p.suv.image" :alt="p.title + ' SUV'" />
+          <img
+            :src="p.suv.image"
+            :alt="p.title + ' SUV'"
+            :id="`ts_${p.id}_suv_img`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">SUV (4–6 pax)</span>
-              <span class="price">from AED {{ p.suv.price }}</span>
+              <span class="badge" :id="`ts_${p.id}_suv_badge`" :data-c="'@id'">SUV (4–6 pax)</span>
+              <span class="price" :id="`ts_${p.id}_suv_price`" :data-c="'@id'">from AED {{ p.suv.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.suv.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.suv.points"
+                :key="i"
+                :id="`ts_${p.id}_suv_point_${i}`"
+                :data-c="'@id'"
+              >{{ b }}</li>
             </ul>
             <!-- 新增：Add to Cart -->
             <button
               class="add-btn"
               @click="addToCart(variantName(p,'suv'), p.id + '-suv')"
+              :id="`ts_${p.id}_suv_add`"
+              :data-c="'@id'"
             >
               Add to Cart
             </button>
@@ -91,19 +145,31 @@
 
         <!-- VAN -->
         <div class="product-card">
-          <img :src="p.van.image" :alt="p.title + ' Van'" />
+          <img
+            :src="p.van.image"
+            :alt="p.title + ' Van'"
+            :id="`ts_${p.id}_van_img`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">Van (7–10 pax)</span>
-              <span class="price">from AED {{ p.van.price }}</span>
+              <span class="badge" :id="`ts_${p.id}_van_badge`" :data-c="'@id'">Van (7–10 pax)</span>
+              <span class="price" :id="`ts_${p.id}_van_price`" :data-c="'@id'">from AED {{ p.van.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.van.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.van.points"
+                :key="i"
+                :id="`ts_${p.id}_van_point_${i}`"
+                :data-c="'@id'"
+              >{{ b }}</li>
             </ul>
             <!-- 新增：Add to Cart -->
             <button
               class="add-btn"
               @click="addToCart(variantName(p,'van'), p.id + '-van')"
+              :id="`ts_${p.id}_van_add`"
+              :data-c="'@id'"
             >
               Add to Cart
             </button>
@@ -113,54 +179,87 @@
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>Itinerary </h3>
+        <h3 :id="`ts_${p.id}_itTitle`" :data-c="'@id'">Itinerary</h3>
         <ul>
-          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+          <li
+            v-for="(step, sIdx) in p.itinerary"
+            :key="'it-'+p.id+'-'+sIdx"
+            :id="`ts_${p.id}_it_${sIdx}`"
+            :data-c="'@id'"
+          >
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">Timing and route are flexible and can be tailored to your plan.</p>
+        <p class="it-note" :id="`ts_${p.id}_itNote`" :data-c="'@id'">Timing and route are flexible and can be tailored to your plan.</p>
       </div>
 
       <!-- Key rules per product -->
       <div class="rules">
-        <h3>What’s included</h3>
+        <h3 :id="`ts_${p.id}_incTitle`" :data-c="'@id'">What’s included</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li
+            v-for="(i,idx) in p.includes"
+            :key="'inc-'+idx"
+            :id="`ts_${p.id}_inc_${idx}`"
+            :data-c="'@id'"
+          >{{ i }}</li>
         </ul>
-        <h3>Good to know</h3>
+        <h3 :id="`ts_${p.id}_noteTitle`" :data-c="'@id'">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li
+            v-for="(n,idx) in p.notes"
+            :key="'note-'+idx"
+            :id="`ts_${p.id}_note_${idx}`"
+            :data-c="'@id'"
+          >{{ n }}</li>
         </ul>
       </div>
     </section>
 
     <!-- Policy / Terms block -->
     <div class="text-card">
-      <h2>Service Policy & Insurance Summary</h2>
+      <h2 id="tsPolicyTitle" data-c="@id">Service Policy & Insurance Summary</h2>
       <ul class="policy">
-        <li>All vehicles and drivers are licensed as per RTA/UAE regulations and are covered by commercial motor insurance (third-party liability at a minimum). Personal travel insurance is recommended for all guests.</li>
-        <li>Waiting time: Airport pick-ups include <strong>60 minutes</strong> free from actual flight landing; hotels/private addresses include <strong>15 minutes</strong> free. Overtime is billed in 30- or 60-minute blocks as applicable.</li>
-        <li>Distance/route: services are point-to-point unless otherwise stated. Extra stops, detours or additional pick-ups may incur a fee.</li>
-        <li>Salik/tolls & parking: billed at cost unless stated as included in your quote (common in inter-emirate trips).</li>
-        <li>Night/peak surcharges: may apply between <strong>22:00–06:00</strong> or during public holidays/events.</li>
-        <li>Child seats available on request (pre-book). Please advise luggage count; oversize items must be declared to ensure the correct vehicle class.</li>
-        <li>Cancellation & no-show: free cancellation window will be stated on your confirmation. No-show or late cancellation may be charged up to 100% depending on the case.</li>
-        <li>Driver is not a licensed tour guide. A licensed tour guide can be arranged on request at extra cost.</li>
-        <li>Damage & cleanliness: repair/cleaning caused by passenger negligence may be chargeable.</li>
+        <li id="tsPolicy_0" data-c="@id">
+          All vehicles and drivers are licensed as per RTA/UAE regulations and are covered by commercial motor insurance (third-party liability at a minimum). Personal travel insurance is recommended for all guests.
+        </li>
+        <li id="tsPolicy_1" data-c-html="@id">
+          Waiting time: Airport pick-ups include <strong>60 minutes</strong> free from actual flight landing; hotels/private addresses include <strong>15 minutes</strong> free. Overtime is billed in 30- or 60-minute blocks as applicable.
+        </li>
+        <li id="tsPolicy_2" data-c="@id">
+          Distance/route: services are point-to-point unless otherwise stated. Extra stops, detours or additional pick-ups may incur a fee.
+        </li>
+        <li id="tsPolicy_3" data-c="@id">
+          Salik/tolls & parking: billed at cost unless stated as included in your quote (common in inter-emirate trips).
+        </li>
+        <li id="tsPolicy_4" data-c-html="@id">
+          Night/peak surcharges: may apply between <strong>22:00–06:00</strong> or during public holidays/events.
+        </li>
+        <li id="tsPolicy_5" data-c="@id">
+          Child seats available on request (pre-book). Please advise luggage count; oversize items must be declared to ensure the correct vehicle class.
+        </li>
+        <li id="tsPolicy_6" data-c="@id">
+          Cancellation & no-show: free cancellation window will be stated on your confirmation. No-show or late cancellation may be charged up to 100% depending on the case.
+        </li>
+        <li id="tsPolicy_7" data-c="@id">
+          Driver is not a licensed tour guide. A licensed tour guide can be arranged on request at extra cost.
+        </li>
+        <li id="tsPolicy_8" data-c="@id">
+          Damage & cleanliness: repair/cleaning caused by passenger negligence may be chargeable.
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="tsFAQTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`tsFAQ_q_${index}`" :data-c="'@id'">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`tsFAQ_a_${index}`" :data-c="'@id'">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
@@ -168,6 +267,12 @@
 </template>
 
 <script>
+// brand assets
+import banner from '@/assets/images/banner7.jpg'
+import logoGold from '@/assets/images/logo-www-gold.png'
+import logoText from '@/assets/images/logo-text.png'
+import waIcon from '@/assets/images/whatsapp-icon.png'
+
 // images
 import imgAirportSUV from '@/assets/images/cars/carcard6.jpg'
 import imgAirportVan from '@/assets/images/cars/carcard7.jpg'
@@ -183,6 +288,9 @@ export default {
   name: 'TransferShort',
   data() {
     return {
+      // brand
+      banner, logoGold, logoText, waIcon,
+
       products: [
         {
           id: 'airport',

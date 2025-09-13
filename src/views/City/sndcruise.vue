@@ -2,17 +2,35 @@
   <div class="packages-56n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="pkg56Banner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="pkg56LogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="pkg56LogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai Dhow Cruise Dinners — 4 Options</h1>
-      <p>
+      <h1 id="pkg56IntroTitle" data-c="@id">Dubai Dhow Cruise Dinners — 4 Options</h1>
+      <p id="pkg56IntroP1" data-c-html="@id">
         Four evening cruises to match different budgets and skyline views: Creek Classic, Marina, Water Canal
         Glassboat, and the 3-hour Lotus Mega Yacht. Clear ticket-only pricing, optional private transfers,
         and transparent upgrades (upper deck / window table / VIP lounges). Vegetarian & Jain meals on
@@ -24,28 +42,35 @@
     <!-- Left floating WhatsApp -->
     <div class="whatsapp-wrapper">
       <a
+        id="pkg56WhatsappLink"
+        data-c-src="@id"
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20dhow%20cruises."
         class="whatsapp-button hover-reveal"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="pkg56WhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="pkg56WhatsappText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="pkg56CTAEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="pkg56CTAWhatsApp" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="pkg56CTAWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="pkg56CTACart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
     <!-- Toast -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
+        <p id="pkg56EmailCopiedText" data-c-html="@id"><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
       </div>
     </div>
 
@@ -53,87 +78,125 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="pkg56WhatsappQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="pkg56WechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== Packages (4 sections) ===== -->
     <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+      <h2 :id="`pkg56_${p.id}Title`" :data-c="'@id'">{{ p.title }}</h2>
+      <p class="blurb" :id="`pkg56_${p.id}Blurb`" :data-c-html="'@id'">{{ p.blurb }}</p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`pkg56_${p.id}Image`"
+            :data-c-src="'@id'"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`pkg56_${p.id}Badge`" :data-c="'@id'">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`pkg56_${p.id}Price`" :data-c="'@id'">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.variantA.points"
+                :key="i"
+                :id="`pkg56_${p.id}Point_${i}`"
+                :data-c="'@id'"
+              >
+                {{ b }}
+              </li>
             </ul>
             <!-- Add to Cart -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`pkg56_${p.id}AddCart`"
+              :data-c="'@id'"
+            >Add to Cart</button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>Sample Itinerary</h3>
+        <h3 :id="`pkg56_${p.id}ItineraryTitle`" :data-c="'@id'">Sample Itinerary</h3>
         <ul>
-          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+          <li
+            v-for="(step, sIdx) in p.itinerary"
+            :key="'it-'+p.id+'-'+sIdx"
+            :id="`pkg56_${p.id}It_${sIdx}`"
+            :data-c="'@id'"
+          >
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">Time windows may adjust to marine control, attraction slots, and seasonal events.</p>
+        <p class="it-note" :id="`pkg56_${p.id}ItNote`" :data-c="'@id'">
+          Time windows may adjust to marine control, attraction slots, and seasonal events.
+        </p>
       </div>
 
       <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>What’s included</h3>
+        <h3 :id="`pkg56_${p.id}IncTitle`" :data-c="'@id'">What’s included</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li
+            v-for="(i,idx) in p.includes"
+            :key="'inc-'+idx"
+            :id="`pkg56_${p.id}Inc_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ i }}
+          </li>
         </ul>
-        <h3>Good to know</h3>
+        <h3 :id="`pkg56_${p.id}NoteTitle`" :data-c="'@id'">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li
+            v-for="(n,idx) in p.notes"
+            :key="'note-'+idx"
+            :id="`pkg56_${p.id}Note_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ n }}
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Global Policy / Terms -->
     <div class="text-card">
-      <h2>Pricing & Policy Notes</h2>
+      <h2 id="pkg56PolicyTitle" data-c="@id">Pricing & Policy Notes</h2>
       <ul class="policy">
-        <li>Ticket-Only rates per person. Infant 0–2 free (no seat/bed). Child 3–10 at child rate; 11+ adult.</li>
-        <li>Boarding 8:00 PM & sailing 8:30 PM for Creek/Marina/Canal (~90–120 min). Lotus reports 7:00 PM, sails 7:30–10:30 PM.</li>
-        <li>Optional private round-trip transfers (Dubai urban): Sedan 1–4 AED 180 · MPV 5–7 AED 220 · Van 10–14 AED 350. Jebel Ali/JVC/DIP +AED 40–60; from Sharjah +AED 100. Child seats provided free on request (limited; required by law).</li>
-        <li>Entertainment runs when permitted; Ramadan & official dry days restrict shows and alcohol service.</li>
-        <li>Seating is first-come or operator-assigned. Paid upgrades guarantee a section (upper deck/window/VIP), not an exact table number.</li>
-        <li>Amend/cancel: Creek/Marina/Canal ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Lotus/VIP ≥48h free; 24–48h 50%; &lt;24h 100%. Event nights (e.g., NYE) carry stricter terms & surcharges.</li>
-        <li>Weather/route: marine traffic, wind or closures may alter the route/berth. If the operator cancels, re-book or full refund; if sailing with a modified route, refunds do not apply.</li>
-        <li>All vessels licensed by DMCA/RTA with lifejackets & trained crew. Our transfers use insured vehicles and RTA-licensed drivers.</li>
+        <li id="pkg56Policy_0" data-c="@id">Ticket-Only rates per person. Infant 0–2 free (no seat/bed). Child 3–10 at child rate; 11+ adult.</li>
+        <li id="pkg56Policy_1" data-c="@id">Boarding 8:00 PM & sailing 8:30 PM for Creek/Marina/Canal (~90–120 min). Lotus reports 7:00 PM, sails 7:30–10:30 PM.</li>
+        <li id="pkg56Policy_2" data-c="@id">Optional private round-trip transfers (Dubai urban): Sedan 1–4 AED 180 · MPV 5–7 AED 220 · Van 10–14 AED 350. Jebel Ali/JVC/DIP +AED 40–60; from Sharjah +AED 100. Child seats provided free on request (limited; required by law).</li>
+        <li id="pkg56Policy_3" data-c="@id">Entertainment runs when permitted; Ramadan & official dry days restrict shows and alcohol service.</li>
+        <li id="pkg56Policy_4" data-c="@id">Seating is first-come or operator-assigned. Paid upgrades guarantee a section (upper deck/window/VIP), not an exact table number.</li>
+        <li id="pkg56Policy_5" data-c="@id">Amend/cancel: Creek/Marina/Canal ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Lotus/VIP ≥48h free; 24–48h 50%; &lt;24h 100%. Event nights (e.g., NYE) carry stricter terms & surcharges.</li>
+        <li id="pkg56Policy_6" data-c="@id">Weather/route: marine traffic, wind or closures may alter the route/berth. If the operator cancels, re-book or full refund; if sailing with a modified route, refunds do not apply.</li>
+        <li id="pkg56Policy_7" data-c="@id">All vessels licensed by DMCA/RTA with lifejackets & trained crew. Our transfers use insured vehicles and RTA-licensed drivers.</li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="pkg56FaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`pkg56FaqQ_${index}`" :data-c="'@id'">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`pkg56FaqA_${index}`" :data-c="'@id'">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

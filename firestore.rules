@@ -1,0 +1,25 @@
+// firestore.rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 公共可读（你网站的产品/文案等集合未来可以放到这里）
+    match /{document=**} {
+      allow read: if true;
+    }
+
+    // 仅允许匿名创建 enquiry 文档
+    match /enquiries/{id} {
+      allow create: if request.resource.data.keys().hasAll(
+        ['contact','message','travelDate','createdAt']
+      );
+      allow read, update, delete: if false;
+    }
+
+    // 仅允许匿名创建 mail 文档（供 Trigger Email 扩展消费）
+    match /mail/{id} {
+      allow create: if request.resource.data.keys().hasAll(['to','message']);
+      allow read, update, delete: if false;
+    }
+  }
+}

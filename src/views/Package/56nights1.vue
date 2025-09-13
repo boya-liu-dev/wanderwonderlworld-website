@@ -2,17 +2,35 @@
   <div class="packages-56n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="行程套餐横幅" class="banner" />
+      <img
+        :src="banner"
+        alt="行程套餐横幅"
+        class="banner"
+        id="pkg56ZhBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="金色标志" class="logo" />
-        <img :src="logoText" alt="文字标志" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="金色标志"
+          class="logo"
+          id="pkg56ZhLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="文字标志"
+          class="logo-text"
+          id="pkg56ZhLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>迪拜行程套餐 — 5晚 / 6晚</h1>
-      <p>
+      <h1 id="pkg56ZhIntroTitle" data-c="@id">迪拜行程套餐 — 5晚 / 6晚</h1>
+      <p id="pkg56ZhIntroBlurb" data-c-html="@id">
         智能两段式节奏（早晚户外、中午室内），老迪拜步行 + 阿布拉渡船，灵活可换的沙漠行程与清晰的成人/儿童价。
         全程<strong>中文司导</strong>陪同（老迪拜步行段配<strong>持证中文导游</strong>）。
         私人机场接送、含早精选酒店、合规投保车辆，让假期顺滑又安心。
@@ -24,26 +42,33 @@
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20tour%20packages."
         class="whatsapp-button hover-reveal"
+        id="pkg56ZhWhatsappLink"
+        data-c-href="@id"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">需要帮助？在线咨询！</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="pkg56ZhWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="pkg56ZhWhatsappText" data-c="@id">需要帮助？在线咨询！</span>
       </a>
     </div>
 
     <!-- 4 个 CTA 按钮 -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">邮件联系我们</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp 联系我们</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">微信联系我们</button>
-        <button class="cta-btn cta-red" @click="bookNow">万德购物车</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="pkg56ZhCTAEmail" data-c="@id">邮件联系我们</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="pkg56ZhCTAWhatsApp" data-c="@id">WhatsApp 联系我们</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="pkg56ZhCTAWechat" data-c="@id">微信联系我们</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="pkg56ZhCTACart" data-c="@id">万德购物车</button>
       </div>
     </div>
 
     <!-- Toast -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> 已复制到剪贴板</p>
+        <p id="pkg56ZhEmailCopied" data-c-html="@id"><strong>{{ emailToCopy }}</strong> 已复制到剪贴板</p>
       </div>
     </div>
 
@@ -51,86 +76,126 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp 二维码" />
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="pkg56ZhWhatsappQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="微信二维码" />
+        <img :src="wechatQR" alt="微信二维码" id="pkg56ZhWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== 两个套餐 ===== -->
     <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+      <h2 :id="`pkg56Zh_${p.id}Title`" :data-c="'@id'">{{ p.title }}</h2>
+      <p class="blurb" :id="`pkg56Zh_${p.id}Blurb`" :data-c-html="'@id'">{{ p.blurb }}</p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`pkg56Zh_${p.id}Image`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`pkg56Zh_${p.id}Badge`" :data-c="'@id'">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`pkg56Zh_${p.id}Price`" :data-c="'@id'">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.variantA.points"
+                :key="i"
+                :id="`pkg56Zh_${p.id}Point_${i}`"
+                :data-c="'@id'"
+              >
+                {{ b }}
+              </li>
             </ul>
             <!-- 加入购物车 -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">加入万德购物车</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`pkg56Zh_${p.id}AddCart`"
+              :data-c="'@id'"
+            >
+              加入万德购物车
+            </button>
           </div>
         </div>
       </div>
 
       <!-- 行程示例 -->
       <div class="itinerary-card">
-        <h3>行程示例</h3>
+        <h3 :id="`pkg56Zh_${p.id}ItineraryTitle`" :data-c="'@id'">行程示例</h3>
         <ul>
-          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+          <li
+            v-for="(step, sIdx) in p.itinerary"
+            :key="'it-'+p.id+'-'+sIdx"
+            :id="`pkg56Zh_${p.id}It_${sIdx}`"
+            :data-c="'@id'"
+          >
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">具体时间会根据航班、景点预约与季节活动适当调整。</p>
+        <p class="it-note" :id="`pkg56Zh_${p.id}ItNote`" :data-c="'@id'">
+          具体时间会根据航班、景点预约与季节活动适当调整。
+        </p>
       </div>
 
       <!-- 费用包含 / 预订须知 -->
       <div class="rules">
-        <h3>费用包含</h3>
+        <h3 :id="`pkg56Zh_${p.id}IncTitle`" :data-c="'@id'">费用包含</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li
+            v-for="(i,idx) in p.includes"
+            :key="'inc-'+idx"
+            :id="`pkg56Zh_${p.id}Inc_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ i }}
+          </li>
         </ul>
-        <h3>预订须知</h3>
+        <h3 :id="`pkg56Zh_${p.id}NoteTitle`" :data-c="'@id'">预订须知</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li
+            v-for="(n,idx) in p.notes"
+            :key="'note-'+idx"
+            :id="`pkg56Zh_${p.id}Note_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ n }}
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- 全局政策 / 条款 -->
     <div class="text-card">
-      <h2>价格与政策说明</h2>
+      <h2 id="pkg56ZhPolicyTitle" data-c="@id">价格与政策说明</h2>
       <ul class="policy">
-        <li>仅陆地服务（不含机票/签证）。按每人计价，基于双人/大床同住。价格含 5% 增值税。</li>
-        <li>酒店前台需另付旅游税 Tourism Dirham（约 AED 10–20/间/晚，依酒店级别）。</li>
-        <li>婴儿 0–2 岁免费（不占床）。按阿联酋法律，婴幼童须使用相应年龄安全座椅且必须占座—请下单时预订所需座椅。</li>
-        <li>酒店常规：入住 15:00 / 退房 12:00；提前/延迟以酒店库存和附加费为准。</li>
-        <li>景点预约（哈利法塔/The View/相框/卢浮宫/夜游船等）受季节与活动影响，顺序可能据此调整。</li>
-        <li>斋月及宗教日期：现场表演暂停；酒精供应受限或停供；开放时间可能变化。</li>
-        <li>改期与取消：≥48 小时免费；24–48 小时收 50%；&lt;24 小时或未到场收 100%。不可退门票/房晚按供应商政策执行。不可抗力优先改期，否则仅退除不可追回成本外的余额。</li>
+        <li id="pkg56ZhPolicy_0" data-c="@id">仅陆地服务（不含机票/签证）。按每人计价，基于双人/大床同住。价格含 5% 增值税。</li>
+        <li id="pkg56ZhPolicy_1" data-c="@id">酒店前台需另付旅游税 Tourism Dirham（约 AED 10–20/间/晚，依酒店级别）。</li>
+        <li id="pkg56ZhPolicy_2" data-c="@id">婴儿 0–2 岁免费（不占床）。按阿联酋法律，婴幼童须使用相应年龄安全座椅且必须占座—请下单时预订所需座椅。</li>
+        <li id="pkg56ZhPolicy_3" data-c="@id">酒店常规：入住 15:00 / 退房 12:00；提前/延迟以酒店库存和附加费为准。</li>
+        <li id="pkg56ZhPolicy_4" data-c="@id">景点预约（哈利法塔/The View/相框/卢浮宫/夜游船等）受季节与活动影响，顺序可能据此调整。</li>
+        <li id="pkg56ZhPolicy_5" data-c="@id">斋月及宗教日期：现场表演暂停；酒精供应受限或停供；开放时间可能变化。</li>
+        <li id="pkg56ZhPolicy_6" data-c="@id">改期与取消：≥48 小时免费；24–48 小时收 50%；&lt;24 小时或未到场收 100%。不可退门票/房晚按供应商政策执行。不可抗力优先改期，否则仅退除不可追回成本外的余额。</li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>常见问题</h2>
+      <h2 id="pkg56ZhFaqTitle" data-c="@id">常见问题</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`pkg56ZhFaqQ_${index}`" :data-c="'@id'">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`pkg56ZhFaqA_${index}`" :data-c="'@id'">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

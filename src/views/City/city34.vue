@@ -2,17 +2,35 @@
   <div class="packages-34n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="city34enBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="city34enLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="city34enLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Abu Dhabi & Hatta Day Trips — Discover more</h1>
-      <p>
+      <h1 id="city34enIntroH1" data-c="@id">Abu Dhabi & Hatta Day Trips — Discover more</h1>
+      <p id="city34enIntroP1" data-c="@id">
         Two full-value private day trips built for real UAE conditions. Expect heat-smart pacing,
         verified drivers, bottled water on board, and transparent optional add-ons. On Abu Dhabi days
         we brief you for mosque dress-code and time slots; on Hatta days we keep things scenic and
@@ -26,18 +44,23 @@
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20Abu%20Dhabi%20or%20Hatta%20tour."
         class="whatsapp-button hover-reveal"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="city34enWhatsIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="city34enWhatsText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="city34enBtnEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="city34enBtnWhats" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="city34enBtnWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="city34enBtnCart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
@@ -52,86 +75,120 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="city34enWhatsQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="city34enWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== Products (Abu Dhabi & Hatta) ===== -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section v-for="p in products" :key="p.id" class="product" :id="`city34enProd_${p.id}`">
+      <h2><span :id="`city34enTitle_${p.id}`" data-c="@id">{{ p.title }}</span></h2>
+      <p class="blurb"><span :id="`city34enBlurb_${p.id}`" data-c="@id">{{ p.blurb }}</span></p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`city34enImg_${p.id}`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`city34enBadge_${p.id}`" data-c="@id">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`city34enPrice_${p.id}`" data-c="@id">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.variantA.points" :key="i">
+                <span :id="`city34enPoint_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
             <!-- Add to Cart -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`city34enAdd_${p.id}`"
+              data-c="@id"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>Sample Itinerary</h3>
+        <h3 :id="`city34enItinTitle_${p.id}`" data-c="@id">Sample Itinerary</h3>
         <ul>
           <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
-            {{ step }}
+            <span :id="`city34enItin_${p.id}_${sIdx}`" data-c="@id">{{ step }}</span>
           </li>
         </ul>
-        <p class="it-note">Timing windows can be adjusted to your flight schedule and seasonal conditions.</p>
+        <p class="it-note" :id="`city34enItinNote_${p.id}`" data-c="@id">
+          Timing windows can be adjusted to your flight schedule and seasonal conditions.
+        </p>
       </div>
 
       <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>What’s included</h3>
+        <h3 :id="`city34enInclTitle_${p.id}`" data-c="@id">What’s included</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">
+            <span :id="`city34enIncl_${p.id}_${idx}`" data-c="@id">{{ i }}</span>
+          </li>
         </ul>
-        <h3>Good to know</h3>
+        <h3 :id="`city34enGoodTitle_${p.id}`" data-c="@id">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">
+            <span :id="`city34enNote_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Global Policy / Terms -->
     <div class="text-card">
-      <h2>Pricing & Policy Notes</h2>
+      <h2 id="city34enPolicyTitle" data-c="@id">Pricing & Policy Notes</h2>
       <ul class="policy">
-        <li>Per-car rates (7-seater; up to 6 guests). Overtime <strong>AED 75/h</strong> after scheduled touring hours.</li>
-        <li>Abu Dhabi: mosque dress code is enforced (ladies: hair/shoulders/legs covered; men: long trousers). Friday visitor hours are limited.</li>
-        <li>Hatta: within UAE, no border crossing. Mountain weather or dam activity controls may alter sequence for safety.</li>
-        <li>Optional ticketed attractions (Louvre, Qasr Al Watan, kayaking, etc.) are pay-as-you-go and subject to availability.</li>
-        <li>Child/booster seats are required by UAE law—please request at booking (each child must occupy a seat).</li>
-        <li>Amendment & cancellation: ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Force-majeure (sandstorm/heavy rain/road closures): re-schedule first; otherwise only unrecoverable supplier costs apply.</li>
-        <li>Remote pickups (Jebel Ali / DWC / Sharjah border) may attract a small surcharge. WhatsApp reconfirmation sent 24h before service.</li>
+        <li id="city34enPolicy1" data-c-html="@id">
+          Per-car rates (7-seater; up to 6 guests). Overtime <strong>AED 75/h</strong> after scheduled touring hours.
+        </li>
+        <li id="city34enPolicy2" data-c="@id">
+          Abu Dhabi: mosque dress code is enforced (ladies: hair/shoulders/legs covered; men: long trousers). Friday visitor hours are limited.
+        </li>
+        <li id="city34enPolicy3" data-c="@id">
+          Hatta: within UAE, no border crossing. Mountain weather or dam activity controls may alter sequence for safety.
+        </li>
+        <li id="city34enPolicy4" data-c="@id">
+          Optional ticketed attractions (Louvre, Qasr Al Watan, kayaking, etc.) are pay-as-you-go and subject to availability.
+        </li>
+        <li id="city34enPolicy5" data-c="@id">
+          Child/booster seats are required by UAE law—please request at booking (each child must occupy a seat).
+        </li>
+        <li id="city34enPolicy6" data-c="@id">
+          Amendment & cancellation: ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Force-majeure (sandstorm/heavy rain/road closures): re-schedule first; otherwise only unrecoverable supplier costs apply.
+        </li>
+        <li id="city34enPolicy7" data-c="@id">
+          Remote pickups (Jebel Ali / DWC / Sharjah border) may attract a small surcharge. WhatsApp reconfirmation sent 24h before service.
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="city34enFaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`city34enFAQQ_${index+1}`" data-c="@id">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`city34enFAQA_${index+1}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

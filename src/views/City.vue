@@ -2,17 +2,35 @@
   <div class="city">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="cityBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="cityLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="cityLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai City Tours — Flexible & Discovery</h1>
-      <p>
+      <h1 id="cityIntroTitle" data-c="@id">Dubai City Tours — Flexible & Discovery</h1>
+      <p id="cityIntroP1" data-c-html="@id">
         Explore Dubai your way with four private, per-car city tours. We plan with heat-smart pacing
         (outdoors in the morning/evening, indoors at midday), and include an Old Dubai walking segment
         with an abra ride on our Dubai routes (guided by a licensed walking guide; your English-speaking
@@ -23,16 +41,24 @@
 
     <div class="whatsapp-wrapper">
       <a
+        id="cityWhatsappLink"
+        data-c-src="@id"
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
         class="whatsapp-button hover-reveal">
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="cityWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="cityWhatsappText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- Cards (4 packages) -->
     <div class="cards-container">
       <CarCard
+        key-id="cityCardHalfDay"
         :image="car1"
         title="Half-Day Dubai Essentials"
         subtitle="City-Tour-Services"
@@ -43,6 +69,7 @@
       />
 
       <CarCard
+        key-id="cityCardFullDay"
         :image="car2"
         title="Full-Day Dubai Panorama"
         subtitle="City-Tour-Services"
@@ -53,6 +80,7 @@
       />
 
       <CarCard
+        key-id="cityCardAbuDhabi"
         :image="car3"
         title="Abu Dhabi Culture Day"
         subtitle="City-Tour-Services"
@@ -63,6 +91,7 @@
       />
 
       <CarCard
+        key-id="cityCardHatta"
         :image="car4"
         title="Hatta Mountain Escape"
         subtitle="City-Tour-Services"
@@ -75,39 +104,75 @@
 
     <!-- Price List -->
     <div class="text-card">
-      <h2>Dubai City Tour Price List</h2>
+      <h2 id="cityPriceTitle" data-c="@id">Dubai City Tour Price List</h2>
       <table class="price-table">
         <thead>
           <tr>
-            <th>City Tour</th>
-            <th>Time/Duration</th>
-            <th>Price</th>
+            <th id="cityPriceThTour" data-c="@id">City Tour</th>
+            <th id="cityPriceThTime" data-c="@id">Time/Duration</th>
+            <th id="cityPriceThPrice" data-c="@id">Price</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Half-Day Dubai Essentials</td>
-            <td>5 Hours</td>
-            <td><strong style="color:#b01b1b;">from AED 325</strong></td>
+            <td id="cityPriceHalfTitle" data-c="@id">Half-Day Dubai Essentials</td>
+            <td id="cityPriceHalfTime" data-c="@id">5 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                from
+                <span
+                  id="cityPriceHalfFrom"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >AED 325</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>Full-Day Dubai Panorama</td>
-            <td>10 Hours</td>
-            <td><strong style="color:#b01b1b;">from AED 559</strong></td>
+            <td id="cityPriceFullTitle" data-c="@id">Full-Day Dubai Panorama</td>
+            <td id="cityPriceFullTime" data-c="@id">10 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                from
+                <span
+                  id="cityPriceFullFrom"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >AED 559</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>Abu Dhabi Culture Day</td>
-            <td>10–11 Hours</td>
-            <td><strong style="color:#b01b1b;">from AED 659</strong></td>
+            <td id="cityPriceADTitle" data-c="@id">Abu Dhabi Culture Day</td>
+            <td id="cityPriceADTime" data-c="@id">10–11 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                from
+                <span
+                  id="cityPriceADFrom"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >AED 659</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>Hatta Mountain Escape</td>
-            <td>10–11 Hours</td>
-            <td><strong style="color:#b01b1b;">from AED 710</strong></td>
+            <td id="cityPriceHattaTitle" data-c="@id">Hatta Mountain Escape</td>
+            <td id="cityPriceHattaTime" data-c="@id">10–11 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                from
+                <span
+                  id="cityPriceHattaFrom"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >AED 710</span>
+              </strong>
+            </td>
           </tr>
         </tbody>
       </table>
-      <p style="margin-top:8px;font-size:0.95rem;color:#555;">
+      <p id="cityPriceNote" data-c-html="@id" style="margin-top:8px;font-size:0.95rem;color:#555;">
         * Rates are <strong>per car</strong> (7-seater, up to 6 guests). Overtime <strong>AED 75/h</strong>.
         Old Dubai walking + abra is included on Dubai routes. Attraction tickets and meals are optional
         add-ons unless specified. Child/booster seats available on request (by law).
@@ -117,37 +182,39 @@
     <!-- CTA buttons (unchanged) -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="cityCTAEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="cityCTAWhatsApp" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="cityCTAWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="cityCTACart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
     <!-- Toast & Modals (unchanged) -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard</p>
+        <p id="cityEmailCopiedText" data-c-html="@id">
+          <strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard
+        </p>
       </div>
     </div>
 
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="cityWhatsappQR" data-c-src="@id" />
       </div>
     </div>
 
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="cityWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="cityFaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
           <span>{{ faq.question }}</span>
@@ -161,27 +228,27 @@
 
     <!-- Copy blocks -->
     <div class="text-card">
-      <h2>Discover Dubai Your Way: Our Private City Tours</h2>
-      <p><strong>Half-Day Dubai Essentials:</strong> Old Dubai walking (licensed guide) + abra crossing, souks, a Jumeirah seaside photo stop, and a finale at Dubai Mall/Fountain (or MoTF exterior). A compact 5-hour plan that beats the heat and traffic.</p>
-      <p><strong>Full-Day Dubai Panorama:</strong> The complete Dubai day with heat-smart flow: Old Dubai walking + abra in the morning; midday indoors at Dubai Frame or The View (or Burj Khalifa 124/125); golden-hour photos around Souk Madinat and Dubai Marina/Bluewaters/JBR.</p>
-      <p><strong>Abu Dhabi Culture Day:</strong> Inside visit at Sheikh Zayed Grand Mosque (dress code required), drive by the Presidential Palace & Corniche, and either Louvre Abu Dhabi or Qasr Al Watan (subject to ticket slots). We adjust timing for Friday prayers and traffic.</p>
-      <p><strong>Hatta Mountain Escape:</strong> Scenic dam viewpoints with optional kayaking, Heritage Village, Wadi Hub activity zone, and Hatta Hill Park. 4×4 recommended. Weather and road conditions may shift the order for safety.</p>
+      <h2 id="cityS1Title" data-c="@id">Discover Dubai Your Way: Our Private City Tours</h2>
+      <p id="cityS1P1" data-c-html="@id"><strong>Half-Day Dubai Essentials:</strong> Old Dubai walking (licensed guide) + abra crossing, souks, a Jumeirah seaside photo stop, and a finale at Dubai Mall/Fountain (or MoTF exterior). A compact 5-hour plan that beats the heat and traffic.</p>
+      <p id="cityS1P2" data-c-html="@id"><strong>Full-Day Dubai Panorama:</strong> The complete Dubai day with heat-smart flow: Old Dubai walking + abra in the morning; midday indoors at Dubai Frame or The View (or Burj Khalifa 124/125); golden-hour photos around Souk Madinat and Dubai Marina/Bluewaters/JBR.</p>
+      <p id="cityS1P3" data-c-html="@id"><strong>Abu Dhabi Culture Day:</strong> Inside visit at Sheikh Zayed Grand Mosque (dress code required), drive by the Presidential Palace & Corniche, and either Louvre Abu Dhabi or Qasr Al Watan (subject to ticket slots). We adjust timing for Friday prayers and traffic.</p>
+      <p id="cityS1P4" data-c-html="@id"><strong>Hatta Mountain Escape:</strong> Scenic dam viewpoints with optional kayaking, Heritage Village, Wadi Hub activity zone, and Hatta Hill Park. 4×4 recommended. Weather and road conditions may shift the order for safety.</p>
     </div>
 
     <div class="text-card">
-      <h2>Terms & Conditions (City Tours)</h2>
-      <p><strong>Pricing & Seating:</strong> Rates are per car (7-seater, up to 6 guests). Overtime AED 75/h. Remote pickups (Jebel Ali/DWC/Sharjah border) may incur a small surcharge. Fixed starts help avoid peak traffic; custom times on request.</p>
-      <p><strong>Inclusions:</strong> Private vehicle with an English-speaking driver, Old Dubai walking (~2h) with a licensed guide on Dubai routes, abra tickets (Dubai routes), bottled water, Salik tolls, and official parking fees.</p>
-      <p><strong>Exclusions:</strong> Attraction tickets and meals unless stated; optional activity fees (e.g., kayaking, observatories); licensed full-day guide add-on; peak/event supplements; gratuities; personal travel insurance.</p>
-      <p><strong>Child Seats & Safety:</strong> UAE law requires age-appropriate child/booster seats. Please request seats at booking; each child must occupy a seat. No eating/drinking/smoking inside vehicles.</p>
-      <p><strong>Abu Dhabi Grand Mosque:</strong> Ladies must cover hair, shoulders, and legs; men must wear long trousers. Security is strict; non-compliant attire may be refused entry. Friday visitor hours are limited.</p>
-      <p><strong>Ramadan & Peak Periods:</strong> Entertainment at desert camps pauses; alcohol service is restricted; attraction hours may change. New Year’s Eve and major events can carry mandatory supplements and road closures.</p>
-      <p><strong>Amendment & Cancellation:</strong> ≥24h free change/cancel; 12–24h 50%; &lt;12h or no-show 100%. Non-refundable tickets follow supplier policy. For force-majeure (sandstorm/heavy rain/closures), we reschedule first; if not possible, only unrecoverable costs apply.</p>
+      <h2 id="cityS2Title" data-c="@id">Terms & Conditions (City Tours)</h2>
+      <p id="cityS2P1" data-c-html="@id"><strong>Pricing & Seating:</strong> Rates are per car (7-seater, up to 6 guests). Overtime AED 75/h. Remote pickups (Jebel Ali/DWC/Sharjah border) may incur a small surcharge. Fixed starts help avoid peak traffic; custom times on request.</p>
+      <p id="cityS2P2" data-c-html="@id"><strong>Inclusions:</strong> Private vehicle with an English-speaking driver, Old Dubai walking (~2h) with a licensed guide on Dubai routes, abra tickets (Dubai routes), bottled water, Salik tolls, and official parking fees.</p>
+      <p id="cityS2P3" data-c-html="@id"><strong>Exclusions:</strong> Attraction tickets and meals unless stated; optional activity fees (e.g., kayaking, observatories); licensed full-day guide add-on; peak/event supplements; gratuities; personal travel insurance.</p>
+      <p id="cityS2P4" data-c-html="@id"><strong>Child Seats & Safety:</strong> UAE law requires age-appropriate child/booster seats. Please request seats at booking; each child must occupy a seat. No eating/drinking/smoking inside vehicles.</p>
+      <p id="cityS2P5" data-c-html="@id"><strong>Abu Dhabi Grand Mosque:</strong> Ladies must cover hair, shoulders, and legs; men must wear long trousers. Security is strict; non-compliant attire may be refused entry. Friday visitor hours are limited.</p>
+      <p id="cityS2P6" data-c-html="@id"><strong>Ramadan & Peak Periods:</strong> Entertainment at desert camps pauses; alcohol service is restricted; attraction hours may change. New Year’s Eve and major events can carry mandatory supplements and road closures.</p>
+      <p id="cityS2P7" data-c-html="@id"><strong>Amendment & Cancellation:</strong> ≥24h free change/cancel; 12–24h 50%; &lt;12h or no-show 100%. Non-refundable tickets follow supplier policy. For force-majeure (sandstorm/heavy rain/closures), we reschedule first; if not possible, only unrecoverable costs apply.</p>
     </div>
 
     <div class="text-card">
-      <h2>WanderWonderWorld City Tour Services</h2>
-      <p>
+      <h2 id="cityS3Title" data-c="@id">WanderWonderWorld City Tour Services</h2>
+      <p id="cityS3P1" data-c-html="@id">
         We run heat-smart itineraries, include Old Dubai walking + abra as standard on Dubai routes,
         and keep add-ons transparent. WhatsApp concierge (08:00–22:00), verified drivers and vehicles,
         clean and safe stops, child seats on request, and one complimentary re-schedule (≥24h) make
@@ -280,7 +347,7 @@ export default {
       this.showEmailToast = true;
       clearTimeout(this.toastTimer);
       this.toastTimer = setTimeout(() => {
-        this.showEmailToast = false;
+               this.showEmailToast = false;
       }, 3000);
     },
     openWhatsappModal() {

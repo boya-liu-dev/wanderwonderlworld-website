@@ -2,42 +2,75 @@
   <div class="details-page">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="Desert Safari Banner" class="banner" />
+      <img
+        src="@/assets/images/banner7.jpg"
+        alt="Desert Safari Banner"
+        class="banner"
+        id="safariRegBanner"
+        data-c-src="@id"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="Gold Logo" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="Text Logo" class="logo-text" />
+        <img
+          src="@/assets/images/logo-www-gold.png"
+          alt="Gold Logo"
+          class="logo"
+          id="safariRegLogoGold"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="@/assets/images/logo-text.png"
+          alt="Text Logo"
+          class="logo-text"
+          id="safariRegLogoText"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="intro">
-      <h1>Morning Dunes Drive & Sunset Dunes Select</h1>
-      <p>
+      <h1 id="safariRegH1" data-c="@id">Morning Dunes Drive & Sunset Dunes Select</h1>
+      <p id="safariRegIntro" data-c="@id">
         Private 4×4 desert safaris operated by licensed drivers and commercially insured vehicles.
         Choose a gentle morning adventure or our most popular sunset experience with dinner & shows.
         Optional add-ons like ATV (150cc) and 2-seater dune buggy are available—booked at licensed centers.
       </p>
     </div>
 
-    <!-- 左侧悬浮 WhatsApp（与其他页面一致） -->
+    <!-- 左侧悬浮 WhatsApp -->
     <div class="whatsapp-wrapper">
       <a
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20desert%20safari."
         class="whatsapp-button hover-reveal"
+        aria-label="Chat on WhatsApp about Desert Safari"
+        id="safariRegWAFloat"
+        data-c="@id"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="safariRegWAIcon"
+          data-c-src="@id"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="whatsapp-text" id="safariRegWAText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- 4 CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <!-- 改为直接打开购物车 -->
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="safariRegCtaEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="safariRegCtaWA" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="safariRegCtaWeChat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="safariRegCtaCart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
@@ -49,66 +82,101 @@
     </div>
 
     <!-- QR Modals -->
-    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog" aria-labelledby="safariRegWAModalH2">
       <div class="qr-modal-box">
+        <h2 id="safariRegWAModalH2" class="sr-only" aria-hidden="true">WhatsApp QR</h2>
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="safariRegWAQR" data-c-src="@id" loading="lazy" decoding="async" />
       </div>
     </div>
-    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog" aria-labelledby="safariRegWeChatModalH2">
       <div class="qr-modal-box">
+        <h2 id="safariRegWeChatModalH2" class="sr-only" aria-hidden="true">WeChat QR</h2>
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="safariRegWeChatQR" data-c-src="@id" loading="lazy" decoding="async" />
       </div>
     </div>
 
-    <!-- Products: one panel (merged) -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <!-- Products -->
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`safariRegProd_${p.id}`"
+    >
+      <h2><span :id="`safariRegTitle_${p.id}`" data-c="@id">{{ p.title }}</span></h2>
+      <p class="blurb"><span :id="`safariRegBlurb_${p.id}`" data-c="@id">{{ p.blurb }}</span></p>
 
       <div class="product-grid">
         <!-- Single merged card -->
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title + ' 4x4'" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title + ' 4×4'"
+            :id="`safariRegImg_${p.id}`"
+            data-c-src="@id"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">from AED {{ p.variantA.price }}</span>
+              <span class="badge" :id="`safariRegBadge_${p.id}`" data-c="@id">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`safariRegPrice_${p.id}`">from AED {{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.variantA.points" :key="i">
+                <span :id="`safariRegPoint_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
 
-            <!-- 新增：Add to Cart（白字红底） -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
+            <!-- Add to Cart -->
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`safariRegAdd_${p.id}`"
+              data-c="@id"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>Itinerary</h3>
+        <h3 :id="`safariRegItH3_${p.id}`" data-c="@id">Itinerary</h3>
         <ul>
           <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
-            {{ step }}
+            <span :id="`safariRegIt_${p.id}_${sIdx}`" data-c="@id">{{ step }}</span>
           </li>
         </ul>
-        <p class="it-note">Timing and route may adjust due to traffic, weather or park regulations.</p>
+        <p class="it-note" :id="`safariRegItNote_${p.id}`" data-c="@id">
+          Timing and route may adjust due to traffic, weather or park regulations.
+        </p>
       </div>
 
-      <!-- What’s included / Good to know / Add-ons 引导 -->
+      <!-- What’s included / Good to know / Add-ons CTA -->
       <div class="rules">
-        <h3>What’s included</h3>
+        <h3 :id="`safariRegIncH3_${p.id}`" data-c="@id">What’s included</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">
+            <span :id="`safariRegInc_${p.id}_${idx}`" data-c="@id">{{ i }}</span>
+          </li>
         </ul>
-        <h3>Good to know</h3>
+        <h3 :id="`safariRegNoteH3_${p.id}`" data-c="@id">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">
+            <span :id="`safariRegNote_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
         <div class="addons-cta">
-          <router-link to="/safari/addon" class="btn">
+          <router-link
+            to="/safari/addon"
+            class="btn"
+            id="safariRegAddonsBtn"
+            data-c="@id"
+            aria-label="View Desert Safari add-ons like ATV, Buggy, Photography and Shisha/Drinks"
+          >
             See Add-ons (ATV 150cc, Buggy 2-Seater, Photography, Shisha/Drinks)
           </router-link>
         </div>
@@ -117,29 +185,58 @@
 
     <!-- Policy / Terms block -->
     <div class="text-card">
-      <h2>Service Policy & Insurance Summary</h2>
+      <h2 id="safariRegPolicyH2" data-c="@id">Service Policy & Insurance Summary</h2>
       <ul class="policy">
-        <li>Private 4×4 with licensed desert driver; vehicles are covered by commercial motor insurance (at least third-party liability). Personal travel insurance is recommended.</li>
-        <li>Pick-up window: please allow ±15 minutes from the advised time for routing/traffic. Drivers may adjust order of stops to avoid congestion.</li>
-        <li>Health & safety: dune bashing is not recommended for pregnant guests, guests with serious heart/neck/back conditions, or infants. Child seats are mandatory for under-4s (pre-book).</li>
-        <li>Ramadan & religious holidays: live shows and alcohol service are restricted or not available per UAE regulations.</li>
-        <li>Alcohol & Shisha: only at licensed camps; age restrictions apply. For Shisha/Drinks pricing, please contact us.</li>
-        <li>ATV/Buggy add-ons operate at licensed third-party centers with their own safety rules and insurance; helmets are mandatory and age/height limits apply.</li>
-        <li>Free cancellation policy: as per confirmation. Late cancellation/no-show may incur up to 100% charge depending on the case.</li>
-        <li>Weather & force majeure: in sandstorm/heavy rain, itinerary may shift to lighter activities, reschedule priority applies; partial refund if services cannot be rendered.</li>
+        <li id="safariRegPol1" data-c="@id">
+          Private 4×4 with licensed desert driver; vehicles are covered by commercial motor insurance (at least third-party liability). Personal travel insurance is recommended.
+        </li>
+        <li id="safariRegPol2" data-c="@id">
+          Pick-up window: please allow ±15 minutes from the advised time for routing/traffic. Drivers may adjust order of stops to avoid congestion.
+        </li>
+        <li id="safariRegPol3" data-c="@id">
+          Health & safety: dune bashing is not recommended for pregnant guests, guests with serious heart/neck/back conditions, or infants. Child seats are mandatory for under-4s (pre-book).
+        </li>
+        <li id="safariRegPol4" data-c="@id">
+          Ramadan & religious holidays: live shows and alcohol service are restricted or not available per UAE regulations.
+        </li>
+        <li id="safariRegPol5" data-c="@id">
+          Alcohol & Shisha: only at licensed camps; age restrictions apply. For Shisha/Drinks pricing, please contact us.
+        </li>
+        <li id="safariRegPol6" data-c="@id">
+          ATV/Buggy add-ons operate at licensed third-party centers with their own safety rules and insurance; helmets are mandatory and age/height limits apply.
+        </li>
+        <li id="safariRegPol7" data-c="@id">
+          Free cancellation policy: as per confirmation. Late cancellation/no-show may incur up to 100% charge depending on the case.
+        </li>
+        <li id="safariRegPol8" data-c="@id">
+          Weather & force majeure: in sandstorm/heavy rain, itinerary may shift to lighter activities, reschedule priority applies; partial refund if services cannot be rendered.
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="safariRegFaqH2" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-        <div class="faq-question" @click="toggleFaq(index)">
+        <button
+          class="faq-question"
+          @click="toggleFaq(index)"
+          :aria-expanded="faq.open.toString()"
+          :aria-controls="`safariRegFaqA_${index}`"
+          :id="`safariRegFaqQ_${index}`"
+          data-c="@id"
+        >
           <span>{{ faq.question }}</span>
-          <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
-        </div>
-        <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <span class="faq-icon" aria-hidden="true">{{ faq.open ? "▲" : "▼" }}</span>
+        </button>
+        <div
+          v-if="faq.open"
+          class="faq-answer"
+          role="region"
+          :id="`safariRegFaqA_${index}`"
+          :aria-labelledby="`safariRegFaqQ_${index}`"
+        >
+          <p :id="`safariRegFaqAText_${index}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
@@ -153,7 +250,7 @@ import imgSunset from '@/assets/images/cars/safaricar2.jpg'
 import whatsappQR from '@/assets/images/WWD-Whatsapp-code.jpg'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
 
-// 引入购物车
+// cart
 import { useWonderCart } from '@/stores/wonderCart'
 
 export default {
@@ -241,7 +338,7 @@ export default {
         }
       ],
 
-      // ====== CTA state ======
+      // CTA / modals
       emailToCopy: 'info@wanderwonderworlddubai.com',
       showEmailToast: false,
       toastTimer: null,
@@ -250,7 +347,7 @@ export default {
       whatsappQR,
       wechatQR,
 
-      // ====== FAQs ======
+      // FAQs
       faqs: [
         {
           question: 'Is the safari insured and safe for families?',
@@ -280,7 +377,6 @@ export default {
     }
   },
   computed: {
-    // 获取购物车实例
     cart() {
       return useWonderCart()
     }
@@ -291,7 +387,7 @@ export default {
       this.faqs[index].open = !this.faqs[index].open
     },
 
-    // CTA actions（Email 逻辑保持不变）
+    // CTA actions
     async copyEmail() {
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -320,10 +416,8 @@ export default {
     openWechatModal() { this.showWechatModal = true },
     closeModals() { this.showWhatsappModal = false; this.showWechatModal = false },
 
-    // 改：直接打开购物车
+    // Cart
     bookNow() { this.cart.open() },
-
-    // 新增：加入购物车（仅传产品名）
     addToCart(name) { this.cart.add(name) }
   }
 }
@@ -344,32 +438,15 @@ export default {
 .intro h1 { font-size: 2rem; margin: 0 0 8px; }
 
 /* 左侧悬浮 WhatsApp */
-.whatsapp-wrapper {
-  position: fixed;
-  left: 7px;
-  top: 75%;
-  transform: translateY(-50%);
-  z-index: 9999;
-}
+.whatsapp-wrapper { position: fixed; left: 7px; top: 75%; transform: translateY(-50%); z-index: 9999; }
 .whatsapp-button {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  padding: 1px 15px;
-  border-radius: 100px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  display: flex; align-items: center; background-color: white; padding: 1px 15px;
+  border-radius: 100px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none; transition: all 0.3s ease-in-out;
 }
 .whatsapp-button:hover { transform: scale(1.05); }
 .whatsapp-button img { width: 58px; height: 58px; margin-right: 3px; }
-.hover-reveal .whatsapp-text {
-  max-width: 0; opacity: 0; overflow: hidden;
-  transition: all 0.3s ease-in-out;
-}
-.hover-reveal:hover .whatsapp-text {
-  max-width: 200px; opacity: 1; margin-left: 10px;
-}
+.hover-reveal .whatsapp-text { max-width: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease-in-out; }
+.hover-reveal:hover .whatsapp-text { max-width: 200px; opacity: 1; margin-left: 10px; }
 
 /* CTA row */
 .cta-row-wrapper { max-width: 1000px; margin: 18px auto 6px; padding: 0 20px; }
@@ -399,11 +476,7 @@ export default {
 .product h2 { font-size:1.6rem; margin:0 0 6px; }
 .blurb { color:#555; margin:0 0 14px; }
 
-.product-grid{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
+.product-grid{ display: grid; grid-template-columns: 1fr; gap: 18px; }
 @media (max-width: 820px){ .product-grid{ grid-template-columns:1fr; } }
 
 .product-card{ background:#fff; border:1px solid #e6e6e6; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); }
@@ -416,18 +489,10 @@ export default {
 .bullets{ margin:0; padding-left:18px; color:#444; line-height:1.6; }
 .bullets li{ margin-bottom:6px; }
 
-/* 新增：Add to Cart 按钮（白字红底） */
+/* Add to Cart */
 .btn-addcart{
-  width:100%;
-  height:44px;
-  margin-top:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:hsl(0, 93%, 32%);
-  color:#fff;
-  transition: box-shadow .18s ease, transform .08s ease;
+  width:100%; height:44px; margin-top:12px; border:none; border-radius:10px; font-weight:700; cursor:pointer;
+  background:hsl(0, 93%, 32%); color:#fff; transition: box-shadow .18s ease, transform .08s ease;
 }
 .btn-addcart:hover{ box-shadow:0 8px 16px rgba(0,0,0,.12); }
 .btn-addcart:active{ transform: translateY(1px); }
@@ -437,9 +502,7 @@ export default {
 .rules h3{ margin:8px 0; }
 .rules ul{ margin:0; padding-left:18px; line-height:1.6; }
 .addons-cta{ margin-top:10px; }
-.addons-cta .btn{
-  display:inline-block; background:#c3aa0c; color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600;
-}
+.addons-cta .btn{ display:inline-block; background:#c3aa0c; color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600; }
 
 /* Text card */
 .text-card{ background:#f8f8f8; margin:40px auto; padding:25px; border-radius:8px; max-width:1000px; line-height:1.6; box-shadow:0 2px 8px rgba(0,0,0,.08); }
@@ -449,21 +512,25 @@ export default {
 /* FAQs */
 .faq-card{ background:#f8f8f8; margin:40px auto; padding:25px; border-radius:8px; max-width:1000px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
 .faq-card h2{ margin:0 0 12px; }
-.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; cursor:pointer; }
-.faq-question{ display:flex; justify-content:space-between; font-weight:600; color:#333; }
+.faq-item{ border-bottom:1px solid #ddd; padding:14px 0; }
+.faq-question{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  font-weight:600; color:#333; background:transparent; border:none; padding:0; text-align:left; cursor:pointer;
+}
 .faq-answer{ margin-top:8px; color:#555; }
 .faq-icon{ color:#b01b1b; }
 
-/* ===== Itinerary card ===== */
+/* Itinerary card */
 .itinerary-card{
-  background:#fff;
-  border:1px solid #e6e6e6;
-  border-radius:12px;
-  padding:16px;
-  margin-top:14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  background:#fff; border:1px solid #e6e6e6; border-radius:12px; padding:16px; margin-top:14px; box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 .itinerary-card h3{ margin:6px 0 10px; }
 .itinerary-card ul{ margin:0; padding-left:18px; line-height:1.6; color:#444; }
 .it-note{ margin-top:8px; font-size:.95rem; color:#666; }
+
+/* Screen-reader only helper */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0);
+  white-space:nowrap; border:0;
+}
 </style>

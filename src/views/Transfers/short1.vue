@@ -1,18 +1,36 @@
 <template>
-  <div class="details-page">
+  <div class="details-page" id="tsRoot" data-c="@id">
     <!-- Banner -->
     <div class="banner-container">
-      <img src="@/assets/images/banner7.jpg" alt="接送与包车横幅" class="banner" />
+      <img
+        :src="banner"
+        alt="接送与包车横幅"
+        class="banner"
+        id="tsBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img src="@/assets/images/logo-www-gold.png" alt="金色徽标" class="logo" />
-        <img src="@/assets/images/logo-text.png" alt="文字徽标" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="金色徽标"
+          class="logo"
+          id="tsLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="文字徽标"
+          class="logo-text"
+          id="tsLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Title -->
     <div class="intro">
-      <h1>机场接送 & 半日司导包车</h1>
-      <p>
+      <h1 id="tsTitle" data-c="@id">机场接送 & 半日司导包车</h1>
+      <p id="tsIntro" data-c="@id">
         迪拜专业司导与商业保险车辆，私享出行更安心。可选择快速机场接送，或预订半日（含司导）包车——商务会晤、轻量观光皆宜。
       </p>
     </div>
@@ -22,9 +40,16 @@
       <a
         href="https://wa.me/971589831967?text=你好，万德假日迪拜！我想咨询用车服务。"
         class="whatsapp-button hover-reveal"
+        id="tsWAFloatLink"
+        data-c-href="@id"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp 图标" />
-        <span class="whatsapp-text">需要帮助？立即咨询！</span>
+        <img
+          :src="waIcon"
+          alt="WhatsApp 图标"
+          id="tsWAFloatIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="tsWAFloatText" data-c="@id">需要帮助？立即咨询！</span>
       </a>
     </div>
 
@@ -32,18 +57,29 @@
     <div class="cta-row-wrapper">
       <div class="cta-row">
         <!-- 改成 mailto 直开邮箱 -->
-        <a class="cta-btn cta-gray" :href="'mailto:'+emailToCopy">邮件咨询</a>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp 咨询</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">微信咨询</button>
+        <a
+          class="cta-btn cta-gray"
+          :href="'mailto:'+emailToCopy"
+          id="tsCTAEmail"
+          data-c="@id"
+        >邮件咨询</a>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="tsCTAWhatsApp" data-c="@id">
+          WhatsApp 咨询
+        </button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="tsCTAWechat" data-c="@id">
+          微信咨询
+        </button>
         <!-- 改为直接打开 WonderCart -->
-        <button class="cta-btn cta-red" @click="openCart">万德购物车</button>
+        <button class="cta-btn cta-red" @click="openCart" id="tsCTACart" data-c="@id">
+          万德购物车
+        </button>
       </div>
     </div>
 
     <!-- Toast: email copied（保留不再触发） -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> 已复制到剪贴板</p>
+        <p id="tsToastCopied" data-c-html="@id"><strong>{{ emailToCopy }}</strong> 已复制到剪贴板</p>
       </div>
     </div>
 
@@ -51,37 +87,55 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="关闭" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp 二维码" />
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="tsWhatsAppQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="关闭" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="微信二维码" />
+        <img :src="wechatQR" alt="微信二维码" id="tsWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- Products: two panels (data-driven) -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`ts_${p.id}`"
+      :data-c="'@id'"
+    >
+      <h2 :id="`ts_${p.id}_title`" :data-c="'@id'">{{ p.title }}</h2>
+      <p class="blurb" :id="`ts_${p.id}_blurb`" :data-c="'@id'">{{ p.blurb }}</p>
 
       <div class="product-grid">
         <!-- SUV -->
         <div class="product-card">
-          <img :src="p.suv.image" :alt="p.title + ' SUV'" />
+          <img
+            :src="p.suv.image"
+            :alt="p.title + ' SUV'"
+            :id="`ts_${p.id}_suv_img`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">SUV（4–6人）</span>
-              <span class="price">AED {{ p.suv.price }} 起</span>
+              <span class="badge" :id="`ts_${p.id}_suv_badge`" :data-c="'@id'">SUV（4–6人）</span>
+              <span class="price" :id="`ts_${p.id}_suv_price`" :data-c="'@id'">AED {{ p.suv.price }} 起</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.suv.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.suv.points"
+                :key="i"
+                :id="`ts_${p.id}_suv_point_${i}`"
+                :data-c="'@id'"
+              >{{ b }}</li>
             </ul>
             <!-- 新增：Add to Cart -->
             <button
               class="add-btn"
               @click="addToCart(variantName(p,'suv'), p.id + '-suv')"
+              :id="`ts_${p.id}_suv_add`"
+              :data-c="'@id'"
             >
               加入购物车
             </button>
@@ -90,19 +144,31 @@
 
         <!-- VAN -->
         <div class="product-card">
-          <img :src="p.van.image" :alt="p.title + ' Van'" />
+          <img
+            :src="p.van.image"
+            :alt="p.title + ' Van'"
+            :id="`ts_${p.id}_van_img`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">商务车（7–10人）</span>
-              <span class="price">AED {{ p.van.price }} 起</span>
+              <span class="badge" :id="`ts_${p.id}_van_badge`" :data-c="'@id'">商务车（7–10人）</span>
+              <span class="price" :id="`ts_${p.id}_van_price`" :data-c="'@id'">AED {{ p.van.price }} 起</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.van.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.van.points"
+                :key="i"
+                :id="`ts_${p.id}_van_point_${i}`"
+                :data-c="'@id'"
+              >{{ b }}</li>
             </ul>
             <!-- 新增：Add to Cart -->
             <button
               class="add-btn"
               @click="addToCart(variantName(p,'van'), p.id + '-van')"
+              :id="`ts_${p.id}_van_add`"
+              :data-c="'@id'"
             >
               加入购物车
             </button>
@@ -112,54 +178,87 @@
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>行程样例</h3>
+        <h3 :id="`ts_${p.id}_itTitle`" :data-c="'@id'">行程样例</h3>
         <ul>
-          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+          <li
+            v-for="(step, sIdx) in p.itinerary"
+            :key="'it-'+p.id+'-'+sIdx"
+            :id="`ts_${p.id}_it_${sIdx}`"
+            :data-c="'@id'"
+          >
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">时间与路线均可灵活定制，可按您的计划调整。</p>
+        <p class="it-note" :id="`ts_${p.id}_itNote`" :data-c="'@id'">时间与路线均可灵活定制，可按您的计划调整。</p>
       </div>
 
       <!-- Key rules per product -->
       <div class="rules">
-        <h3>费用包含</h3>
+        <h3 :id="`ts_${p.id}_incTitle`" :data-c="'@id'">费用包含</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li
+            v-for="(i,idx) in p.includes"
+            :key="'inc-'+idx"
+            :id="`ts_${p.id}_inc_${idx}`"
+            :data-c="'@id'"
+          >{{ i }}</li>
         </ul>
-        <h3>预订须知</h3>
+        <h3 :id="`ts_${p.id}_noteTitle`" :data-c="'@id'">预订须知</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li
+            v-for="(n,idx) in p.notes"
+            :key="'note-'+idx"
+            :id="`ts_${p.id}_note_${idx}`"
+            :data-c="'@id'"
+          >{{ n }}</li>
         </ul>
       </div>
     </section>
 
     <!-- Policy / Terms block -->
     <div class="text-card">
-      <h2>服务政策与保险摘要</h2>
+      <h2 id="tsPolicyTitle" data-c="@id">服务政策与保险摘要</h2>
       <ul class="policy">
-        <li>所有车辆与司机均按 RTA/阿联酋法规持证，且购买商业车辆保险（至少含第三者责任险）。建议所有客人另购个人旅行保险。</li>
-        <li>候时政策：机场接机自实际落地起<strong>60分钟</strong>免费等待；酒店/住址接载<strong>15分钟</strong>免费。超时按 30 或 60 分钟为单位计费（依车型/服务而定）。</li>
-        <li>距离与路线：默认点到点服务；额外停靠、绕行或增补接人可能产生附加费用。</li>
-        <li>收费公路/停车：除非报价已含，否则按实际成本计收（跨酋出行常见）。</li>
-        <li>夜间/高峰附加：<strong>22:00–06:00</strong>或节假日/大型活动期间可能加收附加费。</li>
-        <li>可预留儿童安全座椅（需提前告知）。请告知行李数量；超大件需提前说明以匹配合适车型。</li>
-        <li>取消与未到：免费取消时窗以确认单为准。未到或逾期取消视情况最高可收取 100% 费用。</li>
-        <li>司导并非持牌讲解导游；如需持牌导游可另行安排并收取相应费用。</li>
-        <li>车辆损坏/清洁：因乘客疏忽造成的维修或深度清洁费用将据实收取。</li>
+        <li id="tsPolicy_0" data-c="@id">
+          所有车辆与司机均按 RTA/阿联酋法规持证，且购买商业车辆保险（至少含第三者责任险）。建议所有客人另购个人旅行保险。
+        </li>
+        <li id="tsPolicy_1" data-c-html="@id">
+          候时政策：机场接机自实际落地起<strong>60分钟</strong>免费等待；酒店/住址接载<strong>15分钟</strong>免费。超时按 30 或 60 分钟为单位计费（依车型/服务而定）。
+        </li>
+        <li id="tsPolicy_2" data-c="@id">
+          距离与路线：默认点到点服务；额外停靠、绕行或增补接人可能产生附加费用。
+        </li>
+        <li id="tsPolicy_3" data-c="@id">
+          收费公路/停车：除非报价已含，否则按实际成本计收（跨酋出行常见）。
+        </li>
+        <li id="tsPolicy_4" data-c-html="@id">
+          夜间/高峰附加：<strong>22:00–06:00</strong>或节假日/大型活动期间可能加收附加费。
+        </li>
+        <li id="tsPolicy_5" data-c="@id">
+          可预留儿童安全座椅（需提前告知）。请告知行李数量；超大件需提前说明以匹配合适车型。
+        </li>
+        <li id="tsPolicy_6" data-c="@id">
+          取消与未到：免费取消时窗以确认单为准。未到或逾期取消视情况最高可收取 100% 费用。
+        </li>
+        <li id="tsPolicy_7" data-c="@id">
+          司导并非持牌讲解导游；如需持牌导游可另行安排并收取相应费用。
+        </li>
+        <li id="tsPolicy_8" data-c="@id">
+          车辆损坏/清洁：因乘客疏忽造成的维修或深度清洁费用将据实收取。
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>常见问题</h2>
+      <h2 id="tsFAQTitle" data-c="@id">常见问题</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`tsFAQ_q_${index}`" :data-c="'@id'">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`tsFAQ_a_${index}`" :data-c="'@id'">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
@@ -167,6 +266,12 @@
 </template>
 
 <script>
+// brand assets
+import banner from '@/assets/images/banner7.jpg'
+import logoGold from '@/assets/images/logo-www-gold.png'
+import logoText from '@/assets/images/logo-text.png'
+import waIcon from '@/assets/images/whatsapp-icon.png'
+
 // images
 import imgAirportSUV from '@/assets/images/cars/carcard6.jpg'
 import imgAirportVan from '@/assets/images/cars/carcard7.jpg'
@@ -182,6 +287,9 @@ export default {
   name: 'TransferShort',
   data() {
     return {
+      // brand
+      banner, logoGold, logoText, waIcon,
+
       products: [
         {
           id: 'airport',

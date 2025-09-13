@@ -9,7 +9,7 @@ import Cruise from '../views/Cruise.vue'
 import Contact from '../views/Contact.vue'
 import Admin from '../views/Admin.vue'
 
-// ===== 新增：六大中文影子页（保持文件名与你的工程一致）=====
+// ===== 新增：六大中文影子页（=====
 import HomeZh from '../views/Home1.vue'
 import TransfersZh from '../views/Transfers1.vue'
 import PackagesZh from '../views/Packages1.vue'
@@ -17,8 +17,10 @@ import SafariZh from '../views/Safari1.vue'
 import CityZh from '../views/City1.vue'
 import CruiseZh from '../views/Cruise1.vue'
 
+
+
 const routes = [
-  // ===== 原有英文主页面（不改）=====
+  // ===== 原有英文主页面=====
   { path: '/', name: 'Home', component: Home },
   { path: '/transfers', name: 'Transfers', component: Transfers },
   { path: '/packages', name: 'Packages', component: Packages },
@@ -34,9 +36,8 @@ const routes = [
   { path: '/cn/city', name: 'CityZh', component: CityZh },
   { path: '/cn/cruise', name: 'CruiseZh', component: CruiseZh },
 
-  // ===== 其余原有页面与次级页面（不改）=====
+  // ===== 其余原有页面与次级页面=====
   { path: '/contact', name: 'Contact', component: Contact },
-  { path: '/admin', name: 'Admin', component: Admin },
   { path: '/transfers/short', name: 'TransferShort', component: () => import('@/views/transfers/short.vue') },
   { path: '/transfers/long', name: 'TransferLong', component: () => import('@/views/transfers/long.vue') },
   { path: '/safari/regsafari', name: 'SafariReg', component: () => import('@/views/safari/regsafari.vue') },
@@ -57,6 +58,7 @@ const routes = [
   { path: '/safari/upsafari1', name: 'SafariUp1', component: () => import('@/views/safari/upsafari1.vue') },
   { path: '/package/34nights1', name: '34Nights1', component: () => import('@/views/package/34nights1.vue') },
   { path: '/package/56nights1', name: '56Nights1', component: () => import('@/views/package/56nights1.vue') },
+  { path: '/admin', name: 'Admin', component: () => import('@/views/Admin.vue') }
 ]
 
 const router = createRouter({

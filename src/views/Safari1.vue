@@ -2,268 +2,367 @@
   <div class="safari">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="沙漠接送横幅" class="banner" />
+      <img
+        :src="banner"
+        alt="沙漠接送横幅"
+        class="banner"
+        id="safari1Banner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="金色标志" class="logo" />
-        <img :src="logoText" alt="文字标志" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="金色标志"
+          class="logo"
+          id="safari1LogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="文字标志"
+          class="logo-text"
+          id="safari1LogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>迪拜至臻冒险 — 沙漠探险之旅</h1>
-      <p>用最地道的方式邂逅迪拜沙海。我们的精选沙漠行程覆盖清晨的活力越野、黄昏的金色落日，以及过夜营地的文化沉浸。每条线路都具备独特体验，您可按旅行风格自由选择。预订万德假日（WanderWonderWorld），以专业、顺畅且难忘的方式驶向沙丘深处。</p>
+      <h1 id="safari1IntroTitle" data-c="@id">迪拜至臻冒险 — 沙漠探险之旅</h1>
+      <p id="safari1IntroP1" data-c-html="@id">
+        用最地道的方式邂逅迪拜沙海。我们的精选沙漠行程覆盖清晨的活力越野、黄昏的金色落日，以及过夜营地的文化沉浸。每条线路都具备独特体验，您可按旅行风格自由选择。预订万德假日（WanderWonderWorld），以专业、顺畅且难忘的方式驶向沙丘深处。
+      </p>
     </div>
+
     <div class="whatsapp-wrapper">
-  <a
-    href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
-    class="whatsapp-button hover-reveal">
-    <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-    <span class="whatsapp-text">需要帮助？点击咨询！</span>
-  </a>
- </div>
+      <a
+        href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
+        class="whatsapp-button hover-reveal"
+        id="safari1WhatsappLink"
+        data-c-src="@id"
+      >
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="safari1WhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="safari1WhatsappText" data-c="@id">
+          需要帮助？点击咨询！
+        </span>
+      </a>
+    </div>
 
     <!-- Cards with images (4 types of transfer) -->
     <div class="cards-container">
       <CarCard
-  :image="car1"
-  title="晨曦沙丘越野"
-  subtitle="经典系列"
-  tour="早晨私人团"
-  duration="4.5小时"
-  price="AED 500 起"
-  link="/safari/regsafari1"
-/>
-
-<CarCard
-  :image="car2"
-  title="日落沙丘优选"
-  subtitle="臻选系列"
-  tour="日落私人团"
-  duration="6小时"
-  price="AED 700 起"
-  link="/safari/regsafari1"
-/>
-
-<CarCard
-  :image="car3"
-  title="加长版沙丘刺激"
-  subtitle="尊尚系列"
-  tour="加长私人团"
-  duration="7小时"
-  price="AED 1100 起"
-  link="/safari/upsafari1"
-/>
-
-<CarCard
-  :image="car4"
-  title="皇家沙漠过夜营"
-  subtitle="皇室系列"
-  tour="豪华过夜"
-  duration="16小时"
-  price="AED 2000 起"
-  link="/safari/upsafari1"
-
-/>
-    <!-- Add-ons cards (same size / aligned with above) -->
-    <div class="cards-container">
-      <CarCard
-        :image="addon1"
-        title="全地形车（150cc）"
-        subtitle="加选项目"
-        tour="沙漠探险"
-        duration="30分钟"
-        price="AED 140 / 人"
-        link="/safari/addon1"
+        key-id="safari1CardMorning"
+        :image="car1"
+        title="晨曦沙丘越野"
+        subtitle="经典系列"
+        tour="早晨私人团"
+        duration="4.5小时"
+        price="AED 500 起"
+        link="/safari/regsafari1"
       />
 
       <CarCard
-        :image="addon2"
-        title="沙滩车（双座）"
-        subtitle="加选项目"
-        tour="沙漠探险"
-        duration="30分钟"
-        price="AED 420 / 辆"
-        link="/safari/addon1"
+        key-id="safari1CardSunset"
+        :image="car2"
+        title="日落沙丘优选"
+        subtitle="臻选系列"
+        tour="日落私人团"
+        duration="6小时"
+        price="AED 700 起"
+        link="/safari/regsafari1"
       />
 
       <CarCard
-        :image="addon3"
-        title="旅拍摄影套餐"
-        subtitle="加选项目"
-        tour="精修10张 + 全部原片"
-        duration="—"
-        price="AED 150 / 套"
-        link="/safari/addon1"
+        key-id="safari1CardExtended"
+        :image="car3"
+        title="加长版沙丘刺激"
+        subtitle="尊尚系列"
+        tour="加长私人团"
+        duration="7小时"
+        price="AED 1100 起"
+        link="/safari/upsafari1"
       />
 
       <CarCard
-        :image="addon4"
-        title="水烟 / 饮品"
-        subtitle="加选项目"
-        tour="持牌营地可选"
-        duration="—"
-        price="详情咨询"
-        link="/safari/addon1"
+        key-id="safari1CardRoyal"
+        :image="car4"
+        title="皇家沙漠过夜营"
+        subtitle="皇室系列"
+        tour="豪华过夜"
+        duration="16小时"
+        price="AED 2000 起"
+        link="/safari/upsafari1"
       />
+
+      <!-- Add-ons cards (same size / aligned with above) -->
+      <div class="cards-container">
+        <CarCard
+          key-id="safari1AddonATV150"
+          :image="addon1"
+          title="全地形车（150cc）"
+          subtitle="加选项目"
+          tour="沙漠探险"
+          duration="30分钟"
+          price="AED 140 / 人"
+          link="/safari/addon1"
+        />
+
+        <CarCard
+          key-id="safari1AddonBuggy2"
+          :image="addon2"
+          title="沙滩车（双座）"
+          subtitle="加选项目"
+          tour="沙漠探险"
+          duration="30分钟"
+          price="AED 420 / 辆"
+          link="/safari/addon1"
+        />
+
+        <CarCard
+          key-id="safari1AddonPhoto"
+          :image="addon3"
+          title="旅拍摄影套餐"
+          subtitle="加选项目"
+          tour="精修10张 + 全部原片"
+          duration="—"
+          price="AED 150 / 套"
+          link="/safari/addon1"
+        />
+
+        <CarCard
+          key-id="safari1AddonShisha"
+          :image="addon4"
+          title="水烟 / 饮品"
+          subtitle="加选项目"
+          tour="持牌营地可选"
+          duration="—"
+          price="详情咨询"
+          link="/safari/addon1"
+        />
+      </div>
     </div>
 
-
-    </div>
-        <!-- 产品列表 Text Card -->
+    <!-- 产品列表 Text Card -->
     <div class="text-card">
-      <h2>迪拜沙漠探险价目表</h2>
+      <h2 id="safari1PriceTitle" data-c="@id">迪拜沙漠探险价目表</h2>
       <table class="price-table">
         <thead>
           <tr>
-            <th>沙漠项目</th>
-            <th>时间/时长</th>
-            <th>价格</th>
+            <th id="safari1PriceThProject" data-c="@id">沙漠项目</th>
+            <th id="safari1PriceThTime" data-c="@id">时间/时长</th>
+            <th id="safari1PriceThPrice" data-c="@id">价格</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>晨曦沙丘越野｜经典系列</td>
-            <td>08:00 – 12:30</td>
-            <td><strong style="color:#b01b1b;">AED 500</strong></td>
-          </tr>
-          
-          <tr>
-            <td>日落沙丘优选｜臻选系列</td>
-            <td>15:00 – 21:00</td>
-            <td><strong style="color:#b01b1b;">AED 700</strong></td>
-          </tr>
-
-          <tr>
-            <td>加长版沙丘刺激｜尊尚系列</td>
-            <td>14:00 – 21:00</td>
-            <td><strong style="color:#b01b1b;">AED 1100</strong></td>
+            <td id="safari1PriceMorningTitle" data-c="@id">晨曦沙丘越野｜经典系列</td>
+            <td id="safari1PriceMorningTime" data-c="@id">08:00 – 12:30</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceMorning"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 500</strong>
+            </td>
           </tr>
 
           <tr>
-            <td>皇家沙漠过夜营｜皇室系列</td>
-            <td>15:00 – 09:00（+1 天）</td>
-            <td><strong style="color:#b01b1b;">AED 2000</strong></td>
-          </tr>
-          <tr>
-            <td>加选 全地形车（150cc）</td>
-            <td>30min</td>
-            <td><strong style="color:#b01b1b;">AED 140</strong></td>
+            <td id="safari1PriceSunsetTitle" data-c="@id">日落沙丘优选｜臻选系列</td>
+            <td id="safari1PriceSunsetTime" data-c="@id">15:00 – 21:00</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceSunset"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 700</strong>
+            </td>
           </tr>
 
           <tr>
-            <td>加选 沙滩车（双座）</td>
-            <td>30min</td>
-            <td><strong style="color:#b01b1b;">AED 420</strong></td>
+            <td id="safari1PriceExtendedTitle" data-c="@id">加长版沙丘刺激｜尊尚系列</td>
+            <td id="safari1PriceExtendedTime" data-c="@id">14:00 – 21:00</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceExtended"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 1100</strong>
+            </td>
           </tr>
+
           <tr>
-            <td>加选 旅拍摄影套餐</td>
-            <td>——</td>
-            <td><strong style="color:#b01b1b;">AED 150</strong></td>
+            <td id="safari1PriceRoyalTitle" data-c="@id">皇家沙漠过夜营｜皇室系列</td>
+            <td id="safari1PriceRoyalTime" data-c="@id">15:00 – 09:00（+1 天）</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceRoyal"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 2000</strong>
+            </td>
           </tr>
+
           <tr>
-            <td>水烟 / 酒精饮品</td>
-            <td>——</td>
-            <td><strong style="color:#b01b1b;">详见菜单</strong></td>
+            <td id="safari1PriceAddonATVTitle" data-c="@id">加选 全地形车（150cc）</td>
+            <td id="safari1PriceAddonATVTime" data-c="@id">30min</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceAddonATV"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 140</strong>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="safari1PriceAddonBuggyTitle" data-c="@id">加选 沙滩车（双座）</td>
+            <td id="safari1PriceAddonBuggyTime" data-c="@id">30min</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceAddonBuggy"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 420</strong>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="safari1PriceAddonPhotoTitle" data-c="@id">加选 旅拍摄影套餐</td>
+            <td id="safari1PriceAddonPhotoTime" data-c="@id">——</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceAddonPhoto"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 150</strong>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="safari1PriceAddonShishaTitle" data-c="@id">水烟 / 酒精饮品</td>
+            <td id="safari1PriceAddonShishaTime" data-c="@id">——</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safari1PriceAddonShisha"
+                data-c="@id"
+              >详见菜单</strong>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <!-- 4 CTA buttons -->
-<div class="cta-row-wrapper">
-  <div class="cta-row">
-    <!-- 1. Email us（灰色） -->
-    <button class="cta-btn cta-gray" @click="copyEmail">
-      邮件联系我们
-    </button>
+    <div class="cta-row-wrapper">
+      <div class="cta-row">
+        <button class="cta-btn cta-gray" @click="copyEmail" id="safari1CTAEmail" data-c="@id">
+          邮件联系我们
+        </button>
 
-    <!-- 2. WhatsApp us（弹窗显示二维码） -->
-    <button class="cta-btn cta-green" @click="openWhatsappModal">
-      WhatsApp 联系我们
-    </button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="safari1CTAWhatsApp" data-c="@id">
+          WhatsApp 联系我们
+        </button>
 
-    <!-- 3. 微信扫一扫（弹窗显示二维码） -->
-    <button class="cta-btn cta-green" @click="openWechatModal">
-      微信联系我们
-    </button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="safari1CTAWechat" data-c="@id">
+          微信联系我们
+        </button>
 
-    <!-- 4. Book now（跳转 contact） -->
-    <button class="cta-btn cta-red" @click="bookNow">
-      万德购物车
-    </button>
-  </div>
-</div>
+        <button class="cta-btn cta-red" @click="bookNow" id="safari1CTACart" data-c="@id">
+          万德购物车
+        </button>
+      </div>
+    </div>
 
-<!-- Email 复制成功的居中提示（3秒自动消失） -->
-<div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
-  <div class="center-toast-box">
-    <p><strong>info@wanderwonderworlddubai.com</strong> 已复制到您的剪贴板</p>
-  </div>
-</div>
+    <!-- Email 复制成功的居中提示 -->
+    <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
+      <div class="center-toast-box">
+        <p id="safari1EmailCopiedText" data-c-html="@id">
+          <strong>info@wanderwonderworlddubai.com</strong> 已复制到您的剪贴板
+        </p>
+      </div>
+    </div>
 
-<!-- WhatsApp 二维码弹窗（右上角X关闭） -->
-<div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
-  <div class="qr-modal-box">
-    <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-    <img :src="whatsappQR" alt="WhatsApp 二维码" />
-  </div>
-</div>
+    <!-- WhatsApp 二维码弹窗（右上角X关闭） -->
+    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+      <div class="qr-modal-box">
+        <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="safari1WhatsappQR" data-c-src="@id" />
+      </div>
+    </div>
 
-<!-- 微信 二维码弹窗（右上角X关闭） -->
-<div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
-  <div class="qr-modal-box">
-    <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-    <img :src="wechatQR" alt="微信二维码" />
-  </div>
-</div>
-
+    <!-- 微信 二维码弹窗（右上角X关闭） -->
+    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+      <div class="qr-modal-box">
+        <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
+        <img :src="wechatQR" alt="微信二维码" id="safari1WechatQR" data-c-src="@id" />
+      </div>
+    </div>
 
     <!-- Full-width textual cards (no image, no buttons) -->
-     <!-- FAQs Section -->
-<div class="faq-card">
-  <h2>常见问题</h2>
-  <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-    <div class="faq-question" @click="toggleFaq(index)">
-      <span>{{ faq.question }}</span>
-      <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
-    </div>
-    <div v-if="faq.open" class="faq-answer">
-      <p>{{ faq.answer }}</p>
-    </div>
-  </div>
-</div>
-
-    <div class="text-card">
-      <h2>难忘之旅：我们的迪拜沙漠体验</h2>
-      <p>万德假日以安全、舒适且富有激情的方式，带您体验不同层次的沙漠之旅。从清晨温和的金色沙丘穿越到日落时分的越野冲沙，我们将刺激与文化融合。全程配备私人四驱座驾、专业司机兼中文讲解与甄选营地，为亲子、情侣与团队打造高品质、真实而不失高级感的体验。</p>
+    <!-- FAQs Section -->
+    <div class="faq-card">
+      <h2 id="safari1FaqTitle" data-c="@id">常见问题</h2>
+      <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
+        <div class="faq-question" @click="toggleFaq(index)">
+          <span :id="`safari1FaqQ${index+1}`" data-c="@id">{{ faq.question }}</span>
+          <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
+        </div>
+        <div v-if="faq.open" class="faq-answer">
+          <p :id="`safari1FaqA${index+1}`" data-c-html="@id">{{ faq.answer }}</p>
+        </div>
+      </div>
     </div>
 
     <div class="text-card">
-      <h2>定制沙漠行程：私人团可选方案</h2>
-      <p><strong>晨曦沙丘越野 | 经典系列：</strong> 半日行程，适合亲子、长者与短途旅客。清凉早晨冲沙、骆驼骑乘、沙板体验与简易茶点。</p>
-      <p><strong>日落沙丘优选 | 臻选系列：</strong> 人气之选。下午冲沙、日落打卡、骆驼骑乘、营地文化表演与 BBQ 自助晚餐。</p>
-      <p><strong>加长版沙丘刺激 | 尊尚系列：</strong> 为探险控而设。深入沙海的加长冲沙、尊贵营地 VIP 区、升级餐食与限定演出。</p>
-      <p><strong>皇家沙漠过夜营 | 皇室系列：</strong> 终极奢享。高级 SUV 接送，私享冲沙、香槟迎宾（仅限持牌营地）、精致晚宴与豪华帐篷过夜，观星体验并含次日早餐。</p>
+      <h2 id="safari1S1Title" data-c="@id">难忘之旅：我们的迪拜沙漠体验</h2>
+      <p id="safari1S1P1" data-c-html="@id">
+        万德假日以安全、舒适且富有激情的方式，带您体验不同层次的沙漠之旅。从清晨温和的金色沙丘穿越到日落时分的越野冲沙，我们将刺激与文化融合。全程配备私人四驱座驾、专业司机兼中文讲解与甄选营地，为亲子、情侣与团队打造高品质、真实而不失高级感的体验。
+      </p>
     </div>
 
     <div class="text-card">
-      <h2>条款与细则</h2>
-      <p><strong>名额与资源：</strong> 所有行程以车辆、司机与营地当日可用为准，建议提前预订以锁定日期与套餐。</p>
-      <p><strong>车辆与安全：</strong> 行程使用保养良好的四驱车辆；为安全起见，车内禁止饮食与吸烟，请遵循司机指引。</p>
-      <p><strong>取消规则：</strong> 取消需遵循预订政策，费用将依取消时间而定；详细规则以预订时说明为准。</p>
-      <p><strong>未到场政策：</strong> 如未提前通知并未在约定地点集合，可能视为未到场并收取相应费用。</p>
-      <p><strong>超时费用：</strong> 超出原定时间的加时将按车型与预订时长计费。</p>
-      <p><strong>旺季附加：</strong> 旺季或节假日可能产生附加费，确认前会明确告知。</p>
-      <p><strong>安全提示：</strong> 冲沙等活动请遵从司机指示；携带儿童与长者请提前告知，以便推荐合适行程；可按需提供儿童座椅。</p>
-      <p><strong>加选项目与酒水：</strong> 全地形车/沙滩车、旅拍、水烟等可提前预订；含酒精饮品仅在持牌营地供应并遵守阿联酋法规。</p>
-      <p><strong>导游说明：</strong> 司机并非持证导游；如需持证中文导游，可按需另行安排并收取费用。</p>
+      <h2 id="safari1S2Title" data-c="@id">定制沙漠行程：私人团可选方案</h2>
+      <p id="safari1S2P1" data-c-html="@id"><strong>晨曦沙丘越野 | 经典系列：</strong> 半日行程，适合亲子、长者与短途旅客。清凉早晨冲沙、骆驼骑乘、沙板体验与简易茶点。</p>
+      <p id="safari1S2P2" data-c-html="@id"><strong>日落沙丘优选 | 臻选系列：</strong> 人气之选。下午冲沙、日落打卡、骆驼骑乘、营地文化表演与 BBQ 自助晚餐。</p>
+      <p id="safari1S2P3" data-c-html="@id"><strong>加长版沙丘刺激 | 尊尚系列：</strong> 为探险控而设。深入沙海的加长冲沙、尊贵营地 VIP 区、升级餐食与限定演出。</p>
+      <p id="safari1S2P4" data-c-html="@id"><strong>皇家沙漠过夜营 | 皇室系列：</strong> 终极奢享。高级 SUV 接送，私享冲沙、香槟迎宾（仅限持牌营地）、精致晚宴与豪华帐篷过夜，观星体验并含次日早餐。</p>
     </div>
 
     <div class="text-card">
-      <h2>万德假日 · 沙漠探险服务</h2>
-      <p>我们提供从刺激冲沙到奢华过夜的全系沙漠产品，兼顾安全、文化与服务品质。无论初访或高端定制，我们的方案均以国际标准执行，可靠专业。</p>
-      <p>行程覆盖早晨、傍晚、加长与皇室过夜等多种选择；均配备现代四驱车辆与持证、经验丰富的司机团队，放心与尽兴并重。针对家庭、情侣、团队或企业团建，我们可为您定制专属线路与时间表。</p>
+      <h2 id="safari1S3Title" data-c="@id">条款与细则</h2>
+      <p id="safari1S3P1" data-c-html="@id"><strong>名额与资源：</strong> 所有行程以车辆、司机与营地当日可用为准，建议提前预订以锁定日期与套餐。</p>
+      <p id="safari1S3P2" data-c-html="@id"><strong>车辆与安全：</strong> 行程使用保养良好的四驱车辆；为安全起见，车内禁止饮食与吸烟，请遵循司机指引。</p>
+      <p id="safari1S3P3" data-c-html="@id"><strong>取消规则：</strong> 取消需遵循预订政策，费用将依取消时间而定；详细规则以预订时说明为准。</p>
+      <p id="safari1S3P4" data-c-html="@id"><strong>未到场政策：</strong> 如未提前通知并未在约定地点集合，可能视为未到场并收取相应费用。</p>
+      <p id="safari1S3P5" data-c-html="@id"><strong>超时费用：</strong> 超出原定时间的加时将按车型与预订时长计费。</p>
+      <p id="safari1S3P6" data-c-html="@id"><strong>旺季附加：</strong> 旺季或节假日可能产生附加费，确认前会明确告知。</p>
+      <p id="safari1S3P7" data-c-html="@id"><strong>安全提示：</strong> 冲沙等活动请遵从司机指示；携带儿童与长者请提前告知，以便推荐合适行程；可按需提供儿童座椅。</p>
+      <p id="safari1S3P8" data-c-html="@id"><strong>加选项目与酒水：</strong> 全地形车/沙滩车、旅拍、水烟等可提前预订；含酒精饮品仅在持牌营地供应并遵守阿联酋法规。</p>
+      <p id="safari1S3P9" data-c-html="@id"><strong>导游说明：</strong> 司机并非持证导游；如需持证中文导游，可按需另行安排并收取费用。</p>
+    </div>
+
+    <div class="text-card">
+      <h2 id="safari1S4Title" data-c="@id">万德假日 · 沙漠探险服务</h2>
+      <p id="safari1S4P1" data-c-html="@id">
+        我们提供从刺激冲沙到奢华过夜的全系沙漠产品，兼顾安全、文化与服务品质。无论初访或高端定制，我们的方案均以国际标准执行，可靠专业。
+      </p>
+      <p id="safari1S4P2" data-c-html="@id">
+        行程覆盖早晨、傍晚、加长与皇室过夜等多种选择；均配备现代四驱车辆与持证、经验丰富的司机团队，放心与尽兴并重。针对家庭、情侣、团队或企业团建，我们可为您定制专属线路与时间表。
+      </p>
     </div>
   </div>
 </template>
@@ -285,7 +384,6 @@ import addon2 from '@/assets/images/cars/addon2.jpg'
 import addon3 from '@/assets/images/cars/addon3.jpg'
 import addon4 from '@/assets/images/cars/addon4.jpg'
 import { useWonderCart } from '@/stores/wonderCart'
-
 
 export default {
   name: 'Safari',
@@ -325,13 +423,13 @@ export default {
           open: false
         }
       ],
-     showEmailToast: false,
-     showWhatsappModal: false,
-     showWechatModal: false,
-     whatsappQR,
-     wechatQR,
-     emailToCopy: 'info@wanderwonderworlddubai.com',
-     toastTimer: null
+      showEmailToast: false,
+      showWhatsappModal: false,
+      showWechatModal: false,
+      whatsappQR,
+      wechatQR,
+      emailToCopy: 'info@wanderwonderworlddubai.com',
+      toastTimer: null
     }
   },
   methods: {
@@ -339,50 +437,49 @@ export default {
       this.faqs[index].open = !this.faqs[index].open
     },
     async copyEmail() {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(this.emailToCopy);
-      } else {
-        // fallback
-        const ta = document.createElement('textarea');
-        ta.value = this.emailToCopy;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(this.emailToCopy);
+        } else {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = this.emailToCopy;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        this.showToast();
+      } catch (e) {
+        this.showToast(); // 即使失败也给提示
       }
-      this.showToast();
-    } catch (e) {
-      this.showToast(); // 即使失败也给提示
+    },
+
+    showToast() {
+      this.showEmailToast = true;
+      clearTimeout(this.toastTimer);
+      this.toastTimer = setTimeout(() => {
+        this.showEmailToast = false;
+      }, 3000); // 3秒关闭
+    },
+
+    openWhatsappModal() {
+      this.showWhatsappModal = true;
+    },
+    openWechatModal() {
+      this.showWechatModal = true;
+    },
+    closeModals() {
+      this.showWhatsappModal = false;
+      this.showWechatModal = false;
+    },
+
+    bookNow() {
+      useWonderCart().open();
     }
-  },
-
-  showToast() {
-    this.showEmailToast = true;
-    clearTimeout(this.toastTimer);
-    this.toastTimer = setTimeout(() => {
-      this.showEmailToast = false;
-    }, 3000); // 3秒关闭
-  },
-
-  openWhatsappModal() {
-    this.showWhatsappModal = true;
-  },
-  openWechatModal() {
-    this.showWechatModal = true;
-  },
-  closeModals() {
-    this.showWhatsappModal = false;
-    this.showWechatModal = false;
-  },
-
-  bookNow() {
-     useWonderCart().open();
-  }
-
   }
 }
 </script>

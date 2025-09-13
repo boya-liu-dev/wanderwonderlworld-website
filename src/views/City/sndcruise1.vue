@@ -2,17 +2,35 @@
   <div class="packages-56n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="游船套餐横幅" class="banner" />
+      <img
+        :src="banner"
+        alt="游船套餐横幅"
+        class="banner"
+        id="pkg56ZhBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="金色标志" class="logo" />
-        <img :src="logoText" alt="文字标志" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="金色标志"
+          class="logo"
+          id="pkg56ZhLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="文字标志"
+          class="logo-text"
+          id="pkg56ZhLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>迪拜游船晚宴 — 夜色臻享与品质之选</h1>
-      <p>
+      <h1 id="pkg56ZhIntroTitle" data-c="@id">迪拜游船晚宴 — 夜色臻享与品质之选</h1>
+      <p id="pkg56ZhIntroP1" data-c-html="@id">
         提供四条经典夜游航线可选：迪拜溪传统木船、Marina 码头天际线、迪拜水运玻璃游船，以及
         Lotus 超级游艇。价格透明（仅票/可选私接送），并可升级上层甲板/靠窗桌/VIP 休息区。
         可按需提供素食/耆那教餐；演出在法律允许日期进行。电子确认单含登船码头地图与 24/7
@@ -26,25 +44,30 @@
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20dhow%20cruises."
         class="whatsapp-button hover-reveal"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">需要帮助？点击咨询！</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="pkg56ZhWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="pkg56ZhWhatsappText" data-c="@id">需要帮助？点击咨询！</span>
       </a>
     </div>
 
     <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">邮件联系我们</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp 联系我们</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">微信联系我们</button>
-        <button class="cta-btn cta-red" @click="bookNow">万德购物车</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="pkg56ZhCTAEmail" data-c="@id">邮件联系我们</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="pkg56ZhCTAWhatsApp" data-c="@id">WhatsApp 联系我们</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="pkg56ZhCTAWechat" data-c="@id">微信联系我们</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="pkg56ZhCTACart" data-c="@id">万德购物车</button>
       </div>
     </div>
 
     <!-- Toast -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> 已复制到您的剪贴板</p>
+        <p id="pkg56ZhEmailCopiedText" data-c-html="@id"><strong>{{ emailToCopy }}</strong> 已复制到您的剪贴板</p>
       </div>
     </div>
 
@@ -52,87 +75,125 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp 二维码" />
+        <img :src="whatsappQR" alt="WhatsApp 二维码" id="pkg56ZhWhatsappQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="微信二维码" />
+        <img :src="wechatQR" alt="微信二维码" id="pkg56ZhWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== Packages (4 sections) ===== -->
     <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+      <h2 :id="`pkg56Zh_${p.id}Title`" :data-c="'@id'">{{ p.title }}</h2>
+      <p class="blurb" :id="`pkg56Zh_${p.id}Blurb`" :data-c-html="'@id'">{{ p.blurb }}</p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`pkg56Zh_${p.id}Image`"
+            :data-c-src="'@id'"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`pkg56Zh_${p.id}Badge`" :data-c="'@id'">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`pkg56Zh_${p.id}Price`" :data-c="'@id'">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li
+                v-for="(b,i) in p.variantA.points"
+                :key="i"
+                :id="`pkg56Zh_${p.id}Point_${i}`"
+                :data-c="'@id'"
+              >
+                {{ b }}
+              </li>
             </ul>
             <!-- Add to Cart -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">加入万德购物车</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`pkg56Zh_${p.id}AddCart`"
+              :data-c="'@id'"
+            >加入万德购物车</button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>参考行程</h3>
+        <h3 :id="`pkg56Zh_${p.id}ItineraryTitle`" :data-c="'@id'">参考行程</h3>
         <ul>
-          <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
+          <li
+            v-for="(step, sIdx) in p.itinerary"
+            :key="'it-'+p.id+'-'+sIdx"
+            :id="`pkg56Zh_${p.id}It_${sIdx}`"
+            :data-c="'@id'"
+          >
             {{ step }}
           </li>
         </ul>
-        <p class="it-note">时间可能因海事管制、景点时段与季节活动而调整。</p>
+        <p class="it-note" :id="`pkg56Zh_${p.id}ItNote`" :data-c="'@id'">
+          时间可能因海事管制、景点时段与季节活动而调整。
+        </p>
       </div>
 
       <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>费用包含</h3>
+        <h3 :id="`pkg56Zh_${p.id}IncTitle`" :data-c="'@id'">费用包含</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li
+            v-for="(i,idx) in p.includes"
+            :key="'inc-'+idx"
+            :id="`pkg56Zh_${p.id}Inc_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ i }}
+          </li>
         </ul>
-        <h3>预订须知</h3>
+        <h3 :id="`pkg56Zh_${p.id}NoteTitle`" :data-c="'@id'">预订须知</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li
+            v-for="(n,idx) in p.notes"
+            :key="'note-'+idx"
+            :id="`pkg56Zh_${p.id}Note_${idx}`"
+            :data-c="'@id'"
+          >
+            {{ n }}
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Global Policy / Terms -->
     <div class="text-card">
-      <h2>价格与预订政策</h2>
+      <h2 id="pkg56ZhPolicyTitle" data-c="@id">价格与预订政策</h2>
       <ul class="policy">
-        <li>仅票为按人计价。婴儿 0–2 免费（不占座/床）。儿童 3–10 按儿童价；11 岁及以上按成人价。</li>
-        <li>迪拜溪/码头/水道：20:00 登船，20:30 开航（约 90–120 分）。Lotus：19:00 报到，19:30–22:30 航行。</li>
-        <li>可选迪拜市区往返私接：轿车 1–4 人 AED 180 · MPV 5–7 人 AED 220 · Van 10–14 人 AED 350。Jebel Ali/JVC/DIP +AED 40–60；沙迦出发 +AED 100。儿童座椅可免费提供（数量有限；依法必须）。</li>
-        <li>演出在允许日期进行；斋月及官方禁酒日表演暂停且不供应酒精。</li>
-        <li>座位先到先得或由船方分配。付费升级保证区域（上层/靠窗/VIP），不承诺具体桌号。</li>
-        <li>改期/取消：溪/码头/水道 ≥24h 免费；12–24h 50%；&lt;12h 或未到场 100%。Lotus/VIP ≥48h 免费；24–48h 50%；&lt;24h 100%。跨年等活动夜条款更严格并附加费用。</li>
-        <li>天气/航线：海事交通、风力或临时封航可能改变航线/靠泊。若运营方取消，可改期或全退；若调整航线仍开航，则不退费。</li>
-        <li>所有船只受 DMCA/RTA 监管并配备救生衣与专业船员；接送车辆已投保且由 RTA 持证司机驾驶。</li>
+        <li id="pkg56ZhPolicy_0" data-c="@id">仅票为按人计价。婴儿 0–2 免费（不占座/床）。儿童 3–10 按儿童价；11 岁及以上按成人价。</li>
+        <li id="pkg56ZhPolicy_1" data-c="@id">迪拜溪/码头/水道：20:00 登船，20:30 开航（约 90–120 分）。Lotus：19:00 报到，19:30–22:30 航行。</li>
+        <li id="pkg56ZhPolicy_2" data-c="@id">可选迪拜市区往返私接：轿车 1–4 人 AED 180 · MPV 5–7 人 AED 220 · Van 10–14 人 AED 350。Jebel Ali/JVC/DIP +AED 40–60；沙迦出发 +AED 100。儿童座椅可免费提供（数量有限；依法必须）。</li>
+        <li id="pkg56ZhPolicy_3" data-c="@id">演出在允许日期进行；斋月及官方禁酒日表演暂停且不供应酒精。</li>
+        <li id="pkg56ZhPolicy_4" data-c="@id">座位先到先得或由船方分配。付费升级保证区域（上层/靠窗/VIP），不承诺具体桌号。</li>
+        <li id="pkg56ZhPolicy_5" data-c="@id">改期/取消：溪/码头/水道 ≥24h 免费；12–24h 50%；&lt;12h 或未到场 100%。Lotus/VIP ≥48h 免费；24–48h 50%；&lt;24h 100%。跨年等活动夜条款更严格并附加费用。</li>
+        <li id="pkg56ZhPolicy_6" data-c="@id">天气/航线：海事交通、风力或临时封航可能改变航线/靠泊。若运营方取消，可改期或全退；若调整航线仍开航，则不退费。</li>
+        <li id="pkg56ZhPolicy_7" data-c="@id">所有船只受 DMCA/RTA 监管并配备救生衣与专业船员；接送车辆已投保且由 RTA 持证司机驾驶。</li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>常见问题</h2>
+      <h2 id="pkg56ZhFaqTitle" data-c="@id">常见问题</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`pkg56ZhFaqQ_${index}`" :data-c="'@id'">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`pkg56ZhFaqA_${index}`" :data-c="'@id'">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

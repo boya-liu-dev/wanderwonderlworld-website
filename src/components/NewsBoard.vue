@@ -11,7 +11,6 @@
 
     <transition name="nb-fade">
       <div v-show="!collapsed">
-        <!-- 置顶优先显示 -->
         <div
           v-for="item in visible"
           :key="item.id"
@@ -49,14 +48,16 @@
 </template>
 
 <script>
-import news from '@/data/news.json'
+import fallbackNews from '@/data/news.json'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/firebase'
 
 export default {
   name: 'NewsBoard',
   data() {
     return {
-      raw: news,        // [{id,title,body,ctaText,ctaLink,startAt,endAt,pin,variant,priority}]
-      limit: 2,         // 默认先显示 2 条
+      raw: [],              // Firestore 加载到的；失败则用本地
+      limit: 2,
       expanded: false,
       collapsed: JSON.parse(localStorage.getItem('news_collapsed') || 'false')
     }
@@ -69,11 +70,10 @@ export default {
         .filter(n => !this.isDismissed(n.id))
     },
     activeNews() {
-      // 置顶 > priority > 时间新->旧
       return [...this.filtered].sort((a, b) => {
         if ((b.pin?1:0) !== (a.pin?1:0)) return (b.pin?1:0) - (a.pin?1:0)
-        const pa = a.priority ?? 0, pb = b.priority ?? 0
-        if (pb !== pa) return pb - pa
+        const pa = b.priority ?? 0, pb = a.priority ?? 0
+        if (pa !== pb) return pa - pb
         return new Date(b.startAt || 0) - new Date(a.startAt || 0)
       })
     },
@@ -101,13 +101,11 @@ export default {
       try {
         const { until } = JSON.parse(v)
         return until && Date.now() < until
-      } catch {
-        return false
-      }
+      } catch { return false }
     },
     dismiss(id, days = 7) {
       const k = `news_dismiss_${id}`
-      const until = Date.now() + days * 24 * 60 * 60 * 1000
+      const until = Date.now() + days * 86400000
       localStorage.setItem(k, JSON.stringify({ until }))
       const i = this.raw.findIndex(x => x.id === id)
       if (i > -1) this.raw.splice(i, 1)
@@ -115,61 +113,57 @@ export default {
     isInternal(link) {
       return typeof link === 'string' && link.startsWith('/')
     },
-    // 可选：一键恢复所有被隐藏的公告（访问 ?resetNews=1）
-    resetNews() {
-      Object.keys(localStorage)
-        .filter(k => k.startsWith('news_dismiss_'))
-        .forEach(k => localStorage.removeItem(k))
-      this.raw = [...this.raw]
+    normalizeDoc(id, d) {
+      const asDate = (v) => v?.toDate ? v.toDate().toISOString().slice(0,10) : (v || '')
+      return {
+        id,
+        title: d.title || '',
+        body: d.body || '',
+        ctaText: d.ctaText || '',
+        ctaLink: d.ctaLink || '',
+        pin: !!d.pin,
+        variant: d.variant || 'info',
+        priority: Number(d.priority || 0),
+        startAt: asDate(d.startAt),
+        endAt: asDate(d.endAt)
+      }
     }
   },
-  mounted() {
-    if (new URLSearchParams(window.location.search).has('resetNews')) {
-      this.resetNews()
+  async mounted() {
+    try {
+      const snap = await getDocs(collection(db, 'news'))
+      const list = []
+      snap.forEach(doc => list.push(this.normalizeDoc(doc.id, doc.data() || {})))
+      this.raw = list
+      if (!list.length) this.raw = (fallbackNews || []).map((x, i) => ({ id: 'local_'+i, ...x }))
+    } catch(e) {
+      console.warn('news fallback:', e)
+      this.raw = (fallbackNews || []).map((x, i) => ({ id: 'local_'+i, ...x }))
     }
   }
 }
 </script>
 
 <style scoped>
-.news-card{
-  background:#f8f8f8;
-  border-radius:12px;
-  padding:16px;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
-  max-width:1000px;
-  margin:30px auto;
-}
-.news-header{
-  display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;
-}
+.news-card{ background:#f8f8f8; border-radius:12px; padding:16px; box-shadow:0 2px 8px rgba(0,0,0,.08); max-width:1000px; margin:30px auto; }
+.news-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
 .header-actions{ display:flex; gap:8px; align-items:center; }
 .link{ background:none; border:none; color:#1f6feb; cursor:pointer; font-weight:600; }
 
-.news-item{
-  border:1px solid #e6e6e6;
-  border-radius:10px;
-  padding:12px;
-  margin-top:12px;
-  background:#fff;
-}
+.news-item{ border:1px solid #e6e6e6; border-radius:10px; padding:12px; margin-top:12px; background:#fff; }
 .news-item-head{ display:flex; justify-content:space-between; align-items:center; gap:8px; }
 .title{ font-weight:700; display:flex; align-items:center; gap:8px; }
 .badge{ font-size:12px; background:#fde68a; color:#92400e; padding:8px 6px; border-radius:999px; }
-.close-one{ border:none; background:#f2f2f2; width:28px; height: 28px; border-radius:20%; cursor:pointer; }
+.close-one{ border:none; background:#f2f2f2; width:28px; height:28px; border-radius:20%; cursor:pointer; }
 .body{ margin:8px 0 6px; color:#444; line-height:1.55; }
-.actions .btn{
-  display:inline-block; background:#c3aa0c; color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600;
-}
+.actions .btn{ display:inline-block; background:#c3aa0c; color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600; }
 .more{ margin-top:10px; text-align:center; }
 
-/* 颜色语义边框 */
 .v-info   { border-color:#dbeafe; }
 .v-success{ border-color:#dcfce7; }
 .v-warning{ border-color:#fef3c7; }
 .v-danger { border-color:#fee2e2; }
 
-/* 折叠过渡 */
 .nb-fade-enter-active, .nb-fade-leave-active { transition: opacity .18s ease; }
 .nb-fade-enter-from, .nb-fade-leave-to { opacity: 0; }
 </style>

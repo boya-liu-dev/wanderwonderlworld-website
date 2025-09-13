@@ -2,17 +2,35 @@
   <div class="packages-34n">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="city12Banner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="city12LogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="city12LogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai City Tours — Half-Day & Full-Day </h1>
-      <p>
+      <h1 id="city12IntroH1" data-c="@id">Dubai City Tours — Half-Day & Full-Day </h1>
+      <p id="city12IntroP1" data-c="@id">
         Two flexible private tours designed for real Dubai conditions: heat-smart pacing (outdoors AM/evening,
         indoors at noon), an Old Dubai walking segment with an abra ride, and a friendly English-speaking
         driver for smooth logistics all day. A licensed walking guide is included for the Old Dubai segment.
@@ -26,25 +44,33 @@
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I'm%20interested%20in%20your%20city%20tours."
         class="whatsapp-button hover-reveal"
       >
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="city12WhatsIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="city12WhatsText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="city12BtnEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="city12BtnWhats" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="city12BtnWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="city12BtnCart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
     <!-- Toast -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>{{ emailToCopy }}</strong> has been copied to your clipboard</p>
+        <p>
+          <strong>{{ emailToCopy }}</strong>
+          has been copied to your clipboard
+        </p>
       </div>
     </div>
 
@@ -52,86 +78,129 @@
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="city12WhatsQR" data-c-src="@id" />
       </div>
     </div>
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="city12WechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- ===== Products (Half-Day & Full-Day) ===== -->
-    <section v-for="p in products" :key="p.id" class="product">
-      <h2>{{ p.title }}</h2>
-      <p class="blurb">{{ p.blurb }}</p>
+    <section
+      v-for="p in products"
+      :key="p.id"
+      class="product"
+      :id="`city12Prod_${p.id}`"
+    >
+      <h2>
+        <span :id="`city12Title_${p.id}`" data-c="@id">{{ p.title }}</span>
+      </h2>
+      <p class="blurb">
+        <span :id="`city12Blurb_${p.id}`" data-c="@id">{{ p.blurb }}</span>
+      </p>
 
       <div class="product-grid">
         <div class="product-card">
-          <img :src="p.variantA.image" :alt="p.title" />
+          <img
+            :src="p.variantA.image"
+            :alt="p.title"
+            :id="`city12Img_${p.id}`"
+            data-c-src="@id"
+          />
           <div class="pc-body">
             <div class="price-line">
-              <span class="badge">{{ p.variantA.badge }}</span>
-              <span class="price">{{ p.variantA.price }}</span>
+              <span class="badge" :id="`city12Badge_${p.id}`" data-c="@id">{{ p.variantA.badge }}</span>
+              <span class="price" :id="`city12Price_${p.id}`" data-c="@id">{{ p.variantA.price }}</span>
             </div>
             <ul class="bullets">
-              <li v-for="(b,i) in p.variantA.points" :key="i">{{ b }}</li>
+              <li v-for="(b,i) in p.variantA.points" :key="i">
+                <span :id="`city12Point_${p.id}_${i}`" data-c="@id">{{ b }}</span>
+              </li>
             </ul>
             <!-- Add to Cart -->
-            <button class="btn-addcart" @click="addToCart(p.cartName)">Add to Cart</button>
+            <button
+              class="btn-addcart"
+              @click="addToCart(p.cartName)"
+              :id="`city12Add_${p.id}`"
+              data-c="@id"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Itinerary -->
       <div class="itinerary-card">
-        <h3>Sample Itinerary</h3>
+        <h3 :id="`city12ItinTitle_${p.id}`" data-c="@id">Sample Itinerary</h3>
         <ul>
           <li v-for="(step, sIdx) in p.itinerary" :key="'it-'+p.id+'-'+sIdx">
-            {{ step }}
+            <span :id="`city12Itin_${p.id}_${sIdx}`" data-c="@id">{{ step }}</span>
           </li>
         </ul>
-        <p class="it-note">Timing windows can be adjusted to your flight schedule and seasonal conditions.</p>
+        <p class="it-note" :id="`city12ItinNote_${p.id}`" data-c="@id">
+          Timing windows can be adjusted to your flight schedule and seasonal conditions.
+        </p>
       </div>
 
       <!-- What’s included / Good to know -->
       <div class="rules">
-        <h3>What’s included</h3>
+        <h3 :id="`city12InclTitle_${p.id}`" data-c="@id">What’s included</h3>
         <ul>
-          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">{{ i }}</li>
+          <li v-for="(i,idx) in p.includes" :key="'inc-'+idx">
+            <span :id="`city12Incl_${p.id}_${idx}`" data-c="@id">{{ i }}</span>
+          </li>
         </ul>
-        <h3>Good to know</h3>
+        <h3 :id="`city12GoodTitle_${p.id}`" data-c="@id">Good to know</h3>
         <ul>
-          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">{{ n }}</li>
+          <li v-for="(n,idx) in p.notes" :key="'note-'+idx">
+            <span :id="`city12Note_${p.id}_${idx}`" data-c="@id">{{ n }}</span>
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Global Policy / Terms -->
     <div class="text-card">
-      <h2>Pricing & Policy Notes</h2>
+      <h2 id="city12PolicyTitle" data-c="@id">Pricing & Policy Notes</h2>
       <ul class="policy">
-        <li>Per-car rates (7-seater; up to 6 guests). Overtime <strong>AED 75/h</strong> after scheduled touring hours.</li>
-        <li>Old Dubai walking (~2h) with a licensed guide and abra tickets are included on Dubai routes.</li>
-        <li>Attraction tickets (e.g., Burj Khalifa, The View, Dubai Frame, Aquarium) are optional add-ons and subject to time-slot availability.</li>
-        <li>Child/booster seats are required by UAE law—please request at booking (each child must occupy a seat).</li>
-        <li>No eating/drinking/smoking inside vehicles; smart-casual dress recommended in heritage areas.</li>
-        <li>Amendment & cancellation: ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Force-majeure (sandstorm/heavy rain/road closures): re-schedule first; otherwise only unrecoverable supplier costs apply.</li>
-        <li>Remote pickups (Jebel Ali / DWC / Sharjah border) may attract a small surcharge. WhatsApp reconfirmation sent 24h before service.</li>
+        <li id="city12Policy1" data-c-html="@id">
+          Per-car rates (7-seater; up to 6 guests). Overtime <strong>AED 75/h</strong> after scheduled touring hours.
+        </li>
+        <li id="city12Policy2" data-c-html="@id">
+          Old Dubai walking (~2h) with a licensed guide and abra tickets are included on Dubai routes.
+        </li>
+        <li id="city12Policy3" data-c-html="@id">
+          Attraction tickets (e.g., Burj Khalifa, The View, Dubai Frame, Aquarium) are optional add-ons and subject to time-slot availability.
+        </li>
+        <li id="city12Policy4" data-c-html="@id">
+          Child/booster seats are required by UAE law—please request at booking (each child must occupy a seat).
+        </li>
+        <li id="city12Policy5" data-c-html="@id">
+          No eating/drinking/smoking inside vehicles; smart-casual dress recommended in heritage areas.
+        </li>
+        <li id="city12Policy6" data-c-html="@id">
+          Amendment & cancellation: ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Force-majeure (sandstorm/heavy rain/road closures): re-schedule first; otherwise only unrecoverable supplier costs apply.
+        </li>
+        <li id="city12Policy7" data-c-html="@id">
+          Remote pickups (Jebel Ali / DWC / Sharjah border) may attract a small surcharge. WhatsApp reconfirmation sent 24h before service.
+        </li>
       </ul>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="city12FaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
-          <span>{{ faq.question }}</span>
+          <span :id="`city12FAQQ_${index+1}`" data-c="@id">{{ faq.question }}</span>
           <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
         </div>
         <div v-if="faq.open" class="faq-answer">
-          <p>{{ faq.answer }}</p>
+          <p :id="`city12FAQA_${index+1}`" data-c="@id">{{ faq.answer }}</p>
         </div>
       </div>
     </div>

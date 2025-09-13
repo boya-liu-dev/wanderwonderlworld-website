@@ -2,268 +2,361 @@
   <div class="safari">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Transfers Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Transfers Banner"
+        class="banner"
+        id="safariBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="safariLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="safariLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai's Premier Adventure — Desert Safari Tours</h1>
-      <p>Experience the best of Dubai's desert with our curated safari tours. We offer a full spectrum of adventures, from the thrilling energy of a morning safari to the mesmerizing calm of a desert sunset and the authentic cultural immersion of an overnight stay. Each tour is designed to deliver a unique experience, allowing you to choose the perfect fit for your style of travel. Book with us for a seamless, professional, and unforgettable journey into the dunes.</p>
+      <h1 id="safariIntroTitle" data-c="@id">Dubai's Premier Adventure — Desert Safari Tours</h1>
+      <p id="safariIntroP1" data-c-html="@id">
+        Experience the best of Dubai's desert with our curated safari tours. We offer a full spectrum of adventures, from the thrilling energy of a morning safari to the mesmerizing calm of a desert sunset and the authentic cultural immersion of an overnight stay. Each tour is designed to deliver a unique experience, allowing you to choose the perfect fit for your style of travel. Book with us for a seamless, professional, and unforgettable journey into the dunes.
+      </p>
     </div>
+
     <div class="whatsapp-wrapper">
-  <a
-    href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
-    class="whatsapp-button hover-reveal">
-    <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-    <span class="whatsapp-text">Need help? Chat with us!</span>
-  </a>
- </div>
+      <a
+        href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20services."
+        class="whatsapp-button hover-reveal"
+        id="safariWhatsappLink"
+        data-c-src="@id"
+      >
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="safariWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="safariWhatsappText" data-c="@id">Need help? Chat with us!</span>
+      </a>
+    </div>
 
     <!-- Cards with images (4 types of transfer) -->
     <div class="cards-container">
       <CarCard
-  :image="car1"
-  title="Morning Dunes Drive"
-  subtitle="Classic Line"
-  tour="Morning Private Tour"
-  duration="4.5 Hours"
-  price="from AED 500"
-  link="/safari/regsafari"
-/>
-
-<CarCard
-  :image="car2"
-  title="Sunset Dunes Select"
-  subtitle="Signature Line"
-  tour="Sunset Private Tour"
-  duration="6 Hours"
-  price="from AED 700"
-  link="/safari/regsafari"
-/>
-
-<CarCard
-  :image="car3"
-  title="Extended Dunes Thrill"
-  subtitle="Prestige Line"
-  tour="Extended Private Tour"
-  duration="7 Hours"
-  price="from AED 1100"
-  link="/safari/upsafari"
-/>
-
-<CarCard
-  :image="car4"
-  title="Royal Dunes Safari"
-  subtitle="Royal Line"
-  tour="Luxury Overnight"
-  duration="16 Hours"
-  price="from AED 2000"
-  link="/safari/upsafari"
-
-/>
-    <!-- Add-ons cards (same size / aligned with above) -->
-    <div class="cards-container">
-      <CarCard
-        :image="addon1"
-        title="ATV Ride (150cc)"
-        subtitle="Add-on"
-        tour="Desert Safari"
-        duration="30 Minutes"
-        price="AED 140 / person"
-        link="/safari/addon"
+        key-id="safariCardMorning"
+        :image="car1"
+        title="Morning Dunes Drive"
+        subtitle="Classic Line"
+        tour="Morning Private Tour"
+        duration="4.5 Hours"
+        price="from AED 500"
+        link="/safari/regsafari"
       />
 
       <CarCard
-        :image="addon2"
-        title="Buggy Ride (2-Seater)"
-        subtitle="Add-on"
-        tour="Desert Safari"
-        duration="30 Minutes"
-        price="AED 420 / vehicle"
-        link="/safari/addon"
+        key-id="safariCardSunset"
+        :image="car2"
+        title="Sunset Dunes Select"
+        subtitle="Signature Line"
+        tour="Sunset Private Tour"
+        duration="6 Hours"
+        price="from AED 700"
+        link="/safari/regsafari"
       />
 
       <CarCard
-        :image="addon3"
-        title="Photography Package"
-        subtitle="Add-on"
-        tour="10 Edited + All Originals"
-        duration="—"
-        price="AED 150 / package"
-        link="/safari/addon"
+        key-id="safariCardExtended"
+        :image="car3"
+        title="Extended Dunes Thrill"
+        subtitle="Prestige Line"
+        tour="Extended Private Tour"
+        duration="7 Hours"
+        price="from AED 1100"
+        link="/safari/upsafari"
       />
 
       <CarCard
-        :image="addon4"
-        title="Shisha / Drinks"
-        subtitle="Add-on"
-        tour="Available at Licensed Camps"
-        duration="—"
-        price="contact for details"
-        link="/safari/addon"
+        key-id="safariCardRoyal"
+        :image="car4"
+        title="Royal Dunes Safari"
+        subtitle="Royal Line"
+        tour="Luxury Overnight"
+        duration="16 Hours"
+        price="from AED 2000"
+        link="/safari/upsafari"
       />
+
+      <!-- Add-ons cards (same size / aligned with above) -->
+      <div class="cards-container">
+        <CarCard
+          key-id="safariAddonATV150"
+          :image="addon1"
+          title="ATV Ride (150cc)"
+          subtitle="Add-on"
+          tour="Desert Safari"
+          duration="30 Minutes"
+          price="AED 140 / person"
+          link="/safari/addon"
+        />
+
+        <CarCard
+          key-id="safariAddonBuggy2"
+          :image="addon2"
+          title="Buggy Ride (2-Seater)"
+          subtitle="Add-on"
+          tour="Desert Safari"
+          duration="30 Minutes"
+          price="AED 420 / vehicle"
+          link="/safari/addon"
+        />
+
+        <CarCard
+          key-id="safariAddonPhoto"
+          :image="addon3"
+          title="Photography Package"
+          subtitle="Add-on"
+          tour="10 Edited + All Originals"
+          duration="—"
+          price="AED 150 / package"
+          link="/safari/addon"
+        />
+
+        <CarCard
+          key-id="safariAddonShisha"
+          :image="addon4"
+          title="Shisha / Drinks"
+          subtitle="Add-on"
+          tour="Available at Licensed Camps"
+          duration="—"
+          price="contact for details"
+          link="/safari/addon"
+        />
+      </div>
     </div>
 
-
-    </div>
-        <!-- 产品列表 Text Card -->
+    <!-- 产品列表 Text Card -->
     <div class="text-card">
-      <h2>Dubai Desert Safari Price List</h2>
+      <h2 id="safariPriceTitle" data-c="@id">Dubai Desert Safari Price List</h2>
       <table class="price-table">
         <thead>
           <tr>
-            <th>Desert Safari Service</th>
-            <th>Time/Duration</th>
-            <th>Price</th>
+            <th id="safariPriceThService" data-c="@id">Desert Safari Service</th>
+            <th id="safariPriceThTime" data-c="@id">Time/Duration</th>
+            <th id="safariPriceThPrice" data-c="@id">Price</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Morning Dunes Drive｜Classic Line</td>
-            <td>08:00 – 12:30</td>
-            <td><strong style="color:#b01b1b;">AED 500</strong></td>
-          </tr>
-          
-          <tr>
-            <td>Sunset Dunes Select｜Signature Line</td>
-            <td>15:00 – 21:00</td>
-            <td><strong style="color:#b01b1b;">AED 700</strong></td>
-          </tr>
-
-          <tr>
-            <td>Extended Dunes Thrill｜Prestige Line</td>
-            <td>14:00 – 21:00</td>
-            <td><strong style="color:#b01b1b;">AED 1100</strong></td>
+            <td id="safariPriceMorningTitle" data-c="@id">Morning Dunes Drive｜Classic Line</td>
+            <td id="safariPriceMorningTime" data-c="@id">08:00 – 12:30</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceMorning"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 500</strong>
+            </td>
           </tr>
 
           <tr>
-            <td>Royal Dunes Safari｜Royal Line</td>
-            <td>15:00 – 09:00(+1 day)</td>
-            <td><strong style="color:#b01b1b;">AED 2000</strong></td>
-          </tr>
-          <tr>
-            <td>Add-on ATV Ride (150cc)</td>
-            <td>30min</td>
-            <td><strong style="color:#b01b1b;">AED 140</strong></td>
+            <td id="safariPriceSunsetTitle" data-c="@id">Sunset Dunes Select｜Signature Line</td>
+            <td id="safariPriceSunsetTime" data-c="@id">15:00 – 21:00</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceSunset"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 700</strong>
+            </td>
           </tr>
 
           <tr>
-            <td>Add-on Buggy Ride (2-seater)</td>
-            <td>30min</td>
-            <td><strong style="color:#b01b1b;">AED 420</strong></td>
+            <td id="safariPriceExtendedTitle" data-c="@id">Extended Dunes Thrill｜Prestige Line</td>
+            <td id="safariPriceExtendedTime" data-c="@id">14:00 – 21:00</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceExtended"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 1100</strong>
+            </td>
           </tr>
+
           <tr>
-            <td>Add-on One Photography Package</td>
-            <td>——</td>
-            <td><strong style="color:#b01b1b;">AED 150</strong></td>
+            <td id="safariPriceRoyalTitle" data-c="@id">Royal Dunes Safari｜Royal Line</td>
+            <td id="safariPriceRoyalTime" data-c="@id">15:00 – 09:00(+1 day)</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceRoyal"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 2000</strong>
+            </td>
           </tr>
+
           <tr>
-            <td>Shisha/Alcoholic Drinks</td>
-            <td>——</td>
-            <td><strong style="color:#b01b1b;">see menu</strong></td>
+            <td id="safariPriceAddonATVTitle" data-c="@id">Add-on ATV Ride (150cc)</td>
+            <td id="safariPriceAddonATVTime" data-c="@id">30min</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceAddonATV"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 140</strong>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="safariPriceAddonBuggyTitle" data-c="@id">Add-on Buggy Ride (2-seater)</td>
+            <td id="safariPriceAddonBuggyTime" data-c="@id">30min</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceAddonBuggy"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 420</strong>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="safariPriceAddonPhotoTitle" data-c="@id">Add-on One Photography Package</td>
+            <td id="safariPriceAddonPhotoTime" data-c="@id">——</td>
+            <td>
+              <strong
+                style="color:#b01b1b;"
+                id="safariPriceAddonPhoto"
+                data-c-num="@id"
+                data-format="price-AED"
+              >AED 150</strong>
+            </td>
+          </tr>
+
+          <tr>
+            <td id="safariPriceAddonShishaTitle" data-c="@id">Shisha/Alcoholic Drinks</td>
+            <td id="safariPriceAddonShishaTime" data-c="@id">——</td>
+            <td>
+              <strong id="safariPriceAddonShisha" data-c="@id">see menu</strong>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <!-- 4 CTA buttons -->
-<div class="cta-row-wrapper">
-  <div class="cta-row">
-    <!-- 1. Email us（灰色） -->
-    <button class="cta-btn cta-gray" @click="copyEmail">
-      Email us
-    </button>
+    <div class="cta-row-wrapper">
+      <div class="cta-row">
+        <button class="cta-btn cta-gray" @click="copyEmail" id="safariCTAEmail" data-c="@id">
+          Email us
+        </button>
 
-    <!-- 2. WhatsApp us（弹窗显示二维码） -->
-    <button class="cta-btn cta-green" @click="openWhatsappModal">
-      WhatsApp us
-    </button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="safariCTAWhatsApp" data-c="@id">
+          WhatsApp us
+        </button>
 
-    <!-- 3. 微信扫一扫（弹窗显示二维码） -->
-    <button class="cta-btn cta-green" @click="openWechatModal">
-      Wechat us
-    </button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="safariCTAWechat" data-c="@id">
+          Wechat us
+        </button>
 
-    <!-- 4. Book now（跳转 contact） -->
-    <button class="cta-btn cta-red" @click="bookNow">
-      My WonderCart
-    </button>
-  </div>
-</div>
+        <button class="cta-btn cta-red" @click="bookNow" id="safariCTACart" data-c="@id">
+          My WonderCart
+        </button>
+      </div>
+    </div>
 
-<!-- Email 复制成功的居中提示（3秒自动消失） -->
-<div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
-  <div class="center-toast-box">
-    <p><strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard</p>
-  </div>
-</div>
+    <!-- Email 复制成功的居中提示（3秒自动消失） -->
+    <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
+      <div class="center-toast-box">
+        <p id="safariEmailCopiedText" data-c-html="@id">
+          <strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard
+        </p>
+      </div>
+    </div>
 
-<!-- WhatsApp 二维码弹窗（右上角X关闭） -->
-<div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
-  <div class="qr-modal-box">
-    <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-    <img :src="whatsappQR" alt="WhatsApp QR" />
-  </div>
-</div>
+    <!-- WhatsApp 二维码弹窗（右上角X关闭） -->
+    <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
+      <div class="qr-modal-box">
+        <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
+        <img :src="whatsappQR" alt="WhatsApp QR" id="safariWhatsappQR" data-c-src="@id" />
+      </div>
+    </div>
 
-<!-- 微信 二维码弹窗（右上角X关闭） -->
-<div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
-  <div class="qr-modal-box">
-    <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-    <img :src="wechatQR" alt="WeChat QR" />
-  </div>
-</div>
-
+    <!-- 微信 二维码弹窗（右上角X关闭） -->
+    <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
+      <div class="qr-modal-box">
+        <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
+        <img :src="wechatQR" alt="WeChat QR" id="safariWechatQR" data-c-src="@id" />
+      </div>
+    </div>
 
     <!-- Full-width textual cards (no image, no buttons) -->
-     <!-- FAQs Section -->
-<div class="faq-card">
-  <h2>FAQs</h2>
-  <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-    <div class="faq-question" @click="toggleFaq(index)">
-      <span>{{ faq.question }}</span>
-      <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
-    </div>
-    <div v-if="faq.open" class="faq-answer">
-      <p>{{ faq.answer }}</p>
-    </div>
-  </div>
-</div>
-
-    <div class="text-card">
-      <h2>Unforgettable Adventures: Our Dubai Desert Safari Experiences</h2>
-      <p>At WanderWonderWorld, we deliver safe, comfortable, and thrilling desert safari journeys designed for every type of traveler. From gentle morning drives across golden dunes to adrenaline-filled dune bashing at sunset, our packages are tailored to combine excitement with cultural immersion. With private 4x4 vehicles, professional drivers, and carefully selected desert camps, we ensure an authentic yet premium experience for families, couples, and groups alike.</p>
+    <!-- FAQs Section -->
+    <div class="faq-card">
+      <h2 id="safariFaqTitle" data-c="@id">FAQs</h2>
+      <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
+        <div class="faq-question" @click="toggleFaq(index)">
+          <span :id="`safariFaqQ${index+1}`" data-c="@id">{{ faq.question }}</span>
+          <span class="faq-icon">{{ faq.open ? "▲" : "▼" }}</span>
+        </div>
+        <div v-if="faq.open" class="faq-answer">
+          <p :id="`safariFaqA${index+1}`" data-c-html="@id">{{ faq.answer }}</p>
+        </div>
+      </div>
     </div>
 
     <div class="text-card">
-      <h2>Tailored Desert Safari: Your Private Tour Options</h2>
-      <p><strong>Morning Dune Drive | Classic Line:</strong> A half-day safari designed for families, seniors, and short-stay travelers. Includes cool morning dune bashing, camel ride, sandboarding, and light refreshments.</p>
-      <p><strong>Sunset Dunes Select | Signature Line:</strong> Our most popular safari. Afternoon dune bashing, sunset photo stop, camel ride, cultural shows, and BBQ buffet dinner in a traditional desert camp.</p>
-      <p><strong>Extended Dune Thrill | Prestige Line:</strong> For adventure seekers. Extended dune bashing in deeper desert areas, premium camp access with VIP seating, upgraded dinner, and exclusive performances.</p>
-      <p><strong>Royal Dunes Safari | Royal Line:</strong> The ultimate luxury experience. Chauffeured in a premium SUV, enjoy private dune bashing, champagne welcome, fine dining, and an overnight stay in luxury tents with stargazing and breakfast.</p>
+      <h2 id="safariS1Title" data-c="@id">Unforgettable Adventures: Our Dubai Desert Safari Experiences</h2>
+      <p id="safariS1P1" data-c-html="@id">
+        At WanderWonderWorld, we deliver safe, comfortable, and thrilling desert safari journeys designed for every type of traveler. From gentle morning drives across golden dunes to adrenaline-filled dune bashing at sunset, our packages are tailored to combine excitement with cultural immersion. With private 4x4 vehicles, professional drivers, and carefully selected desert camps, we ensure an authentic yet premium experience for families, couples, and groups alike.
+      </p>
     </div>
 
     <div class="text-card">
-      <h2>Terms and Conditions</h2>
-      <p><strong>Service Availability:</strong> All desert safari tours are subject to vehicle, driver, and camp availability. We recommend booking in advance to secure your preferred date and package.</p>
-      <p><strong>Vehicle Use:</strong> Our safaris are conducted with well-maintained 4x4 vehicles. Eating, drinking, and smoking are not allowed inside the vehicles for safety reasons.</p>
-      <p><strong>Cancellation Policy:</strong> Cancellations must follow our booking policy. Fees may apply depending on the timing of cancellation. Full details will be provided at the time of booking.</p>
-      <p><strong>No-Show Policy:</strong> Guests who fail to arrive at the designated pickup point without prior notice may be treated as a no-show, and applicable fees will be charged.</p>
-      <p><strong>Overtime Charges:</strong> Extra-hour charges may apply if guests request additional time beyond the booked safari schedule. Rates depend on vehicle type and tour duration.</p>
-      <p><strong>Seasonal Surcharge:</strong> Peak season or holiday surcharges may apply. This will be clearly communicated before final confirmation.</p>
-      <p><strong>Safety Policy:</strong> Guests must follow the driver’s instructions during dune bashing and other activities. Children and elderly guests should inform us in advance so we can recommend suitable safari options. Child seats are available upon request.</p>
-      <p><strong>Add-ons & Alcohol Policy:</strong> Add-on activities such as ATV, buggy rides, photography, and shisha can be booked in advance. Alcoholic drinks are served only at licensed camps, in compliance with UAE law.</p>
-      <p><strong>Tour Guides:</strong> The provided driver is not a licensed tour guide. A licensed tour guide can be arranged at an additional cost upon request.</p>
+      <h2 id="safariS2Title" data-c="@id">Tailored Desert Safari: Your Private Tour Options</h2>
+      <p id="safariS2P1" data-c-html="@id"><strong>Morning Dune Drive | Classic Line:</strong> A half-day safari designed for families, seniors, and short-stay travelers. Includes cool morning dune bashing, camel ride, sandboarding, and light refreshments.</p>
+      <p id="safariS2P2" data-c-html="@id"><strong>Sunset Dunes Select | Signature Line:</strong> Our most popular safari. Afternoon dune bashing, sunset photo stop, camel ride, cultural shows, and BBQ buffet dinner in a traditional desert camp.</p>
+      <p id="safariS2P3" data-c-html="@id"><strong>Extended Dune Thrill | Prestige Line:</strong> For adventure seekers. Extended dune bashing in deeper desert areas, premium camp access with VIP seating, upgraded dinner, and exclusive performances.</p>
+      <p id="safariS2P4" data-c-html="@id"><strong>Royal Dunes Safari | Royal Line:</strong> The ultimate luxury experience. Chauffeured in a premium SUV, enjoy private dune bashing, champagne welcome, fine dining, and an overnight stay in luxury tents with stargazing and breakfast.</p>
     </div>
 
     <div class="text-card">
-      <h2>WanderWonderWorld Desert Safari Services</h2>
-      <p>At WanderWonderWorld, we deliver a full spectrum of desert safari experiences tailored for every traveler. From thrilling dune bashing adventures to luxury overnight stays, our tours are designed to combine safety, cultural immersion, and exceptional service. Whether you are a first-time visitor or seeking a premium desert journey, we provide reliable and professional services that meet international standards.</p>
-      <p>We offer a wide range of safari options, including morning, evening, extended, and royal overnight experiences. All safaris are conducted with modern 4x4 vehicles and licensed, experienced drivers, ensuring both excitement and peace of mind. For families, couples, groups, or corporate bookings, our dedicated team can create a customized itinerary that matches your needs and expectations.</p>
+      <h2 id="safariS3Title" data-c="@id">Terms and Conditions</h2>
+      <p id="safariS3P1" data-c-html="@id"><strong>Service Availability:</strong> All desert safari tours are subject to vehicle, driver, and camp availability. We recommend booking in advance to secure your preferred date and package.</p>
+      <p id="safariS3P2" data-c-html="@id"><strong>Vehicle Use:</strong> Our safaris are conducted with well-maintained 4x4 vehicles. Eating, drinking, and smoking are not allowed inside the vehicles for safety reasons.</p>
+      <p id="safariS3P3" data-c-html="@id"><strong>Cancellation Policy:</strong> Cancellations must follow our booking policy. Fees may apply depending on the timing of cancellation. Full details will be provided at the time of booking.</p>
+      <p id="safariS3P4" data-c-html="@id"><strong>No-Show Policy:</strong> Guests who fail to arrive at the designated pickup point without prior notice may be treated as a no-show, and applicable fees will be charged.</p>
+      <p id="safariS3P5" data-c-html="@id"><strong>Overtime Charges:</strong> Extra-hour charges may apply if guests request additional time beyond the booked safari schedule. Rates depend on vehicle type and tour duration.</p>
+      <p id="safariS3P6" data-c-html="@id"><strong>Seasonal Surcharge:</strong> Peak season or holiday surcharges may apply. This will be clearly communicated before final confirmation.</p>
+      <p id="safariS3P7" data-c-html="@id"><strong>Safety Policy:</strong> Guests must follow the driver’s instructions during dune bashing and other activities. Children and elderly guests should inform us in advance so we can recommend suitable safari options. Child seats are available upon request.</p>
+      <p id="safariS3P8" data-c-html="@id"><strong>Add-ons & Alcohol Policy:</strong> Add-on activities such as ATV, buggy rides, photography, and shisha can be booked in advance. Alcoholic drinks are served only at licensed camps, in compliance with UAE law.</p>
+      <p id="safariS3P9" data-c-html="@id"><strong>Tour Guides:</strong> The provided driver is not a licensed tour guide. A licensed tour guide can be arranged at an additional cost upon request.</p>
+    </div>
+
+    <div class="text-card">
+      <h2 id="safariS4Title" data-c="@id">WanderWonderWorld Desert Safari Services</h2>
+      <p id="safariS4P1" data-c-html="@id">
+        At WanderWonderWorld, we deliver a full spectrum of desert safari experiences tailored for every traveler. From thrilling dune bashing adventures to luxury overnight stays, our tours are designed to combine safety, cultural immersion, and exceptional service. Whether you are a first-time visitor or seeking a premium desert journey, we provide reliable and professional services that meet international standards.
+      </p>
+      <p id="safariS4P2" data-c-html="@id">
+        We offer a wide range of safari options, including morning, evening, extended, and royal overnight experiences. All safaris are conducted with modern 4x4 vehicles and licensed, experienced drivers, ensuring both excitement and peace of mind. For families, couples, groups, or corporate bookings, our dedicated team can create a customized itinerary that matches your needs and expectations.
+      </p>
     </div>
   </div>
 </template>
@@ -285,7 +378,6 @@ import addon2 from '@/assets/images/cars/addon2.jpg'
 import addon3 from '@/assets/images/cars/addon3.jpg'
 import addon4 from '@/assets/images/cars/addon4.jpg'
 import { useWonderCart } from '@/stores/wonderCart'
-
 
 export default {
   name: 'Safari',
@@ -325,13 +417,13 @@ export default {
           open: false
         }
       ],
-     showEmailToast: false,
-     showWhatsappModal: false,
-     showWechatModal: false,
-     whatsappQR,
-     wechatQR,
-     emailToCopy: 'info@wanderwonderworlddubai.com',
-     toastTimer: null
+      showEmailToast: false,
+      showWhatsappModal: false,
+      showWechatModal: false,
+      whatsappQR,
+      wechatQR,
+      emailToCopy: 'info@wanderwonderworlddubai.com',
+      toastTimer: null
     }
   },
   methods: {
@@ -339,50 +431,49 @@ export default {
       this.faqs[index].open = !this.faqs[index].open
     },
     async copyEmail() {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(this.emailToCopy);
-      } else {
-        // fallback
-        const ta = document.createElement('textarea');
-        ta.value = this.emailToCopy;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(this.emailToCopy);
+        } else {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = this.emailToCopy;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.focus();
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        this.showToast();
+      } catch (e) {
+        this.showToast(); // 即使失败也给提示
       }
-      this.showToast();
-    } catch (e) {
-      this.showToast(); // 即使失败也给提示
+    },
+
+    showToast() {
+      this.showEmailToast = true;
+      clearTimeout(this.toastTimer);
+      this.toastTimer = setTimeout(() => {
+        this.showEmailToast = false;
+      }, 3000); // 3秒关闭
+    },
+
+    openWhatsappModal() {
+      this.showWhatsappModal = true;
+    },
+    openWechatModal() {
+      this.showWechatModal = true;
+    },
+    closeModals() {
+      this.showWhatsappModal = false;
+      this.showWechatModal = false;
+    },
+
+    bookNow() {
+      useWonderCart().open();
     }
-  },
-
-  showToast() {
-    this.showEmailToast = true;
-    clearTimeout(this.toastTimer);
-    this.toastTimer = setTimeout(() => {
-      this.showEmailToast = false;
-    }, 3000); // 3秒关闭
-  },
-
-  openWhatsappModal() {
-    this.showWhatsappModal = true;
-  },
-  openWechatModal() {
-    this.showWechatModal = true;
-  },
-  closeModals() {
-    this.showWhatsappModal = false;
-    this.showWechatModal = false;
-  },
-
-  bookNow() {
-     useWonderCart().open();
-  }
-
   }
 }
 </script>

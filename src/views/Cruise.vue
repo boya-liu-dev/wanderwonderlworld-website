@@ -1,18 +1,36 @@
-<template>
+<template> 
   <div class="cruise">
     <!-- Banner -->
     <div class="banner-container">
-      <img :src="banner" alt="Packages Banner" class="banner" />
+      <img
+        :src="banner"
+        alt="Packages Banner"
+        class="banner"
+        id="cruiseBanner"
+        data-c-src="@id"
+      />
       <div class="floating-logos">
-        <img :src="logoGold" alt="Gold Logo" class="logo" />
-        <img :src="logoText" alt="Text Logo" class="logo-text" />
+        <img
+          :src="logoGold"
+          alt="Gold Logo"
+          class="logo"
+          id="cruiseLogoGold"
+          data-c-src="@id"
+        />
+        <img
+          :src="logoText"
+          alt="Text Logo"
+          class="logo-text"
+          id="cruiseLogoText"
+          data-c-src="@id"
+        />
       </div>
     </div>
 
     <!-- Intro -->
     <div class="intro">
-      <h1>Dubai Dhow Cruise Dinners — Night Life & Premium</h1>
-      <p>
+      <h1 id="cruiseIntroTitle" data-c="@id">Dubai Dhow Cruise Dinners — Night Life & Premium</h1>
+      <p id="cruiseIntroP1" data-c-html="@id">
         Choose from four evening cruises: Creek Classic, Marina Skyline, Water Canal Glassboat, and the
         Lotus Mega Yacht. We keep pricing competitive, upgrades transparent (upper-deck/window seating,
         VIP lounges), and private hotel transfers optional. Vegetarian/Jain meals are available on request,
@@ -23,16 +41,24 @@
 
     <div class="whatsapp-wrapper">
       <a
+        id="cruiseWhatsappLink"
+        data-c-src="@id"
         href="https://wa.me/971589831967?text=Hello%20WanderWonderWorld%20Dubai!%20I%20am%20interested%20in%20your%20dhow%20cruises."
         class="whatsapp-button hover-reveal">
-        <img src="@/assets/images/whatsapp-icon.png" alt="WhatsApp" />
-        <span class="whatsapp-text">Need help? Chat with us!</span>
+        <img
+          src="@/assets/images/whatsapp-icon.png"
+          alt="WhatsApp"
+          id="cruiseWhatsappIcon"
+          data-c-src="@id"
+        />
+        <span class="whatsapp-text" id="cruiseWhatsappText" data-c="@id">Need help? Chat with us!</span>
       </a>
     </div>
 
     <!-- Cards (4 packages) -->
     <div class="cards-container">
       <CarCard
+        key-id="cruiseCardCreek"
         :image="car1"
         title="Creek Classic Dhow Dinner"
         subtitle="Dhow-Cruise-Tour"
@@ -43,6 +69,7 @@
       />
 
       <CarCard
+        key-id="cruiseCardMarina"
         :image="car2"
         title="Dubai Marina Dhow Dinner"
         subtitle="Dhow-Cruise-Tour"
@@ -53,6 +80,7 @@
       />
 
       <CarCard
+        key-id="cruiseCardCanal"
         :image="car3"
         title="Dubai Water Canal Glassboat Dinner"
         subtitle="Dhow-Cruise-Tour"
@@ -63,6 +91,7 @@
       />
 
       <CarCard
+        key-id="cruiseCardLotus"
         :image="car4"
         title="Lotus Mega Yacht Dinner"
         subtitle="Dhow-Cruise-Tour"
@@ -75,39 +104,103 @@
 
     <!-- Price List -->
     <div class="text-card">
-      <h2>Dubai Dhow Cruise Price List</h2>
+      <h2 id="cruisePriceTitle" data-c="@id">Dubai Dhow Cruise Price List</h2>
       <table class="price-table">
         <thead>
           <tr>
-            <th>Dhow Cruise</th>
-            <th>Time/Duration</th>
-            <th>Ticket-Only Price</th>
+            <th id="cruisePriceThCruise" data-c="@id">Dhow Cruise</th>
+            <th id="cruisePriceThTime" data-c="@id">Time/Duration</th>
+            <th id="cruisePriceThTicket" data-c="@id">Ticket-Only Price</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Creek Classic Dhow Dinner</td>
-            <td>90–120 Minutes</td>
-            <td><strong style="color:#b01b1b;">Adult AED 85 | Child AED 70</strong></td>
+            <td id="cruisePriceCreekTitle" data-c="@id">Creek Classic Dhow Dinner</td>
+            <td id="cruisePriceCreekTime" data-c="@id">90–120 Minutes</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                Adult AED
+                <span
+                  id="cruisePriceCreekAdult"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >85</span>
+                |
+                Child AED
+                <span
+                  id="cruisePriceCreekChild"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >70</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>Dubai Marina Dhow Dinner</td>
-            <td>2 Hours</td>
-            <td><strong style="color:#b01b1b;">Adult AED 115 | Child AED 95</strong></td>
+            <td id="cruisePriceMarinaTitle" data-c="@id">Dubai Marina Dhow Dinner</td>
+            <td id="cruisePriceMarinaTime" data-c="@id">2 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                Adult AED
+                <span
+                  id="cruisePriceMarinaAdult"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >115</span>
+                |
+                Child AED
+                <span
+                  id="cruisePriceMarinaChild"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >95</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>Dubai Water Canal Glassboat Dinner</td>
-            <td>~2 Hours</td>
-            <td><strong style="color:#b01b1b;">Adult AED 149 | Child AED 119</strong></td>
+            <td id="cruisePriceCanalTitle" data-c="@id">Dubai Water Canal Glassboat Dinner</td>
+            <td id="cruisePriceCanalTime" data-c="@id">~2 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                Adult AED
+                <span
+                  id="cruisePriceCanalAdult"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >149</span>
+                |
+                Child AED
+                <span
+                  id="cruisePriceCanalChild"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >119</span>
+              </strong>
+            </td>
           </tr>
           <tr>
-            <td>Lotus Mega Yacht Dinner</td>
-            <td>3 Hours</td>
-            <td><strong style="color:#b01b1b;">Adult AED 239 | Child AED 189</strong></td>
+            <td id="cruisePriceLotusTitle" data-c="@id">Lotus Mega Yacht Dinner</td>
+            <td id="cruisePriceLotusTime" data-c="@id">3 Hours</td>
+            <td>
+              <strong style="color:#b01b1b;">
+                Adult AED
+                <span
+                  id="cruisePriceLotusAdult"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >239</span>
+                |
+                Child AED
+                <span
+                  id="cruisePriceLotusChild"
+                  data-c-num="@id"
+                  data-format="price-AED"
+                >189</span>
+              </strong>
+            </td>
           </tr>
         </tbody>
       </table>
-      <p style="margin-top:8px;font-size:0.95rem;color:#555;">
+      <p id="cruisePriceNote" data-c-html="@id" style="margin-top:8px;font-size:0.95rem;color:#555;">
         * Rates are <strong>per person</strong>. Infant (0–2) free. Ticket-only prices exclude hotel transfers
         and seating upgrades. Optional private round-trip transfers (Dubai urban): Sedan 1–4 AED 180 /
         MPV 5–7 AED 220 / Van 10–14 AED 350 (Jebel Ali/JVC/DIP +AED 40–60; from Sharjah +AED 100).
@@ -115,40 +208,42 @@
       </p>
     </div>
 
-    <!-- CTA buttons (unchanged) -->
+    <!-- CTA buttons -->
     <div class="cta-row-wrapper">
       <div class="cta-row">
-        <button class="cta-btn cta-gray" @click="copyEmail">Email us</button>
-        <button class="cta-btn cta-green" @click="openWhatsappModal">WhatsApp us</button>
-        <button class="cta-btn cta-green" @click="openWechatModal">Wechat us</button>
-        <button class="cta-btn cta-red" @click="bookNow">My WonderCart</button>
+        <button class="cta-btn cta-gray" @click="copyEmail" id="cruiseCTAEmail" data-c="@id">Email us</button>
+        <button class="cta-btn cta-green" @click="openWhatsappModal" id="cruiseCTAWhatsApp" data-c="@id">WhatsApp us</button>
+        <button class="cta-btn cta-green" @click="openWechatModal" id="cruiseCTAWechat" data-c="@id">Wechat us</button>
+        <button class="cta-btn cta-red" @click="bookNow" id="cruiseCTACart" data-c="@id">My WonderCart</button>
       </div>
     </div>
 
-    <!-- Toast & Modals (unchanged) -->
+    <!-- Toast & Modals -->
     <div v-if="showEmailToast" class="center-toast" role="status" aria-live="polite">
       <div class="center-toast-box">
-        <p><strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard</p>
+        <p id="cruiseEmailCopiedText" data-c-html="@id">
+          <strong>info@wanderwonderworlddubai.com</strong> has been copied to your clipboard
+        </p>
       </div>
     </div>
 
     <div v-if="showWhatsappModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="whatsappQR" alt="WhatsApp QR" />
+        <img :src="whatsappQR" alt="WhatsApp QR" id="cruiseWhatsappQR" data-c-src="@id" />
       </div>
     </div>
 
     <div v-if="showWechatModal" class="qr-modal" aria-modal="true" role="dialog">
       <div class="qr-modal-box">
         <button class="qr-close" aria-label="Close" @click="closeModals">×</button>
-        <img :src="wechatQR" alt="WeChat QR" />
+        <img :src="wechatQR" alt="WeChat QR" id="cruiseWechatQR" data-c-src="@id" />
       </div>
     </div>
 
     <!-- FAQs -->
     <div class="faq-card">
-      <h2>FAQs</h2>
+      <h2 id="cruiseFaqTitle" data-c="@id">FAQs</h2>
       <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
         <div class="faq-question" @click="toggleFaq(index)">
           <span>{{ faq.question }}</span>
@@ -162,27 +257,27 @@
 
     <!-- Copy blocks -->
     <div class="text-card">
-      <h2>Find Your Evening on the Water: Our Cruise Line-up</h2>
-      <p><strong>Creek Classic Dhow Dinner:</strong> Heritage wooden dhow, Old Dubai skyline, international buffet, water/soft drinks and <em>Tanoura</em> when permitted. Easy price point and a relaxed vibe. Add an <em>upper-deck</em> or <em>window table</em> guarantee, pre-cruise Old Dubai mini walk + abra, or private hotel transfers.</p>
-      <p><strong>Dubai Marina Dhow Dinner:</strong> The favourite skyline route—Marina, JBR and Bluewaters by night on a traditional dhow or a modern glass boat (operator assigned). Buffet dinner, soft drinks and entertainment when permitted. Optional upper-deck/window seating and birthday/anniversary table décor.</p>
-      <p><strong>Water Canal Glassboat Dinner:</strong> Premium glass-enclosed vessel along the Dubai Water Canal and Business Bay bridges. Panoramic windows, quieter “fine-dining” ambience, and priority to window-style tables when available. Add a quick Dubai Frame visit before boarding (ticket add-on).</p>
-      <p><strong>Lotus Mega Yacht Dinner:</strong> Three hours on one of Dubai’s largest yachts—live DJ, multiple decks, live cooking stations and lounge areas. Optional VIP sofa sections and, on licensed dates only, a Premium Drinks package.</p>
+      <h2 id="cruiseS1Title" data-c="@id">Find Your Evening on the Water: Our Cruise Line-up</h2>
+      <p id="cruiseS1P1" data-c-html="@id"><strong>Creek Classic Dhow Dinner:</strong> Heritage wooden dhow, Old Dubai skyline, international buffet, water/soft drinks and <em>Tanoura</em> when permitted. Easy price point and a relaxed vibe. Add an <em>upper-deck</em> or <em>window table</em> guarantee, pre-cruise Old Dubai mini walk + abra, or private hotel transfers.</p>
+      <p id="cruiseS1P2" data-c-html="@id"><strong>Dubai Marina Dhow Dinner:</strong> The favourite skyline route—Marina, JBR and Bluewaters by night on a traditional dhow or a modern glass boat (operator assigned). Buffet dinner, soft drinks and entertainment when permitted. Optional upper-deck/window seating and birthday/anniversary table décor.</p>
+      <p id="cruiseS1P3" data-c-html="@id"><strong>Water Canal Glassboat Dinner:</strong> Premium glass-enclosed vessel along the Dubai Water Canal and Business Bay bridges. Panoramic windows, quieter “fine-dining” ambience, and priority to window-style tables when available. Add a quick Dubai Frame visit before boarding (ticket add-on).</p>
+      <p id="cruiseS1P4" data-c-html="@id"><strong>Lotus Mega Yacht Dinner:</strong> Three hours on one of Dubai’s largest yachts—live DJ, multiple decks, live cooking stations and lounge areas. Optional VIP sofa sections and, on licensed dates only, a Premium Drinks package.</p>
     </div>
 
     <div class="text-card">
-      <h2>Terms & Conditions (Dhow Cruises)</h2>
-      <p><strong>Boarding & Timing:</strong> Standard cruises board at 8:00 PM and sail at 8:30 PM for ~90–120 minutes (Creek/Marina/Canal). Lotus reports at 7:00 PM and sails 7:30–10:30 PM. Late arrivals are treated as no-show by the boat operator.</p>
-      <p><strong>Inclusions:</strong> Ticket-only covers the boat seat, buffet dinner (Halal; veg/non-veg; Jain/vegan by request), water/soft drinks, and shows when permitted. Alcohol is only served on licensed vessels and not during Ramadan/dry days.</p>
-      <p><strong>Transfers:</strong> Private round-trip hotel transfers are optional at the published matrix. Child/booster seats are provided free on request (limited). Eating/drinking/smoking are not allowed inside vehicles.</p>
-      <p><strong>Seating:</strong> FCFS or operator-assigned. Paid upgrades guarantee a section (upper deck/window/VIP) rather than a specific table number. Families are seated together.</p>
-      <p><strong>Weather / Route:</strong> Marine control, wind or traffic may alter route/berth (e.g., canal waterfall closures). If the operator cancels, you may re-book or receive a full refund; if the cruise operates with a modified route, refunds do not apply.</p>
-      <p><strong>Amendment & Cancellation:</strong> Creek/Marina/Canal ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Lotus/VIP sections ≥48h free; 24–48h 50%; &lt;24h 100%. Event nights (NYE/National Day/major shows) have stricter terms and supplements.</p>
-      <p><strong>Compliance & Safety:</strong> Vessels are licensed by DMCA/RTA and carry lifejackets with trained crew. Our transfers use insured vehicles and RTA-licensed drivers.</p>
+      <h2 id="cruiseS2Title" data-c="@id">Terms & Conditions (Dhow Cruises)</h2>
+      <p id="cruiseS2P1" data-c-html="@id"><strong>Boarding & Timing:</strong> Standard cruises board at 8:00 PM and sail at 8:30 PM for ~90–120 minutes (Creek/Marina/Canal). Lotus reports at 7:00 PM and sails 7:30–10:30 PM. Late arrivals are treated as no-show by the boat operator.</p>
+      <p id="cruiseS2P2" data-c-html="@id"><strong>Inclusions:</strong> Ticket-only covers the boat seat, buffet dinner (Halal; veg/non-veg; Jain/vegan by request), water/soft drinks, and shows when permitted. Alcohol is only served on licensed vessels and not during Ramadan/dry days.</p>
+      <p id="cruiseS2P3" data-c-html="@id"><strong>Transfers:</strong> Private round-trip hotel transfers are optional at the published matrix. Child/booster seats are provided free on request (limited). Eating/drinking/smoking are not allowed inside vehicles.</p>
+      <p id="cruiseS2P4" data-c-html="@id"><strong>Seating:</strong> FCFS or operator-assigned. Paid upgrades guarantee a section (upper deck/window/VIP) rather than a specific table number. Families are seated together.</p>
+      <p id="cruiseS2P5" data-c-html="@id"><strong>Weather / Route:</strong> Marine control, wind or traffic may alter route/berth (e.g., canal waterfall closures). If the operator cancels, you may re-book or receive a full refund; if the cruise operates with a modified route, refunds do not apply.</p>
+      <p id="cruiseS2P6" data-c-html="@id"><strong>Amendment & Cancellation:</strong> Creek/Marina/Canal ≥24h free; 12–24h 50%; &lt;12h or no-show 100%. Lotus/VIP sections ≥48h free; 24–48h 50%; &lt;24h 100%. Event nights (NYE/National Day/major shows) have stricter terms and supplements.</p>
+      <p id="cruiseS2P7" data-c-html="@id"><strong>Compliance & Safety:</strong> Vessels are licensed by DMCA/RTA and carry lifejackets with trained crew. Our transfers use insured vehicles and RTA-licensed drivers.</p>
     </div>
 
     <div class="text-card">
-      <h2>Why Book Your Cruise with WanderWonderWorld</h2>
-      <p>
+      <h2 id="cruiseS3Title" data-c="@id">Why Book Your Cruise with WanderWonderWorld</h2>
+      <p id="cruiseS3P1" data-c-html="@id">
         Competitive ticket pricing, clear upgrades, and real-time support. WhatsApp concierge (08:00–22:00),
         optional private hotel transfers with free child seats on request, occasion add-ons (cake, décor,
         photographer), and one complimentary re-schedule within the policy window (subject to availability)
@@ -321,7 +416,7 @@ export default {
 
 .cards-container { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; justify-content: center; }
 
-.text-card { background-color: #f8f8f8; margin: 50px auto; padding: 25px; border-radius: 8px; max-width: 1000px; line-height: 1.6; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.text-card { background-color: #f8f8f8; margin: 50px auto; padding: 25px; border-radius: 8px; max-width: 1000px; line-height: 1.6; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
 .text-card h2 { font-size: 1.6rem; margin-bottom: 15px; }
 .text-card p { margin-bottom: 30px; }
 
