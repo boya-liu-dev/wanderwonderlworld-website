@@ -578,19 +578,52 @@ h2{ margin:16px 0 0; font-weight:700; }
 .process-list li{ margin:6px 0; }
 .qa h4{ margin:10px 0 4px; }
 
-/* WhatsApp 悬浮按钮 */
+/* WhatsApp 悬浮按钮（整体位置不变） */
 .whatsapp-wrapper{
-  position:fixed; left:7px; top:75%; transform:translateY(-50%); z-index:9999;
+  position: fixed; left: 7px; top: 75%;
+  transform: translateY(-50%);
+  z-index: 9999;
 }
+
 .whatsapp-button{
-  display:flex; align-items:center; background:#fff; padding:1px 15px;
-  border-radius:100px; box-shadow:0 4px 10px rgba(0,0,0,.2);
-  text-decoration:none; transition:all .3s ease-in-out;
+  display: flex; align-items: center;
+  background: #fff;
+  padding: 8px;                       
+  border-radius: 100px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  overflow: hidden;                
 }
-.whatsapp-button:hover{ transform:scale(1.05); }
-.whatsapp-button img{ width:58px; height:58px; margin-right:3px; }
-.hover-reveal .whatsapp-text{ max-width:0; opacity:0; overflow:hidden; transition:all .3s ease-in-out; }
-.hover-reveal:hover .whatsapp-text{ max-width:200px; opacity:1; margin-left:10px; }
+.whatsapp-button:hover{ transform: scale(1.05); }
+
+
+.whatsapp-button img{
+  width: 52px;                      
+  height: 52px;
+  display: block;                  
+  margin: 0;                       
+}
+
+
+.hover-reveal .whatsapp-text{
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all .3s ease-in-out;
+  white-space: nowrap;
+  margin: 0;                       
+}
+
+
+.hover-reveal:hover{
+  padding-right: 10px;              
+}
+.hover-reveal:hover .whatsapp-text{
+  max-width: 200px;
+  opacity: 1;
+  margin-left: 10px;
+}
 
 /* 宽屏容器 */
 @media (min-width:1200px){

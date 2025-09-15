@@ -60,7 +60,7 @@
           </div>
 
           <label class="wc-l">
-            旅行时间 (DD-MM-YYYY) <span class="req">*</span>
+            旅行时间 (MM-DD-YYYY) <span class="req">*</span>
           </label>
           <input
             type="date"

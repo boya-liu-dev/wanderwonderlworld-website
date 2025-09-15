@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <label class="wc-l">Travel date (DD-MM-YYYY) <span class="req">*</span></label>
+          <label class="wc-l">Travel date (MM-DD-YYYY) <span class="req">*</span></label>
           <input
             type="date"
             class="wc-inp"

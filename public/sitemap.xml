@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+  <loc>https://wanderwonderworlddubai.com/logo.png</loc>
+  <priority>0.3</priority>
+  </url>
+
+
+  <!-- ========= Root / 首页 ========= -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/"/>
+  </url>
+
+  <!-- ========= 英文主栏目 & 中文主栏目（/cn） ========= -->
+  <!-- Transfers -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/transfers</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/transfers"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn/transfers"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/transfers"/>
+  </url>
+
+  <!-- Packages -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/packages</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/packages"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn/packages"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/packages"/>
+  </url>
+
+  <!-- Safari -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/safari</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/safari"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn/safari"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/safari"/>
+  </url>
+
+  <!-- City -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/city</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/city"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn/city"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/city"/>
+  </url>
+
+  <!-- Cruise -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/cruise</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/cruise"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn/cruise"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/cruise"/>
+  </url>
+
+  <!-- Contact（通常只有英文即可，如有中文页可以再加一对） -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/contact</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/contact"/>
+  </url>
+
+  <!-- 中文主入口 -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/cn</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/"/>
+  </url>
+
+  <!-- ========= Transfers 子页（英文 ↔ 中文=后缀1） ========= -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/transfers/short</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/transfers/short"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/transfers/short1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/transfers/short"/>
+  </url>
+
+  <url>
+    <loc>https://wanderwonderworlddubai.com/transfers/long</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/transfers/long"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/transfers/long1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/transfers/long"/>
+  </url>
+
+  <!-- ========= Safari 子页 ========= -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/safari/regsafari</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/safari/regsafari"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/safari/regsafari1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/safari/regsafari"/>
+  </url>
+
+  <url>
+    <loc>https://wanderwonderworlddubai.com/safari/upsafari</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/safari/upsafari"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/safari/upsafari1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/safari/upsafari"/>
+  </url>
+
+  <url>
+    <loc>https://wanderwonderworlddubai.com/safari/addon</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/safari/addon"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/safari/addon1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/safari/addon"/>
+  </url>
+
+  <!-- ========= Packages 子页 ========= -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/package/34nights</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/package/34nights"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/package/34nights1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/package/34nights"/>
+  </url>
+
+  <url>
+    <loc>https://wanderwonderworlddubai.com/package/56nights</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/package/56nights"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/package/56nights1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/package/56nights"/>
+  </url>
+
+  <!-- ========= City 子页 ========= -->
+  <url>
+    <loc>https://wanderwonderworlddubai.com/city/city12</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/city/city12"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/city/city121"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/city/city12"/>
+  </url>
+
+  <url>
+    <loc>https://wanderwonderworlddubai.com/city/city34</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/city/city34"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/city/city341"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/city/city34"/>
+  </url>
+
+  <url>
+    <loc>https://wanderwonderworlddubai.com/city/sndcruise</loc>
+    <lastmod>2025-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wanderwonderworlddubai.com/city/sndcruise"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://wanderwonderworlddubai.com/city/sndcruise1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wanderwonderworlddubai.com/city/sndcruise"/>
+  </url>
+
+</urlset>
