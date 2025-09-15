@@ -11,7 +11,11 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+      { "source": "/api/enquiry-cn", "function": "enquiryCn" },
       { "source": "**", "destination": "/index.html" }
     ]
+  },
+  "functions": {
+    "source": "functions"
   }
 }

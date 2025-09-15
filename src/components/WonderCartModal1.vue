@@ -104,13 +104,16 @@
       <!-- Footer actions -->
       <div class="wc-foot">
         <button class="wc-btn wc-light" @click="cart.clear" :disabled="!cart.items.length">清除全部</button>
-        <button class="wc-btn wc-primary" @click="onSubmit" :disabled="submitDisabled">提交咨询</button>
+        <button class="wc-btn wc-primary" @click="onSubmitClick" :disabled="submitDisabled || submitting">
+          {{ submitting ? '提交中…' : '提交咨询' }}
+        </button>
       </div>
 
       <!-- After text -->
       <div class="wc-after">
         <p>
-          我们通常会在 <strong>3个工作日内</strong>通过发送电子邮件回复您的讯息；如果您没收到邮件，请检查垃圾箱。也可快速联系：
+          提示：部分iOS用户浏览器的安全设置会影响验证，导致按钮一直“提交中…”。
+建议使用<strong>百度浏览器</strong>打开本页后再提交；我们通常会在 <strong>3个工作日内</strong>通过发送电子邮件回复您的讯息；如果您没收到邮件，请检查垃圾箱。也可快速联系：
         </p>
         <div class="wc-links">
           <a href="mailto:info@wanderwonderworlddubai.com">邮件联系</a>
@@ -126,23 +129,67 @@
           </div>
         </div>
       </div>
+
+      <!-- Invisible Turnstile container -->
+      <div id="ts-cn" class="cf-turnstile" style="display:none"></div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue'
-import { addEnquiry, queueMail } from '@/firebase' // 最小改动：加入发信队列
+import { computed, ref, watch } from 'vue'
 import { useWonderCart } from '@/stores/wonderCart'
 import wechatQR from '@/assets/images/Wechat-code1.jpg'
 import cartIcon from '@/assets/images/wondercart.jpg'
 import logoGold from '@/assets/images/logo-www-gold.png'
 import logoText from '@/assets/images/logo-text.png'
 
+const TS_SITE_KEY = '0x4AAAAAAB1PYTTF4b41PQ6N' // Turnstile Site Key
+
 export default {
   name: 'WonderCartModal1',
   setup() {
     const cart = useWonderCart()
+    const submitting = ref(false)
+
+    // 懒加载 Turnstile
+    function ensureTurnstileScript() {
+      if (window.turnstile) return Promise.resolve()
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script')
+        s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+        s.async = true
+        s.defer = true
+        s.onload = () => resolve()
+        s.onerror = () => reject(new Error('Turnstile load failed'))
+        document.head.appendChild(s)
+      })
+    }
+
+    let tsWidgetId = null
+    function requestTurnstileToken() {
+      return new Promise(async (resolve, reject) => {
+        try {
+          await ensureTurnstileScript()
+          const el = document.getElementById('ts-cn')
+          if (!el) return reject(new Error('Turnstile container not found'))
+          // 首次渲染
+          if (!tsWidgetId) {
+            tsWidgetId = window.turnstile.render('#ts-cn', {
+              sitekey: TS_SITE_KEY,
+              size: 'invisible',
+              callback: (token) => resolve(token),
+              'error-callback': () => reject(new Error('Turnstile error')),
+              'timeout-callback': () => reject(new Error('Turnstile timeout'))
+            })
+          }
+          // 触发一次执行
+          window.turnstile.execute(tsWidgetId)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    }
 
     // === Message limit (400 chars) ===
     const MESSAGE_LIMIT = 400
@@ -184,50 +231,8 @@ export default {
       emailErr.value || dateErr.value || msgRequiredErr.value || msgProfanityErr.value || !cart.canSubmitNow()
     )
 
-    // —— 邮件内容模板（中文） ——
-    const esc = (s='') =>
-      String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;', "'":'&#39;'}[m]))
-
-    const buildHtmlZh = (p, id) => {
-      const rows = (p.items || []).map((x,i)=>`
-        <tr>
-          <td>${i+1}</td>
-          <td>${esc(x.title || '')}</td>
-          <td>${esc(x.id || '')}</td>
-        </tr>`).join('')
-      return `
-        <h3>新的咨询${id ? ' #' + id : ''}</h3>
-        <p><b>姓名：</b>${esc(p.contact?.name || '')}<br/>
-           <b>邮箱：</b>${esc(p.contact?.email || '')}<br/>
-           <b>电话：</b>${esc(p.contact?.phone || '')}<br/>
-           <b>出行日期：</b>${esc(p.travelDate || '')}</p>
-        <p><b>留言：</b><br/>${esc(p.message || '').replace(/\n/g,'<br>')}</p>
-        <table border="1" cellpadding="6" cellspacing="0">
-          <thead><tr><th>序号</th><th>标题</th><th>ID</th></tr></thead>
-          <tbody>${rows || '<tr><td colspan="3">没有选择任何项目</td></tr>'}</tbody>
-        </table>`
-    }
-
-    const buildTextZh = (p, id) => {
-      const items = (p.items || []).map((x,i)=>`${i+1}. ${x.title || ''} (id:${x.id || ''})`).join('\n') || '没有选择任何项目'
-      return `新的咨询${id ? ' #' + id : ''}
-姓名: ${p.contact?.name || ''}
-邮箱: ${p.contact?.email || ''}
-电话: ${p.contact?.phone || ''}
-出行日期: ${p.travelDate || ''}
-
-留言:
-${p.message || ''}
-
-项目清单:
-${items}
-`
-    }
-
-    async function onSubmit() {
-      if (submitDisabled.value) return
-
-      const payload = {
+    function buildPayload() {
+      return {
         items: cart.items.map(i => {
           const obj = typeof i === 'string' ? safeParse(i) || { id: i, name: String(i) } : i
           return { id: obj.id, title: obj.name }
@@ -240,27 +245,29 @@ ${items}
         travelDate: cart.form.travelDate,
         message: (cart.form.message || '').trim()
       }
+    }
 
+    async function onSubmitClick () {
+      if (submitDisabled.value || submitting.value) return
+      submitting.value = true
       try {
-        // 1) 写入 /enquiries（后台追踪）
-        const ref = await addEnquiry(payload)
-
-        // 2) 写入 /mail 触发 Trigger Email 扩展
-        const subject = `新咨询 — ${payload.contact.name || '访客'} — ${payload.items.length} 项`
-        await queueMail({
-          to: 'info@wanderwonderworlddubai.com',
-          replyTo: payload.contact.email || 'info@wanderwonderworlddubai.com',
-          subject,
-          html: buildHtmlZh(payload, ref?.id),
-          text: buildTextZh(payload, ref?.id)
+        const token = await requestTurnstileToken()
+        const payload = buildPayload()
+        const res = await fetch('/api/enquiry-cn', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, payload })
         })
-
+        if (!res.ok) throw new Error(await res.text())
         cart.markSubmitted()
         cart.toast('您的咨询已提交，我们会尽快联系您。')
         cart.close()
       } catch (e) {
         console.error(e)
-        cart.toast('提交失败，请稍后再试。')
+        cart.toast('提交失败，请稍后再试，或通过 WhatsApp / 邮件联系我们。')
+      } finally {
+        submitting.value = false
+        if (window.turnstile && tsWidgetId) window.turnstile.reset(tsWidgetId)
       }
     }
 
@@ -269,12 +276,15 @@ ${items}
     const openWechat  = () => { showWechat.value = true }
     const closeWechat = () => { showWechat.value = false }
 
+    // 购物车打开时预加载 Turnstile（提升首次提交速度）
+    watch(() => cart.isOpen, (open) => { if (open) ensureTurnstileScript().catch(()=>{}) }, { immediate: false })
+
     return {
-      cart,
+      cart, submitting,
       MESSAGE_LIMIT, enforceMsgLimit,
       getName, getId,
       todayISO, emailErr, dateErr, msgRequiredErr, msgProfanityErr, submitDisabled,
-      onSubmit,
+      onSubmitClick,
       wechatQR, showWechat, openWechat, closeWechat,
       cartIcon, logoGold, logoText
     }
@@ -283,7 +293,7 @@ ${items}
 </script>
 
 <style scoped>
-/* 现有样式，保持不变 */
+/* 你的原样式保持不变 */
 .wc-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;z-index:3500;padding:16px;}
 .wc-modal{background:#fff;border-radius:16px;max-width:720px;width:min(92vw,720px);max-height:88vh;display:flex;flex-direction:column;box-shadow:0 16px 40px rgba(0,0,0,.25);overflow:hidden;}
 .wc-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #eee;}
